@@ -1,6 +1,6 @@
 <?php
 
-$EM_CONF['t3bootstrap-blog'] = [
+$EM_CONF[$_EXTKEY] = [
     'title' => 'Template patch für blog',
     'description' => 't3bootstrap modifications for the blog extension',
     'author' => 'Sven Wappler',
