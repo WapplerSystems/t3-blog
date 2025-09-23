@@ -13,7 +13,7 @@ $EM_CONF[$_EXTKEY] = [
     'constraints' => [
         'depends' => [
             'typo3' => '13.0.0-13.4.99',
-            'ws_t3bootstrap' => '13.0.0-13.99.99',
+            't3b_core' => '13.0.0-13.99.99',
             'blog' => '13.0.0',
         ],
     ],

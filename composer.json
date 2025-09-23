@@ -16,7 +16,7 @@
 	"require": {
 		"typo3/cms-core": "^13",
 		"t3g/blog": "^13.0",
-		"wapplersystems/ws_t3bootstrap": "^13"
+		"t3bootstrap/core": "^13"
 	},
 	"require-dev": {
 	},
