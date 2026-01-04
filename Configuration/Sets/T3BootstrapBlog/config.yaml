@@ -2,3 +2,4 @@ name: t3bootstrap/blog
 label: T3Bootstrap Blog Bridge
 dependencies:
   - t3bootstrap/core
+  - blog/integration

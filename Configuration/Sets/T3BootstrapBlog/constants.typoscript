@@ -1,13 +1,1 @@
-@import "EXT:blog/Configuration/TypoScript/Static/constants.typoscript"
 
-plugin {
-  tx_blog {
-    view {
-      templateRootPaths = EXT:t3bootstrap_blog/Resources/Private/Templates/
-      partialRootPaths = EXT:t3bootstrap_blog/Resources/Private/Partials/
-      layoutRootPaths = EXT:t3bootstrap_blog/Resources/Private/Layouts/
-
-    }
-
-  }
-}
