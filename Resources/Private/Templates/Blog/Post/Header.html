@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Post" />
+<f:section name="Content">
+
+
+    <div class="container">
+
+        <div class="row mb-4 mt-4 mt-lg-7">
+            <div class="col-12 col-xl-1 col-xxl-2">
+                <f:link.page class="blog__link-back" pageUid="{settings.blogUid}"><f:translate key="LLL:EXT:template/Resources/Private/Language/locallang.xlf:blog.back"></f:translate></f:link.page>
+
+            </div>
+            <div class="col-12 col-xl-8 col-xxl-8">
+
+                <div class="row mb-4">
+                    <div class="col-12 col-lg-8">
+
+                        <f:variable name="publishDateFormat" value="{settings.meta.postheader.elements.published.format}" />
+
+                        <f:render partial="Meta/Elements/Categories" arguments="{_all}" />
+
+                        <f:render partial="Meta/Elements/Published" arguments="{_all}" />
+
+                    </div>
+                    <div class="col-12 col-lg-4">
+
+                        {blogvh:data.contentListOptions(listType: 'blog_authors')}
+                        <f:cObject typoscriptObjectPath="tt_content.list" data="{contentObjectData}" table="tt_content"/>
+                    </div>
+                </div>
+
+                <h1>{post.title}</h1>
+                <div class="blog__intro">{t3bc:page.info(pageUid:post.uid,field: 'intro') -> f:format.html()}</div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</f:section>
+
+</html>

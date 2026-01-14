@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:ws="http://typo3.org/ns/WapplerSystems/WsT3bootstrap/ViewHelpers"
+      xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+
+<div class="blog__list{f:if(condition: type, then: ' postlist--{type}')}" data-ajax-url="">
+
+    <f:if condition="{pagination} && {pagination.paginatedItems}">
+        <f:then>
+
+            <f:if condition="{settings.lists.pagination.insertAbove}">
+                <f:render partial="Pagination/Pagination" arguments="{pagination: pagination}" />
+            </f:if>
+            <div class="row">
+                <f:for each="{pagination.paginatedItems}" iteration="iterator" as="post">
+                    <blogvh:cache post="{post}" />
+                    <f:render partial="List/Post" section="{type}" arguments="{_all}" />
+                </f:for>
+            </div>
+            <f:if condition="{settings.lists.pagination.insertBelow}">
+                <f:render partial="Pagination/Pagination" arguments="{pagination: pagination}" />
+            </f:if>
+
+        </f:then>
+        <f:else if="{posts}">
+            <div class="row">
+                <f:for each="{posts}" iteration="iterator" as="post">
+                    <blogvh:cache post="{post}" />
+                    <f:render partial="List/Post" section="{type}" arguments="{_all}" />
+                </f:for>
+            </div>
+        </f:else>
+        <f:else>
+
+            <div class="alert alert-info" role="alert">
+                <strong><f:translate key="list.no_posts.title" /></strong><br><f:translate key="list.no_posts.message" />
+            </div>
+
+        </f:else>
+    </f:if>
+
+
+</div>
+</html>

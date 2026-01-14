@@ -1,0 +1,11 @@
+<f:variable name="name">published</f:variable>
+<f:variable name="icon"><f:render partial="General/BlogIcons" section="Published" optional="true" /></f:variable>
+<f:variable name="prefix"><f:translate key="meta.published.published"/></f:variable>
+
+<span>
+    {f:translate(key: 'LLL:EXT:template/Resources/Private/Language/locallang.xlf:published')}:
+    <blogvh:link.post post="{post}" rel="bookmark">
+        <f:if condition="!{publishDateFormat}"><f:variable name="dateformat" value="%d.%m.%Y" /></f:if>
+        <time datetime="{f:format.date(format: '%Y-%m-%dT%H:%M:%S-%z', date: post.publishDate)}" itemprop="datepublished">{f:format.date(format: publishDateFormat, date: post.publishDate)}</time>
+    </blogvh:link.post>
+</span>

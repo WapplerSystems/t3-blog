@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+
+<div class="blog__page"
+     data-ajax-previous-page="{previousPageAjaxUri}"
+     data-ajax-next-page="{nextPageAjaxUri}">
+
+    <f:if condition="{pagination.paginator.paginatedItems}">
+        <f:then>
+            <div class="row">
+                <f:for each="{pagination.paginator.paginatedItems}" iteration="iterator" as="post">
+                    <blogvh:cache post="{post}"/>
+                    <f:render partial="List/Post" arguments="{_all}"/>
+                </f:for>
+            </div>
+        </f:then>
+        <f:else>
+
+            <div class="alert alert-info" role="alert">
+                <strong>
+                    <f:translate key="LLL:EXT:blog/Resources/Private/Language/locallang.xlf:list.no_posts.title"/>
+                </strong><br>
+                <f:translate key="list.no_posts.message"/>
+            </div>
+
+        </f:else>
+    </f:if>
+
+</div>
+
+</html>

@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:ws="http://typo3.org/ns/WapplerSystems/WsT3bootstrap/ViewHelpers"
+      xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+
+<f:switch expression="{data.layout}">
+    <f:case value="30">
+        <f:comment>Aktuelle Blog Posts</f:comment>
+        <div class="blog__latest" data-blog-postcount="{posts -> f:count()}">
+            <div class="row">
+
+                <f:if condition="{posts.0}">
+                    <t3bc:column class="p0">
+                        <f:render partial="Latest/Post" arguments="{post:posts.0,type:'top'}" />
+                    </t3bc:column>
+                </f:if>
+
+                <f:if condition="{posts.1}">
+                    <t3bc:column display="flex" lg="4">
+                        <f:render partial="Latest/Post" arguments="{post:posts.1}" />
+                    </t3bc:column>
+                </f:if>
+
+                <f:if condition="{posts.2}">
+                    <t3bc:column display="flex" lg="4">
+                        <f:render partial="Latest/Post" arguments="{post:posts.2}" />
+                    </t3bc:column>
+                </f:if>
+
+                <f:if condition="{posts.3}">
+                    <t3bc:column display="flex" lg="4">
+                        <f:render partial="Latest/Post" arguments="{post:posts.3}" />
+                    </t3bc:column>
+                </f:if>
+
+            </div>
+
+        </div>
+
+
+    </f:case>
+    <f:case value="20">
+        <div class="blog__credentials" data-blog-postcount="{posts -> f:count()}">
+
+            <f:for as="post" each="{posts}">
+
+                <div class="blog__credentials__post d-flex" id="blogpost-credentials-{post.uid}">
+                    <blogvh:link.post post="{post}" class="blog__credentials__effect" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
+                        <div class="image">
+                            <t3bc:backgroundImage selector="#blogpost-credentials-{post.uid} .image" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_2',xl:'blog_preview_2',xxl:'blog_preview_2'}" image="{post.featuredImage}" />
+                        </div>
+                        <div class="blog__credentials__effect__overlay-title">
+                            <span>{post.title}</span>
+                        </div>
+                    </blogvh:link.post>
+                </div>
+
+            </f:for>
+
+        </div>
+
+
+    </f:case>
+    <f:defaultCase>
+
+        <div class="blog__teaser" data-blog-postcount="{posts -> f:count()}">
+            <div class="row">
+
+                <f:if condition="{posts.0}">
+                    <t3bc:column lg="6" class="p0">
+                        <f:render partial="Teaser/Post" arguments="{post:posts.0,type:'left'}" />
+                    </t3bc:column>
+                </f:if>
+
+                <f:if condition="{posts.1}">
+                    <t3bc:column lg="3">
+                        <f:render partial="Teaser/Post" arguments="{post:posts.1,type:'right1'}" />
+                    </t3bc:column>
+                </f:if>
+
+                <f:if condition="{posts.2} && {posts.3}">
+                    <t3bc:column lg="3">
+
+                        <f:render partial="Teaser/Post" arguments="{post:posts.2,type:'right2'}" />
+                        <f:render partial="Teaser/Post" arguments="{post:posts.3,type:'right2'}" />
+
+                    </t3bc:column>
+                </f:if>
+
+            </div>
+
+        </div>
+
+    </f:defaultCase>
+
+</f:switch>
+
+
+</html>

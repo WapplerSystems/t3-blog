@@ -1,0 +1,2 @@
+
+@import 'EXT:t3bootstrap_blog/Configuration/TsConfig/Page/BackendLayouts/*.tsconfig'

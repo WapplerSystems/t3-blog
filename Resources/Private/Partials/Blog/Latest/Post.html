@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:ws="http://typo3.org/ns/WapplerSystems/WsT3bootstrap/ViewHelpers"
+      xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+
+    <article class="blog__latest__post mb-5" data-blog-tag="{f:if(condition: post.tags, then: post.tags.0.uid, else: 0)}">
+        <f:if condition="{type} == 'top'">
+            <f:then>
+
+                <div class="row">
+                    <t3bc:column md="8">
+                        <f:if condition="{post.featuredImage}">
+                            <blogvh:link.post post="{post}" class="" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
+                                <t3bc:picture useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_2',xl:'blog_preview_2',xxl:'blog_preview_2'}" class="img-fluid" image="{post.featuredImage}" />
+                            </blogvh:link.post>
+                        </f:if>
+                    </t3bc:column>
+                    <t3bc:column md="4">
+
+                        <div class="p-3">
+
+                            <ul class="blog__latest__post__meta list-inline-dot color-lightgray mb-3">
+                                <li>
+                                    <f:if condition="!{publishDateFormat}"><f:variable name="publishDateFormat" value="%d.%m.%Y" /></f:if>
+                                    {f:format.date(format: publishDateFormat, date: post.publishDate)}
+                                </li>
+                            </ul>
+
+
+                            <h2 class="h4 mb-3" itemprop="name"><blogvh:link.post post="{post}" /></h2>
+
+                            <f:if condition="{t3bc:page.info(field: 'intro',pageUid:post.uid)}">
+                                <f:then>
+                                    <div itemprop="description">{t3bc:page.info(field: 'intro',pageUid:post.uid) -> f:format.crop(maxCharacters: '300', respectWordBoundaries:'1') -> f:format.html()}</div>
+                                </f:then>
+                                <f:else>
+                                    <div itemprop="description">{post.description -> f:format.crop(maxCharacters: '300', respectWordBoundaries:'1') -> f:format.html()}</div>
+                                </f:else>
+                            </f:if>
+                        </div>
+
+                    </t3bc:column>
+
+                </div>
+
+            </f:then>
+            <f:else>
+
+                <f:if condition="{post.featuredImage}">
+                    <blogvh:link.post post="{post}" class="" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
+                        <t3bc:picture useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_1',xl:'blog_preview_1',xxl:'blog_preview_1'}" class="img-fluid" image="{post.featuredImage}" />
+                    </blogvh:link.post>
+                </f:if>
+
+                <div class="p-3">
+
+                    <ul class="blog__latest__post__meta list-inline-dot color-lightgray mb-3">
+                        <li>
+                            <f:if condition="!{publishDateFormat}"><f:variable name="publishDateFormat" value="%d.%m.%Y" /></f:if>
+                            {f:format.date(format: publishDateFormat, date: post.publishDate)}
+                        </li>
+                    </ul>
+
+
+                    <h2 class="h4 mb-3" itemprop="name"><blogvh:link.post post="{post}" /></h2>
+
+                    <f:if condition="{t3bc:page.info(field: 'intro',pageUid:post.uid)}">
+                        <f:then>
+                            <div itemprop="description">{t3bc:page.info(field: 'intro',pageUid:post.uid) -> f:format.crop(maxCharacters: '300', respectWordBoundaries:'1') -> f:format.html()}</div>
+                        </f:then>
+                        <f:else>
+                            <div itemprop="description">{post.description -> f:format.crop(maxCharacters: '300', respectWordBoundaries:'1') -> f:format.html()}</div>
+                        </f:else>
+                    </f:if>
+                </div>
+
+            </f:else>
+        </f:if>
+
+
+    </article>
+
+
+</html>

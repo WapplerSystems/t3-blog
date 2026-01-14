@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:section name="recent">
+
+
+    <t3bc:column display="flex" lg="{f:if(condition: '{iterator.cycle} % 4',then: '4',else: '12')}">
+
+        <article class="blog__list__post mb-5" data-blog-tag="{f:if(condition: post.tags, then: post.tags.0.uid, else: 0)}" data-blog-category="{f:if(condition: post.categories, then: post.categories.0.uid, else: 0)}">
+            <div class="row">
+                <t3bc:column lg="{f:if(condition: '{iterator.cycle} % 4',else: '8',then: '12')}">
+                    <f:if condition="{post.featuredImage}">
+                        <blogvh:link.post post="{post}" class="" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
+                            <t3bc:picture useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_{f:if(condition: \'{iterator.cycle} % 4\',then:\'1\',else: \'2\')}',xl:'blog_preview_{f:if(condition: \'{iterator.cycle} % 4\',then:\'1\',else: \'2\')}',xxl:'blog_preview_{f:if(condition: \'{iterator.cycle} % 4\',then:\'1\',else: \'2\')}'}" class="img-fluid" image="{post.featuredImage}" />
+                        </blogvh:link.post>
+                    </f:if>
+                </t3bc:column>
+
+                <div class="col-12 {f:if(condition: '{iterator.cycle} % 4',else: 'col-lg-4')}">
+                    <div class="p-3">
+
+                        <ul class="blog__list__post__meta list-inline-dot color-lightgray mb-3">
+                            <li>
+                                <f:if condition="!{publishDateFormat}"><f:variable name="publishDateFormat" value="%d.%m.%Y" /></f:if>
+                                {f:format.date(format: publishDateFormat, date: post.publishDate)}
+                            </li>
+                        </ul>
+
+
+                        <h2 class="h4 mb-3" itemprop="name"><blogvh:link.post post="{post}" /></h2>
+
+                        <f:if condition="{t3bc:page.info(field: 'intro',pageUid:post.uid)}">
+                            <f:then>
+                                <div itemprop="description">{t3bc:page.info(field: 'intro',pageUid:post.uid) -> f:format.crop(maxCharacters: '300', respectWordBoundaries:'1') -> f:format.html()}</div>
+                            </f:then>
+                            <f:else>
+                                <div itemprop="description">{post.description -> f:format.crop(maxCharacters: '300', respectWordBoundaries:'1') -> f:format.html()}</div>
+                            </f:else>
+                        </f:if>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+
+    </t3bc:column>
+
+</f:section>
+
+<f:section name="latest">
+
+    <div class="col-12">
+        <div class="blog__latest__post mb-4">
+            <div class="row">
+
+                <t3bc:column display="flex" xl="8">
+
+                    <f:if condition="{post.featuredImage}">
+                        <blogvh:link.post post="{post}" class="" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
+                            <t3bc:picture useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_{f:if(condition: \'{iterator.cycle} % 4\',then:\'1\',else: \'2\')}',xl:'blog_preview_{f:if(condition: \'{iterator.cycle} % 4\',then:\'1\',else: \'2\')}',xxl:'blog_preview_{f:if(condition: \'{iterator.cycle} % 4\',then:\'1\',else: \'2\')}'}" class="img-fluid" image="{post.featuredImage}" />
+                        </blogvh:link.post>
+                    </f:if>
+
+                </t3bc:column>
+                <div class="col-xl-4 blog__latest__post__text">
+
+                    <div class="px-3 ps-xl-0 pe-xl-4">
+
+                        <ul class="blog__latest__post__meta list-inline-dot color-lightgray mb-3">
+                            <li>
+                                <f:if condition="!{publishDateFormat}"><f:variable name="publishDateFormat" value="%d.%m.%Y" /></f:if>
+                                {f:format.date(format: publishDateFormat, date: post.publishDate)}
+                            </li>
+                        </ul>
+
+
+                        <h2 class="h4 mb-3" itemprop="name"><blogvh:link.post post="{post}" /></h2>
+
+                        <f:if condition="{t3bc:page.info(field: 'intro',pageUid:post.uid)}">
+                            <f:then>
+                                <div itemprop="description">{t3bc:page.info(field: 'intro',pageUid:post.uid) -> f:format.crop(maxCharacters: '300', respectWordBoundaries:'1') -> f:format.html()}</div>
+                            </f:then>
+                            <f:else>
+                                <div itemprop="description">{post.description -> f:format.crop(maxCharacters: '300', respectWordBoundaries:'1') -> f:format.html()}</div>
+                            </f:else>
+                        </f:if>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</f:section>
+
+
+</html>

@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+      xmlns:ws="http://typo3.org/ns/WapplerSystems/WsT3bootstrap/ViewHelpers"
+      xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      xmlns:wsscss="http://typo3.org/ns/WapplerSystems/WsScss/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Page"/>
+
+
+<f:section name="HeaderContent">
+
+    <wsscss:asset.scss identifier="blog" href="EXT:t3bootstrap_blog/Resources/Public/SCSS/blog.scss"/>
+
+
+</f:section>
+
+<f:section name="Content">
+
+    <div class="main">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12 col-xl-1 col-xxl-2 d-flex align-items-end pe-xxl-6">
+
+                    <f:link.page class="blog__link-back" pageUid="{settings.blogUid}">
+                        <f:translate key="LLL:EXT:template/Resources/Private/Language/locallang.xlf:blog.back"></f:translate>
+                    </f:link.page>
+
+                </div>
+                <t3bc:column lg="9" xl="8" xxl="8" class="col-main high-ct ">
+                    <!--TYPO3SEARCH_begin-->
+                    <f:cObject typoscriptObjectPath="lib.content" data="{colPos: '0'}" />
+                    <!--TYPO3SEARCH_end-->
+                </t3bc:column>
+                <t3bc:column lg="3" xl="3" xxl="2" class="col-menu ps-xxl-6" role="complementary">
+
+                    <f:cObject typoscriptObjectPath="lib.blog.element.sidebar"></f:cObject>
+
+                    <!--TYPO3SEARCH_begin-->
+                    <f:cObject typoscriptObjectPath="lib.content" data="{colPos: '1'}" />
+                    <!--TYPO3SEARCH_end-->
+                </t3bc:column>
+            </div>
+
+
+        </div>
+    </div>
+
+</f:section>
+
+</html>

@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:ws="http://typo3.org/ns/WapplerSystems/WsT3bootstrap/ViewHelpers"
+      xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<article class="blog__teaser__post" id="blogpost-teaser-{post.uid}" data-blog-tag="{f:if(condition: post.tags, then: post.tags.0.uid, else: 0)}" data-blog-category="{f:if(condition: post.categories, then: post.categories.0.uid, else: 0)}">
+
+    <blogvh:link.post post="{post}" class="" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
+
+        <f:if condition="{post.featuredImage}">
+            <f:switch expression="{type}">
+                <f:case value="left">
+                    <t3bc:backgroundImage selector="#blogpost-teaser-{post.uid}" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_2',xl:'blog_preview_2',xxl:'blog_preview_2'}" image="{post.featuredImage}" />
+                </f:case>
+                <f:case value="right1">
+                    <t3bc:backgroundImage selector="#blogpost-teaser-{post.uid}" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_3',xl:'blog_preview_3',xxl:'blog_preview_3'}" image="{post.featuredImage}" />
+                </f:case>
+                <f:case value="right2">
+                    <t3bc:backgroundImage selector="#blogpost-teaser-{post.uid}" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_1',xl:'blog_preview_1',xxl:'blog_preview_1'}" image="{post.featuredImage}" />
+                </f:case>
+            </f:switch>
+        </f:if>
+
+        <div class="blog__teaser__post__text">
+
+            <ul class="blog__teaser__post__meta list-inline-dot mb-3">
+                <li>
+                    <f:if condition="{post.authors -> f:count()} > 1">
+                        <f:then>
+                            {f:translate(key: 'LLL:EXT:template/Resources/Private/Language/locallang.xlf:authors')}:
+                        </f:then>
+                        <f:else>
+                            {f:translate(key: 'LLL:EXT:template/Resources/Private/Language/locallang.xlf:author')}:
+                        </f:else>
+                    </f:if>
+                    <f:for each="{post.authors}" as="author" iteration="iterator">
+                        {author.name}{f:if(condition:iterator.isLast,else:', ')}
+                    </f:for>
+                </li>
+            </ul>
+
+            <h2 class="" itemprop="name"><blogvh:link.post post="{post}" /></h2>
+
+        </div>
+
+    </blogvh:link.post>
+
+
+
+</article>
+</html>

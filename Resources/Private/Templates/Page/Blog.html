@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+      xmlns:ws="http://typo3.org/ns/WapplerSystems/WsT3bootstrap/ViewHelpers"
+      xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      xmlns:wsscss="http://typo3.org/ns/WapplerSystems/WsScss/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Page"/>
+
+
+<f:section name="HeaderContent">
+
+    <wsscss:asset.scss identifier="blog" href="EXT:t3bootstrap_blog/Resources/Public/SCSS/blog.scss"/>
+
+    <f:render partial="Hero" section="Hero" arguments="{_all}"/>
+
+
+</f:section>
+
+<f:section name="Content">
+
+    <div class="main pt-7">
+
+        <div class="container">
+
+            <div class="row">
+                <t3bc:column lg="9" xl="8" xxl="10" class="col-main high-ct ">
+                    <!--TYPO3SEARCH_begin-->
+                    <f:cObject typoscriptObjectPath="lib.content" data="{colPos: '0'}" />
+                    <!--TYPO3SEARCH_end-->
+                </t3bc:column>
+                <t3bc:column lg="3" xl="3" xxl="2" class="col-menu ps-xxl-6" role="complementary">
+
+                    <f:render section="renderPlugin" arguments="{listType: 'blog_sidebar'}" />
+
+                    <!--TYPO3SEARCH_begin-->
+                    <f:cObject typoscriptObjectPath="lib.content" data="{colPos: '1'}" />
+                    <!--TYPO3SEARCH_end-->
+                </t3bc:column>
+            </div>
+
+
+        </div>
+    </div>
+
+</f:section>
+
+<f:section name="renderPlugin">
+
+    {blogvh:data.contentListOptions(listType: listType)}
+    <f:cObject typoscriptObjectPath="tt_content" data="{contentObjectData}" table="tt_content"/>
+
+</f:section>
+
+</html>

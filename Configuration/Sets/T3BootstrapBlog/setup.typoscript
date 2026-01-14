@@ -2,11 +2,15 @@
 plugin {
   tx_blog {
     view {
-      templateRootPaths.10 = EXT:t3bootstrap_blog/Resources/Private/Templates/
-      partialRootPaths.10 = EXT:t3bootstrap_blog/Resources/Private/Partials/
-      layoutRootPaths.10 = EXT:t3bootstrap_blog/Resources/Private/Layouts/
+      templateRootPaths.10 = EXT:t3bootstrap_blog/Resources/Private/Templates/Blog/
+      partialRootPaths.10 = EXT:t3bootstrap_blog/Resources/Private/Partials/Blog/
+      layoutRootPaths.10 = EXT:t3bootstrap_blog/Resources/Private/Layouts/Blog/
 
     }
 
   }
+}
+
+page.5.templateRootPaths {
+  2 = EXT:t3bootstrap_blog/Resources/Private/Templates/Page/
 }
