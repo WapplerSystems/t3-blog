@@ -3,6 +3,11 @@
 	"type": "typo3-cms-extension",
 	"description": "t3bootstrap modifications for the blog extension",
 	"homepage": "https://t3bootstrap.de",
+	"autoload": {
+		"psr-4": {
+			"T3Bootstrap\\Blog\\": "Classes"
+		}
+	},
 	"authors": [
 		{
 			"name": "Sven Wappler",
@@ -15,6 +20,7 @@
 	],
 	"require": {
 		"typo3/cms-core": "^13",
+		"typo3/cms-form": "^13",
 		"t3g/blog": "^14.0",
 		"t3bootstrap/core": "^13"
 	},

@@ -1,1 +1,21 @@
 
+plugin.tx_t3bootstrapblog {
+  view {
+    # cat=plugin.tx_t3bootstrapblog/file; type=string; label=Path to template root (FE)
+    templateRootPath = EXT:t3bootstrap_blog/Resources/Private/Templates/
+    # cat=plugin.tx_t3bootstrapblog/file; type=string; label=Path to template partials (FE)
+    partialRootPath = EXT:t3bootstrap_blog/Resources/Private/Partials/
+    # cat=plugin.tx_t3bootstrapblog/file; type=string; label=Path to template layouts (FE)
+    layoutRootPath = EXT:t3bootstrap_blog/Resources/Private/Layouts/
+  }
+
+  persistence {
+    # cat=plugin.tx_t3bootstrapblog//a; type=string; label=Default storage PID
+    storagePid =
+  }
+
+  settings {
+
+
+  }
+}

@@ -14,3 +14,138 @@ plugin {
 page.5.templateRootPaths {
   2 = EXT:t3bootstrap_blog/Resources/Private/Templates/Page/
 }
+
+
+plugin.tx_t3bootstrapblog {
+  view {
+    templateRootPaths.0 = EXT:t3bootstrap_blog/Resources/Private/Templates/
+    templateRootPaths.10 = {$plugin.tx_t3bootstrapblog.view.templateRootPath}
+    partialRootPaths.0 = EXT:t3bootstrap_blog/Resources/Private/Partials/
+    partialRootPaths.10 = {$plugin.tx_t3bootstrapblog.view.partialRootPath}
+    layoutRootPaths.0 = EXT:t3bootstrap_blog/Resources/Private/Layouts/
+    layoutRootPaths.10 = {$plugin.tx_t3bootstrapblog.view.layoutRootPath}
+  }
+  persistence {
+    storagePid = {$plugin.tx_t3bootstrapblog.persistence.storagePid}
+  }
+  features {
+    # uncomment the following line to enable the new Property Mapper.
+    # rewrittenPropertyMapper = 1
+  }
+  settings {
+
+  }
+}
+
+blog_ajax = PAGE
+blog_ajax {
+  typeNum = 74385
+
+  10 = USER
+  10 {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = Blog
+    pluginName = Posts
+    action = listRecentPosts
+    format = ajax.html
+    settings =< plugin.tx_blog.settings
+    persistence.storagePid = 1961
+    persistence.recursive = 250
+  }
+
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-type:application/json
+    xhtml_cleaning = 0
+    admPanel = 0
+    debug = 0
+    no_cache = 1
+  }
+}
+
+blog_ajax_category = PAGE
+blog_ajax_category {
+  typeNum = 74386
+
+  10 = USER
+  10 {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = Blog
+    pluginName = Category
+    action = listPostsByCategory
+    format = ajax.html
+    settings =< plugin.tx_blog.settings
+    persistence.storagePid = 1961
+    persistence.recursive = 250
+  }
+
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-type:application/json
+    xhtml_cleaning = 0
+    admPanel = 0
+    debug = 0
+    no_cache = 1
+  }
+}
+
+blog_ajax_tag = PAGE
+blog_ajax_tag {
+  typeNum = 74387
+
+  10 = USER
+  10 {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = Blog
+    pluginName = Tag
+    action = listPostsByTag
+    format = ajax.html
+    settings =< plugin.tx_blog.settings
+    persistence.storagePid = 1961
+    persistence.recursive = 250
+  }
+
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-type:application/json
+    xhtml_cleaning = 0
+    admPanel = 0
+    debug = 0
+    no_cache = 1
+  }
+}
+
+lib.blog.element.sidebar = USER
+lib.blog.element.sidebar {
+  userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+  extensionName = Blog
+  pluginName = Sidebar
+}
+
+plugin.tx_blog {
+
+  settings {
+    sidebarWidgets >
+    sidebarWidgets {
+      20 = tt_content.blog_categorywidget.20
+      30 = tt_content.blog_tagwidget.20
+    }
+
+
+    language = TEXT
+    language.data = sitelanguage:twoLetterIsoCode
+  }
+}
+
+lib.blog.element.commentForm = USER
+lib.blog.element.commentForm {
+  userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+  extensionName = Blog
+  pluginName = CommentForm
+}
+lib.blog.element.comments = USER
+lib.blog.element.comments {
+  userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+  extensionName = Blog
+  pluginName = Comments
+}
