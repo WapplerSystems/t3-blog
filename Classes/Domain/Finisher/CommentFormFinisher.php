@@ -12,45 +12,49 @@ use T3G\AgencyPack\Blog\Service\CacheService;
 use T3G\AgencyPack\Blog\Service\CommentService;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher;
 
 /**
- * This finisher redirects to another Controller.
  *
  * Scope: frontend
  */
 class CommentFormFinisher extends AbstractFinisher
 {
+
+    public function __construct(private PostRepository $postRepository,
+                                private CommentRepository  $commentRepository,
+                                private CacheService      $cacheService,
+                                private CommentService    $commentService
+    )
+    {
+
+    }
+
+
     protected static $messages = [
         CommentService::STATE_ERROR => [
             'title' => 'message.addComment.error.title',
             'text' => 'message.addComment.error.text',
-            'severity' => FlashMessage::ERROR,
+            'severity' =>  ContextualFeedbackSeverity::ERROR,
         ],
         CommentService::STATE_MODERATION => [
             'title' => 'message.addComment.moderation.title',
             'text' => 'message.addComment.moderation.text',
-            'severity' => FlashMessage::INFO,
+            'severity' => ContextualFeedbackSeverity::INFO,
         ],
         CommentService::STATE_SUCCESS => [
             'title' => 'message.addComment.success.title',
             'text' => 'message.addComment.success.text',
-            'severity' => FlashMessage::OK,
+            'severity' => ContextualFeedbackSeverity::OK,
         ],
     ];
 
     protected function executeInternal()
     {
-        $configurationManager = $this->objectManager->get(ConfigurationManagerInterface::class);
-        $settings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'blog');
-        $postRepository = $this->objectManager->get(PostRepository::class);
-        $commentRepository = $this->objectManager->get(CommentRepository::class);
-        $cacheService = $this->objectManager->get(CacheService::class);
-        $commentService = $this->objectManager->get(CommentService::class);
-        $commentService->injectSettings($settings['comments']);
 
         $frontendUserRepository = GeneralUtility::makeInstance(FrontendUserRepository::class);
         $context = GeneralUtility::makeInstance(Context::class);
@@ -64,8 +68,12 @@ class CommentFormFinisher extends AbstractFinisher
         $comment->setAuthor($frontendUser);
         $comment->setComment($values['comment'] ?? '');
         //$commentRepository->add($comment);
-        $post = $postRepository->findCurrentPost();
-        $state = $commentService->addComment($post, $comment);
+        $post = $this->postRepository->findCurrentPost();
+        if ($post === null) {
+            throw new \RuntimeException('No post found for adding comment', 1676543210);
+        }
+
+        $state = $this->commentService->addComment($post, $comment);
 
 
         // Add FlashMessage
@@ -76,6 +84,7 @@ class CommentFormFinisher extends AbstractFinisher
             self::$messages[$state]['severity'],
             true
         );
+
         $this->finisherContext->getControllerContext()->getFlashMessageQueue()->addMessage($flashMessage);
 
         if ($state !== CommentService::STATE_ERROR) {
@@ -85,7 +94,7 @@ class CommentFormFinisher extends AbstractFinisher
                     'comment' => $comment,
                     'post' => $post,
                 ]));
-            $cacheService->flushCacheByTag('tx_blog_post_' . $post->getUid());
+            $this->cacheService->flushCacheByTag('tx_blog_post_' . $post->getUid());
         }
     }
 }

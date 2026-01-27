@@ -24,6 +24,7 @@ use TYPO3\CMS\Form\Domain\Finishers\RedirectFinisher;
 use TYPO3\CMS\Form\Domain\Model\FormDefinition;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
+#[Autoconfigure(public: true, shared: false)]
 class CommentFormFactory extends AbstractFormFactory
 {
     /**
@@ -58,7 +59,10 @@ class CommentFormFactory extends AbstractFormFactory
         $commentField = $page->createElement('comment', 'Textarea');
         $commentField->setLabel(LocalizationUtility::translate('form.comment.comment', 'blog'));
         $commentField->addValidator(GeneralUtility::makeInstance(NotEmptyValidator::class));
-        $commentField->addValidator(GeneralUtility::makeInstance(StringLengthValidator::class, ['minimum' => 5]));
+
+        $stringValidator = GeneralUtility::makeInstance(StringLengthValidator::class);
+        $stringValidator->setOptions(['minimum' => 5]);
+        $commentField->addValidator($stringValidator);
 
         $explanationText = $page->createElement('explanation', 'StaticText');
         $explanationText->setProperty('text', LocalizationUtility::translate('label.required.field', 'blog') . ' ' . LocalizationUtility::translate('label.required.field.explanation', 'blog'));

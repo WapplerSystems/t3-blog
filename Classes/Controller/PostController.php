@@ -13,6 +13,7 @@ use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 
+#[Autoconfigure(public: true, shared: false)]
 class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
 {
 
