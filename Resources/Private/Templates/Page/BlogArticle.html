@@ -13,8 +13,7 @@
     <wsscss:asset.scss identifier="blog" href="EXT:t3bootstrap_blog/Resources/Public/SCSS/blog.scss"/>
 
     {blogvh:data.contentListOptions(listType: 'blog_header')}
-    <f:cObject typoscriptObjectPath="tt_content.list" data="{contentObjectData}" table="tt_content"/>
-
+    <f:cObject typoscriptObjectPath="tt_content" data="{contentObjectData}" table="tt_content"/>
 
 </f:section>
 
@@ -52,7 +51,7 @@
 
                     <div class="mb-5">
                         {blogvh:data.contentListOptions(listType: 'blog_authors')}
-                        <f:cObject typoscriptObjectPath="tt_content.list" data="{contentObjectData}" table="tt_content"/>
+                        <f:cObject typoscriptObjectPath="tt_content" data="{contentObjectData}" table="tt_content"/>
                     </div>
 
                     <hr />
