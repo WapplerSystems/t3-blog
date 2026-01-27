@@ -10,16 +10,14 @@
 
 <f:section name="HeaderContent">
 
-    <wsscss:asset.scss identifier="blog" href="EXT:t3bootstrap_blog/Resources/Public/SCSS/blog.scss"/>
-
-    {blogvh:data.contentListOptions(listType: 'blog_header')}
-    <f:cObject typoscriptObjectPath="tt_content" data="{contentObjectData}" table="tt_content"/>
-
 </f:section>
 
 <f:section name="Content">
 
     <div class="main">
+
+        {blogvh:data.contentListOptions(listType: 'blog_header')}
+        <f:cObject typoscriptObjectPath="tt_content" data="{contentObjectData}" table="tt_content"/>
 
         <f:if condition="{hero.featuredImage.0}">
             <div class="container">
