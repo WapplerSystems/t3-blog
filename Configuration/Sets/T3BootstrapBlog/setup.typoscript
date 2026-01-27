@@ -15,6 +15,13 @@ page.5.templateRootPaths {
   2 = EXT:t3bootstrap_blog/Resources/Private/Templates/Page/
 }
 
+page.5.dataProcessing {
+  4000 = files
+  4000 {
+    references.fieldName = featured_image
+    as = featuredImage
+  }
+}
 
 plugin.tx_t3bootstrapblog {
   view {

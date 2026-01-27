@@ -19,9 +19,9 @@
         {blogvh:data.contentListOptions(listType: 'blog_header')}
         <f:cObject typoscriptObjectPath="tt_content" data="{contentObjectData}" table="tt_content"/>
 
-        <f:if condition="{hero.featuredImage.0}">
+        <f:if condition="{featuredImage.0}">
             <div class="container">
-                <t3bc:picture cropVariants="{xs:'blog_detail',sm:'blog_detail',md:'blog_detail',lg:'blog_detail',xl:'blog_detail',xxl:'blog_detail'}" useBootstrapCropVariants="false" class="img-fluid mb-5" image="{hero.featuredImage.0}"/>
+                <t3bc:picture cropVariants="{xs:'blog_detail',sm:'blog_detail',md:'blog_detail',lg:'blog_detail',xl:'blog_detail',xxl:'blog_detail'}" useBootstrapCropVariants="false" class="img-fluid mb-5" image="{featuredImage.0}"/>
             </div>
         </f:if>
 

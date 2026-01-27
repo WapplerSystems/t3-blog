@@ -5,6 +5,31 @@
 		<body>
 
 
+			<trans-unit id="authors">
+				<source>Authors</source>
+				<target>Autoren</target>
+			</trans-unit>
+			<trans-unit id="author">
+				<source>Author</source>
+				<target>Autor</target>
+			</trans-unit>
+			<trans-unit id="fe_users.blog_comments">
+				<source>Blog comments</source>
+				<target>Blog Kommentare</target>
+			</trans-unit>
+			<trans-unit id="published">
+				<source>Published</source>
+				<target>Veröffentlicht</target>
+			</trans-unit>
+			<trans-unit id="blog.back">
+				<source>Back to overview</source>
+				<target>Zurück zur Übersicht</target>
+			</trans-unit>
+			<trans-unit id="blog.articles_of_author">
+				<source>Articles of this author</source>
+				<target>Artikel dieses Autors</target>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>
