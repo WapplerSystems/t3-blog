@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace T3Bootstrap\Blog\Controller;
 
@@ -8,6 +8,7 @@ use T3Bootstrap\Blog\Pagination\QueryResultPaginator;
 use Psr\Http\Message\ResponseInterface;
 use T3G\AgencyPack\Blog\Domain\Model\Category;
 use T3G\AgencyPack\Blog\Domain\Model\Tag;
+use T3G\AgencyPack\Blog\Pagination\BlogPagination;
 use T3G\AgencyPack\Blog\Service\MetaTagService;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -16,7 +17,6 @@ use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 #[Autoconfigure(public: true, shared: false)]
 class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
 {
-
 
 
     /**
@@ -28,7 +28,7 @@ class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
      */
     public function listRecentPostsAction(int $currentPage = 1): ResponseInterface
     {
-        $maximumItems = (int) ($this->settings['lists']['posts']['maximumDisplayedItems'] ?? 0);
+        $maximumItems = (int)($this->settings['lists']['posts']['maximumDisplayedItems'] ?? 0);
 
         $posts = (0 === $maximumItems)
             ? $this->postRepository->findAll()
@@ -39,16 +39,14 @@ class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
         $maximumNumberOfLinks = (int)($paginationConfiguration['maximumNumberOfLinks'] ?? 0);
 
         $paginator = GeneralUtility::makeInstance(QueryResultPaginator::class, $posts, $currentPage, $itemsPerPage, (int)($this->settings['limit'] ?? null), (int)($this->settings['offset'] ?? 0));
-        $paginationClass = $paginationConfiguration['class'] ?? SimplePagination::class;
+        $paginationClass = $paginationConfiguration['class'] ?? BlogPagination::class;
         $pagination = $this->getPagination2($paginationClass, $maximumNumberOfLinks, $paginator);
-
-
 
         $previousPageAjaxUri = '';
         if ($pagination->getPreviousPageNumber() && ($pagination->getPreviousPageNumber() >= $pagination->getFirstPageNumber())) {
             $previousPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
                 ->setTargetPageType(74385)
-                ->uriFor('listRecentPosts',[
+                ->uriFor('listRecentPosts', [
                     'currentPage' => $currentPage - 1,
                 ],
                     'Post', 'blog', 'Posts');
@@ -58,7 +56,7 @@ class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
         if ($pagination->getNextPageNumber() && ($pagination->getNextPageNumber() <= $pagination->getLastPageNumber())) {
             $nextPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
                 ->setTargetPageType(74385)
-                ->uriFor('listRecentPosts',[
+                ->uriFor('listRecentPosts', [
                     'currentPage' => $currentPage + 1,
                 ],
                     'Post', 'blog', 'Posts');
@@ -68,11 +66,9 @@ class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
             'settings' => $this->settings,
             'nextPage' => $currentPage + 1,
             'previousPage' => $currentPage - 1,
-            'pagination' => [
-                'currentPage' => $currentPage,
-                'paginator' => $paginator,
-                'pagination' => $pagination,
-            ],
+            'currentPage' => $currentPage,
+            'paginator' => $paginator,
+            'pagination' => $pagination,
             'previousPageAjaxUri' => $previousPageAjaxUri,
             'nextPageAjaxUri' => $nextPageAjaxUri,
             'type' => 'recent',
@@ -142,7 +138,7 @@ class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
                     ->setArguments([
                         'tx_blog_category[category]' => $category->getUid(),
                     ])
-                    ->uriFor('listPostsByCategory',[
+                    ->uriFor('listPostsByCategory', [
                         'currentPage' => $currentPage - 1,
                     ],
                         'Post', 'blog', 'Category');
@@ -155,7 +151,7 @@ class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
                     ->setArguments([
                         'tx_blog_category[category]' => $category->getUid(),
                     ])
-                    ->uriFor('listPostsByCategory',[
+                    ->uriFor('listPostsByCategory', [
                         'currentPage' => $currentPage + 1,
                     ],
                         'Post', 'blog', 'Category');
@@ -176,8 +172,8 @@ class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
                 'category' => $category,
             ]);
 
-            MetaTagService::set(MetaTagService::META_TITLE, (string) $category->getTitle());
-            MetaTagService::set(MetaTagService::META_DESCRIPTION, (string) $category->getDescription());
+            MetaTagService::set(MetaTagService::META_TITLE, (string)$category->getTitle());
+            MetaTagService::set(MetaTagService::META_DESCRIPTION, (string)$category->getDescription());
         } else {
             $this->view->assign('categories', $this->categoryRepository->findAll());
         }
@@ -212,7 +208,7 @@ class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
                     ->setArguments([
                         'tx_blog_tag[tag]' => $tag->getUid(),
                     ])
-                    ->uriFor('listPostsByTag',[
+                    ->uriFor('listPostsByTag', [
                         'currentPage' => $currentPage - 1,
                     ],
                         'Post', 'blog', 'Tag');
@@ -225,7 +221,7 @@ class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
                     ->setArguments([
                         'tx_blog_tag[tag]' => $tag->getUid(),
                     ])
-                    ->uriFor('listPostsByTag',[
+                    ->uriFor('listPostsByTag', [
                         'currentPage' => $currentPage + 1,
                     ],
                         'Post', 'blog', 'Tag');
