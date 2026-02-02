@@ -33,7 +33,7 @@
                 </div>
 
                 <h1>{post.title}</h1>
-                <div class="blog__intro">{t3bc:page.info(pageUid:post.uid,field: 'intro') -> f:format.html()}</div>
+                <div class="blog__intro">{t3bc:page.info(page:post, field: 'intro') -> f:format.html()}</div>
 
             </div>
 
