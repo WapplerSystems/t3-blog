@@ -9,12 +9,12 @@ $EM_CONF[$_EXTKEY] = [
     'author_company' => 'WapplerSystems',
     'state' => 'stable',
     'clearCacheOnLoad' => 1,
-    'version' => '13.2.2',
+    'version' => '14.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '13.0.0-13.4.99',
-            't3b_core' => '13.0.0-13.99.99',
-            'blog' => '13.0.0',
+            'typo3' => '14.0.0-14.99.99',
+            't3b_core' => '',
+            'blog' => '14.0.0',
         ],
     ],
 ];

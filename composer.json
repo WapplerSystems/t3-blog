@@ -19,10 +19,10 @@
 		"GPL-2.0+"
 	],
 	"require": {
-		"typo3/cms-core": "^13",
-		"typo3/cms-form": "^13",
+		"typo3/cms-core": "^14",
+		"typo3/cms-form": "^14",
 		"t3g/blog": "^14.0",
-		"t3bootstrap/core": "^13.13.5"
+		"t3bootstrap/core": "*"
 	},
 	"require-dev": {
 	},

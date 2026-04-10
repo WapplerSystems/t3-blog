@@ -22,7 +22,6 @@ use TYPO3\CMS\Form\Domain\Configuration\ConfigurationService;
 use TYPO3\CMS\Form\Domain\Factory\AbstractFormFactory;
 use TYPO3\CMS\Form\Domain\Finishers\RedirectFinisher;
 use TYPO3\CMS\Form\Domain\Model\FormDefinition;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 #[Autoconfigure(public: true, shared: false)]
 class CommentFormFactory extends AbstractFormFactory
@@ -81,20 +80,14 @@ class CommentFormFactory extends AbstractFormFactory
             if (method_exists($redirectFinisher, 'setFinisherIdentifier')) {
                 $redirectFinisher->setFinisherIdentifier(RedirectFinisher::class);
             }
-            $redirectFinisher->setOption('pageUid', (string)$this->getTypoScriptFrontendController()->id);
+            $request = $GLOBALS['TYPO3_REQUEST'] ?? null;
+            $pageId = $request?->getAttribute('frontend.page.information')?->getId() ?? 0;
+            $redirectFinisher->setOption('pageUid', (string)$pageId);
             $form->addFinisher($redirectFinisher);
         }
 
 
         $this->triggerFormBuildingFinished($form);
         return $form;
-    }
-
-    /**
-     * @return TypoScriptFrontendController
-     */
-    protected function getTypoScriptFrontendController(): ?TypoScriptFrontendController
-    {
-        return $GLOBALS['TSFE'];
     }
 }

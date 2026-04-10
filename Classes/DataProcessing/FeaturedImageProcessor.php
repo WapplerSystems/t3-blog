@@ -30,7 +30,7 @@ class FeaturedImageProcessor implements DataProcessorInterface
             return $processedData;
         }
 
-        $page = $this->getActiveRecord();
+        $page = $this->getActiveRecord($cObj);
 
         $processedData['hero']['featuredImage'] = $this->getSlideRecords($cObj, $page['uid'], 'featured_image', 0);
 
@@ -93,9 +93,13 @@ class FeaturedImageProcessor implements DataProcessorInterface
      *
      * @return array
      */
-    public function getActiveRecord()
+    public function getActiveRecord(ContentObjectRenderer $cObj)
     {
-        return $GLOBALS['TSFE']->page;
+        $pageInformation = $cObj->getRequest()->getAttribute('frontend.page.information');
+        if ($pageInformation !== null) {
+            return $pageInformation->getPageRecord();
+        }
+        return [];
     }
 
 }
