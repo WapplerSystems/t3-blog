@@ -1,0 +1,17 @@
+categories:
+  t3bootstrap-blog:
+    label: 'T3Bootstrap Blog'
+  t3bootstrap-blog.list:
+    label: 'Blog-Liste'
+    parent: t3bootstrap-blog
+
+settings:
+  t3bootstrap-blog.listDesign:
+    type: string
+    default: 'default'
+    label: 'Blog-Listen-Design'
+    description: 'Layout für die Blog-Übersichtsseite. "default" = klassisches Layout, "card" = Karten-Design.'
+    enum:
+      default: 'Standard'
+      card: 'Karten-Design'
+    category: t3bootstrap-blog.list
