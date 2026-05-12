@@ -97,4 +97,50 @@
 </f:section>
 
 
+<f:section name="recent-card">
+
+    <article class="blog__card" data-blog-tag="{f:if(condition: post.tags, then: post.tags.0.uid, else: 0)}" data-blog-category="{f:if(condition: post.categories, then: post.categories.0.uid, else: 0)}">
+        <blogvh:link.post post="{post}" class="blog__card__link" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
+            <div class="blog__card__thumb">
+                <f:if condition="{post.featuredImage}">
+                    <t3bc:picture useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_1',xl:'blog_preview_1',xxl:'blog_preview_1'}" class="blog__card__image" image="{post.featuredImage}" />
+                </f:if>
+                <f:if condition="{post.categories}">
+                    <span class="blog__card__badge">
+                        <f:for each="{post.categories}" as="category" iteration="catIterator">
+                            {category.title}<f:if condition="!{catIterator.isLast}">, </f:if>
+                        </f:for>
+                    </span>
+                </f:if>
+            </div>
+        </blogvh:link.post>
+        <div class="blog__card__body">
+            <div class="blog__card__meta">
+                <f:if condition="!{publishDateFormat}"><f:variable name="publishDateFormat" value="%d.%m.%Y" /></f:if>
+                <span>{f:format.date(format: publishDateFormat, date: post.publishDate)}</span>
+                <f:if condition="{post.categories}">
+                    <span>&bull;</span>
+                    <f:for each="{post.categories}" as="category" iteration="catIterator">
+                        <span>{category.title}</span>
+                    </f:for>
+                </f:if>
+            </div>
+            <h3 class="blog__card__title" itemprop="name"><blogvh:link.post post="{post}" /></h3>
+            <f:if condition="{t3bc:page.info(field: 'intro',page:post)}">
+                <f:then>
+                    <p class="blog__card__text" itemprop="description">{t3bc:page.info(field: 'intro',page:post) -> f:format.crop(maxCharacters: '160', respectWordBoundaries:'1') -> f:format.html()}</p>
+                </f:then>
+                <f:else>
+                    <p class="blog__card__text" itemprop="description">{post.description -> f:format.crop(maxCharacters: '160', respectWordBoundaries:'1') -> f:format.html()}</p>
+                </f:else>
+            </f:if>
+            <blogvh:link.post post="{post}" class="blog__card__readmore">
+                <f:translate key="list.readmore" default="Weiterlesen" />
+            </blogvh:link.post>
+        </div>
+    </article>
+
+</f:section>
+
+
 </html>

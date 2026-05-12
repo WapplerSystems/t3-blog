@@ -23,6 +23,7 @@ page.5.dataProcessing {
   }
 }
 
+
 plugin.tx_t3bootstrapblog {
   view {
     templateRootPaths.0 = EXT:t3bootstrap_blog/Resources/Private/Templates/
@@ -40,7 +41,7 @@ plugin.tx_t3bootstrapblog {
     # rewrittenPropertyMapper = 1
   }
   settings {
-
+    listDesign = {$t3bootstrap-blog.listDesign}
   }
 }
 
@@ -132,6 +133,7 @@ lib.blog.element.sidebar {
 plugin.tx_blog {
 
   settings {
+    listDesign = {$t3bootstrap-blog.listDesign}
     sidebarWidgets >
     sidebarWidgets {
       20 = tt_content.blog_categorywidget.20

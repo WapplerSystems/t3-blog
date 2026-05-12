@@ -5,7 +5,10 @@
       data-namespace-typo3-fluid="true">
 
 
-<div class="blog__list{f:if(condition: type, then: ' postlist--{type}')}" data-ajax-url="">
+<f:variable name="listDesign" value="{settings.listDesign}" />
+<f:variable name="sectionName" value="{f:if(condition: '{listDesign} == \'card\'', then: '{type}-card', else: type)}" />
+
+<div class="blog__list{f:if(condition: type, then: ' postlist--{type}')}{f:if(condition: '{listDesign} == \'card\'', then: ' blog__list--card')}" data-ajax-url="">
 
     <f:if condition="{pagination} && {pagination.paginatedItems}">
         <f:then>
@@ -13,10 +16,10 @@
             <f:if condition="{settings.lists.pagination.insertAbove}">
                 <f:render partial="Pagination/Pagination" arguments="{pagination: pagination}" />
             </f:if>
-            <div class="row">
+            <div class="{f:if(condition: '{listDesign} == \'card\'', then: 'blog__card-grid', else: 'row')}">
                 <f:for each="{pagination.paginatedItems}" iteration="iterator" as="post">
                     <blogvh:cache post="{post}" />
-                    <f:render partial="List/Post" section="{type}" arguments="{_all}" />
+                    <f:render partial="List/Post" section="{sectionName}" arguments="{_all}" optional="true" />
                 </f:for>
             </div>
             <f:if condition="{settings.lists.pagination.insertBelow}">
@@ -25,10 +28,10 @@
 
         </f:then>
         <f:else if="{posts}">
-            <div class="row">
+            <div class="{f:if(condition: '{listDesign} == \'card\'', then: 'blog__card-grid', else: 'row')}">
                 <f:for each="{posts}" iteration="iterator" as="post">
                     <blogvh:cache post="{post}" />
-                    <f:render partial="List/Post" section="{type}" arguments="{_all}" />
+                    <f:render partial="List/Post" section="{sectionName}" arguments="{_all}" optional="true" />
                 </f:for>
             </div>
         </f:else>
