@@ -28,9 +28,6 @@ ExtensionManagementUtility::addTCAcolumns('pages', $newPagesColumns);
 ExtensionManagementUtility::addToAllTCAtypes('pages', 'time_to_read,intro',
     (string)Constants::DOKTYPE_BLOG_POST, 'after:subtitle');
 
-ExtensionManagementUtility::addToAllTCAtypes('pages', 'time_to_read,intro',
-    (string)Constants::DOKTYPE_BLOG_EXTERNAL, 'after:subtitle');
-
 
 $GLOBALS['TCA']['pages']['columns']['featured_image']['config']['overrideChildTca']['columns']['crop']['config']['cropVariants']['preview'] = [
     'title' => 'Preview Image',
