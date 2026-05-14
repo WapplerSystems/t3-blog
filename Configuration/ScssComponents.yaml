@@ -1,0 +1,13 @@
+# Mapping of component keys to SCSS files for the t3bootstrap blog extension.
+# Auto-discovered by WapplerSystems\WsComponents when any of this package's
+# Site Sets is active on the current site.
+
+components:
+  blog:
+    files:
+      - 'EXT:t3bootstrap_blog/Resources/Public/SCSS/blog.scss'
+    # blog.scss already @imports bootstrap/pagination. If blog is required
+    # before a standalone "pagination" call, the standalone call is skipped
+    # so pagination CSS isn't emitted twice on the page.
+    includes:
+      - pagination

@@ -3,14 +3,14 @@
       xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
       xmlns:ws="http://typo3.org/ns/WapplerSystems/WsT3bootstrap/ViewHelpers"
       xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
-      xmlns:wsscss="http://typo3.org/ns/WapplerSystems/WsScss/ViewHelpers"
+      xmlns:scssComponents="http://typo3.org/ns/WapplerSystems/WsComponents/Scss/ViewHelpers"
       data-namespace-typo3-fluid="true">
 <f:layout name="Page"/>
 
 
 <f:section name="HeaderContent">
 
-    <wsscss:asset.scss identifier="blog" href="EXT:t3bootstrap_blog/Resources/Public/SCSS/blog.scss"/>
+    <scssComponents:require key="blog" />
 
     <f:render partial="Hero" section="Hero" arguments="{_all}"/>
 
