@@ -22,7 +22,8 @@
 		"typo3/cms-core": "^14",
 		"typo3/cms-form": "^14",
 		"t3g/blog": "^14.0",
-		"t3bootstrap/core": "*"
+		"t3bootstrap/core": "*",
+		"wapplersystems/ws-components": "^14"
 	},
 	"require-dev": {
 	},
