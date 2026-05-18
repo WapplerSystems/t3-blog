@@ -6,8 +6,15 @@ namespace T3Bootstrap\Blog\Domain\Model;
 
 class Comment extends \T3G\AgencyPack\Blog\Domain\Model\Comment
 {
+    protected ?FrontendUser $author = null;
 
+    public function getAuthor(): ?FrontendUser
+    {
+        return $this->author;
+    }
 
-    protected ?FrontendUser $feUser = null;
-
+    public function setAuthor(?FrontendUser $author): void
+    {
+        $this->author = $author;
+    }
 }

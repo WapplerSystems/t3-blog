@@ -3,7 +3,8 @@ declare(strict_types = 1);
 
 namespace T3Bootstrap\Blog\Domain\Finisher;
 
-use T3G\AgencyPack\Blog\Domain\Model\Comment;
+use T3Bootstrap\Blog\Domain\Model\Comment;
+use T3Bootstrap\Blog\Domain\Repository\FrontendUserRepository;
 use T3G\AgencyPack\Blog\Domain\Repository\CommentRepository;
 use T3G\AgencyPack\Blog\Domain\Repository\PostRepository;
 use T3G\AgencyPack\Blog\Notification\CommentAddedNotification;
@@ -12,6 +13,7 @@ use T3G\AgencyPack\Blog\Service\CacheService;
 use T3G\AgencyPack\Blog\Service\CommentService;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Messaging\FlashMessageService;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -28,7 +30,9 @@ class CommentFormFinisher extends AbstractFinisher
     public function __construct(private PostRepository $postRepository,
                                 private CommentRepository  $commentRepository,
                                 private CacheService      $cacheService,
-                                private CommentService    $commentService
+                                private CommentService    $commentService,
+                                private FrontendUserRepository $frontendUserRepository,
+                                private FlashMessageService $flashMessageService
     )
     {
 
@@ -55,17 +59,23 @@ class CommentFormFinisher extends AbstractFinisher
 
     protected function executeInternal()
     {
+        $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
+        $blogSettings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'blog');
+        $this->commentService->setSettings($blogSettings['comments'] ?? []);
 
-        $frontendUserRepository = GeneralUtility::makeInstance(FrontendUserRepository::class);
         $context = GeneralUtility::makeInstance(Context::class);
-        $feId = $context->getPropertyFromAspect('frontend.user', 'id');
-        $frontendUser = $frontendUserRepository->findByUid($feId);
+        $feId = (int)$context->getPropertyFromAspect('frontend.user', 'id');
+        $frontendUser = $feId > 0 ? $this->frontendUserRepository->findByUid($feId) : null;
 
 
         // Create Comment
         $values = $this->finisherContext->getFormValues();
         $comment = new Comment();
-        $comment->setAuthor($frontendUser);
+        if ($frontendUser instanceof \T3Bootstrap\Blog\Domain\Model\FrontendUser) {
+            $comment->setAuthor($frontendUser);
+            $comment->setName(trim($frontendUser->getFirstName() . ' ' . $frontendUser->getLastName()) ?: $frontendUser->getName() ?: $frontendUser->getUsername());
+            $comment->setEmail($frontendUser->getEmail());
+        }
         $comment->setComment($values['comment'] ?? '');
         //$commentRepository->add($comment);
         $post = $this->postRepository->findCurrentPost();
@@ -85,15 +95,22 @@ class CommentFormFinisher extends AbstractFinisher
             true
         );
 
-        $this->finisherContext->getControllerContext()->getFlashMessageQueue()->addMessage($flashMessage);
+        $request = $this->finisherContext->getRequest();
+        $pluginNamespace = 'tx_' . strtolower($request->getControllerExtensionName() ?: 'blog') . '_' . strtolower($request->getPluginName() ?: 'commentform');
+        $this->flashMessageService
+            ->getMessageQueueByIdentifier('extbase.flashmessages.' . $pluginNamespace)
+            ->addMessage($flashMessage);
 
         if ($state !== CommentService::STATE_ERROR) {
             $comment->setCrdate(new \DateTime());
             GeneralUtility::makeInstance(NotificationManager::class)
-                ->notify(GeneralUtility::makeInstance(CommentAddedNotification::class, '', '', [
-                    'comment' => $comment,
-                    'post' => $post,
-                ]));
+                ->notify(
+                    $request,
+                    GeneralUtility::makeInstance(CommentAddedNotification::class, '', '', [
+                        'comment' => $comment,
+                        'post' => $post,
+                    ])
+                );
             $this->cacheService->flushCacheByTag('tx_blog_post_' . $post->getUid());
         }
     }
