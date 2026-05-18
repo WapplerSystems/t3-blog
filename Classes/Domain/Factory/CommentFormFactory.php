@@ -11,6 +11,7 @@ declare(strict_types = 1);
 namespace T3Bootstrap\Blog\Domain\Factory;
 
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use T3Bootstrap\Blog\Domain\Finisher\CommentFormFinisher;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
