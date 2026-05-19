@@ -108,14 +108,17 @@ class PostController extends \T3G\AgencyPack\Blog\Controller\PostController
     public function listPostsByCategoryAction(?Category $category = null, int $currentPage = 1): ResponseInterface
     {
         if ($category === null) {
-            $categories = $this->categoryRepository->getByReference(
-                'tt_content',
-                $this->configurationManager->getContentObject()->data['uid']
-            );
+            $contentObject = $this->request->getAttribute('currentContentObject');
+            if ($contentObject !== null) {
+                $categories = $this->categoryRepository->getByReference(
+                    'tt_content',
+                    (int)($contentObject->data['uid'] ?? 0)
+                );
 
-            if (!empty($categories)) {
-                /** @noinspection CallableParameterUseCaseInTypeContextInspection */
-                $category = $categories->getFirst();
+                if (!empty($categories)) {
+                    /** @noinspection CallableParameterUseCaseInTypeContextInspection */
+                    $category = $categories->getFirst();
+                }
             }
         }
 
