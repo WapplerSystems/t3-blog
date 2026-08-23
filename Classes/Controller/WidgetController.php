@@ -11,6 +11,8 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Controller;
 
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use WapplerSystems\Blog\Domain\Model\Category;
 use WapplerSystems\Blog\Domain\Repository\CategoryRepository;
 use WapplerSystems\Blog\Domain\Repository\CommentRepository;
@@ -18,8 +20,6 @@ use WapplerSystems\Blog\Domain\Repository\PostRepository;
 use WapplerSystems\Blog\Domain\Repository\TagRepository;
 use WapplerSystems\Blog\Service\CacheService;
 use WapplerSystems\Blog\Utility\ArchiveUtility;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 class WidgetController extends ActionController
 {

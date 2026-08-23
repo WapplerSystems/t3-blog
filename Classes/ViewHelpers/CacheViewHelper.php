@@ -11,10 +11,10 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\ViewHelpers;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WapplerSystems\Blog\Domain\Model\Post;
-use WapplerSystems\Blog\Service\CacheService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use WapplerSystems\Blog\Domain\Model\Post;
+use WapplerSystems\Blog\Service\CacheService;
 
 class CacheViewHelper extends AbstractViewHelper
 {

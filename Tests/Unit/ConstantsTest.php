@@ -11,8 +11,8 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Tests\Unit;
 
 use PHPUnit\Framework\Attributes\Test;
-use WapplerSystems\Blog\Constants;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use WapplerSystems\Blog\Constants;
 
 class ConstantsTest extends UnitTestCase
 {

@@ -10,8 +10,8 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\ViewHelpers\Link\Socials;
 
-use WapplerSystems\Blog\Utility\Socials\MastodonUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
+use WapplerSystems\Blog\Utility\Socials\MastodonUtility;
 
 class MastodonViewHelper extends AbstractTagBasedViewHelper
 {

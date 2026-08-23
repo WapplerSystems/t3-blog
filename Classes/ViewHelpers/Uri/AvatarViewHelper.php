@@ -10,8 +10,8 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\ViewHelpers\Uri;
 
-use WapplerSystems\Blog\Domain\Model\Author;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
+use WapplerSystems\Blog\Domain\Model\Author;
 
 class AvatarViewHelper extends AbstractTagBasedViewHelper
 {

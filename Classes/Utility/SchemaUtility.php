@@ -10,10 +10,10 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Utility;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use WapplerSystems\Blog\Domain\Model\Author;
 use WapplerSystems\Blog\Utility\Socials\MastodonUtility;
 use WapplerSystems\Blog\Utility\Socials\TwitterXUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class SchemaUtility
 {

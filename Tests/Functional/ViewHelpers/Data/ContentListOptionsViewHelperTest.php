@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace WapplerSystems\Blog\Tests\Functional\ViewHelpers\Data;
 
 use PHPUnit\Framework\Attributes\Test;
-use WapplerSystems\Blog\Constants;
-use WapplerSystems\Blog\Tests\Functional\SiteBasedTestCase;
 use TYPO3\CMS\Core\Domain\RecordFactory;
 use TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability;
 use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use WapplerSystems\Blog\Constants;
+use WapplerSystems\Blog\Tests\Functional\SiteBasedTestCase;
 
 final class ContentListOptionsViewHelperTest extends SiteBasedTestCase
 {

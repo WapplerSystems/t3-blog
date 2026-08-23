@@ -12,12 +12,12 @@ declare(strict_types=1);
 namespace WapplerSystems\Blog\Tests\Functional\Hooks;
 
 use PHPUnit\Framework\Attributes\Test;
-use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use WapplerSystems\Blog\Constants;
 
 final class DataHandlerHookTest extends FunctionalTestCase
 {

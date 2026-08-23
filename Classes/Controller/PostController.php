@@ -10,9 +10,19 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Controller;
 
+use GeorgRinger\NumberedPagination\NumberedPagination;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use GeorgRinger\NumberedPagination\NumberedPagination;
+use TYPO3\CMS\Core\Http\NormalizedParams;
+use TYPO3\CMS\Core\Pagination\PaginationInterface;
+use TYPO3\CMS\Core\Pagination\PaginatorInterface;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3Fluid\Fluid\View\ViewInterface;
 use WapplerSystems\Blog\Domain\Model\Author;
 use WapplerSystems\Blog\Domain\Model\Category;
 use WapplerSystems\Blog\Domain\Model\Post;
@@ -23,21 +33,11 @@ use WapplerSystems\Blog\Domain\Repository\PostRepository;
 use WapplerSystems\Blog\Domain\Repository\TagRepository;
 use WapplerSystems\Blog\Factory\PostRepositoryDemandFactory;
 use WapplerSystems\Blog\Pagination\BlogPagination;
-use WapplerSystems\Blog\Service\CacheService;
 use WapplerSystems\Blog\Pagination\QueryResultPaginator;
-use TYPO3\CMS\Core\Pagination\PaginationInterface;
-use TYPO3\CMS\Core\Pagination\PaginatorInterface;
-use TYPO3\CMS\Core\Pagination\SimplePagination;
+use WapplerSystems\Blog\Service\CacheService;
 use WapplerSystems\Blog\Service\MetaTagService;
 use WapplerSystems\Blog\Utility\ArchiveUtility;
 use WapplerSystems\Blog\Utility\Socials\MastodonUtility;
-use TYPO3\CMS\Core\Http\NormalizedParams;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use TYPO3Fluid\Fluid\View\ViewInterface;
 
 class PostController extends ActionController
 {

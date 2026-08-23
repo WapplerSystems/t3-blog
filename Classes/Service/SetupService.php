@@ -10,7 +10,6 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Service;
 
-use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Configuration\SiteWriter;
 use TYPO3\CMS\Core\Database\Connection;
@@ -22,6 +21,7 @@ use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\RootlineUtility;
+use WapplerSystems\Blog\Constants;
 
 class SetupService
 {

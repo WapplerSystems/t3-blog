@@ -1,8 +1,13 @@
 <?php
 
-use TYPO3\CMS\Core\Domain\Repository\PageRepository;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+/*
+ * This file is part of the package wapplersystems/blog.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 $GLOBALS['TCA']['pages']['columns']['featured_image']['config']['overrideChildTca']['columns']['crop']['config']['cropVariants'] = [
 

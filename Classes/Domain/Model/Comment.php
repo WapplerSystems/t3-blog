@@ -33,7 +33,6 @@ class Comment extends AbstractEntity
      */
     protected ?FrontendUser $author = null;
 
-
     /**
      * The email of the comment author.
      *

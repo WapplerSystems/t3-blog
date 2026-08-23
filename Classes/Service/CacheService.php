@@ -11,10 +11,10 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Service;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WapplerSystems\Blog\Domain\Model\Post;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\CacheTag;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use WapplerSystems\Blog\Domain\Model\Post;
 
 /**
  * Class CacheService

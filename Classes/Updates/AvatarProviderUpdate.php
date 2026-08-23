@@ -10,9 +10,9 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Updates;
 
-use WapplerSystems\Blog\AvatarProvider\GravatarProvider;
 use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
+use WapplerSystems\Blog\AvatarProvider\GravatarProvider;
 
 #[UpgradeWizard(AvatarProviderUpdate::class)]
 final class AvatarProviderUpdate extends AbstractUpdate implements UpgradeWizardInterface

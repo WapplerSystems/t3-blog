@@ -11,16 +11,16 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Controller;
 
 use Psr\Http\Message\ResponseInterface;
-use WapplerSystems\Blog\Domain\Model\Comment;
-use WapplerSystems\Blog\Domain\Repository\CommentRepository;
-use WapplerSystems\Blog\Domain\Repository\PostRepository;
-use WapplerSystems\Blog\Service\CacheService;
-use WapplerSystems\Blog\Service\SetupService;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Http\RedirectResponse;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use WapplerSystems\Blog\Domain\Model\Comment;
+use WapplerSystems\Blog\Domain\Repository\CommentRepository;
+use WapplerSystems\Blog\Domain\Repository\PostRepository;
+use WapplerSystems\Blog\Service\CacheService;
+use WapplerSystems\Blog\Service\SetupService;
 
 class BackendController extends ActionController
 {

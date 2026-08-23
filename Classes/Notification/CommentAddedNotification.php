@@ -11,11 +11,11 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Notification;
 
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use WapplerSystems\Blog\Domain\Model\Comment;
 use WapplerSystems\Blog\Domain\Model\Post;
 use WapplerSystems\Blog\Mail\MailContent;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class CommentAddedNotification extends AbstractNotification
 {

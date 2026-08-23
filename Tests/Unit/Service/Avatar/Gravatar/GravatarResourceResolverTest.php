@@ -12,11 +12,11 @@ namespace WapplerSystems\Blog\Tests\Unit\Service\Avatar\Gravatar;
 
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
-use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarResourceResolver;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\Stream;
 use TYPO3\CMS\Core\Http\Uri;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarResourceResolver;
 
 class GravatarResourceResolverTest extends UnitTestCase
 {

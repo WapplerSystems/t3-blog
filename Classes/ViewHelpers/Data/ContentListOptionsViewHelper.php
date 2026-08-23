@@ -11,7 +11,6 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\ViewHelpers\Data;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Core\Schema\Capability\FieldCapability;
 use TYPO3\CMS\Core\Schema\Capability\LanguageAwareSchemaCapability;
 use TYPO3\CMS\Core\Schema\Capability\SystemInternalFieldCapability;
@@ -20,6 +19,7 @@ use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use WapplerSystems\Blog\Constants;
 
 class ContentListOptionsViewHelper extends AbstractViewHelper
 {

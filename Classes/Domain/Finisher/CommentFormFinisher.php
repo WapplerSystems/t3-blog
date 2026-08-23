@@ -10,12 +10,6 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Domain\Finisher;
 
-use WapplerSystems\Blog\Domain\Model\Comment;
-use WapplerSystems\Blog\Domain\Repository\PostRepository;
-use WapplerSystems\Blog\Notification\CommentAddedNotification;
-use WapplerSystems\Blog\Notification\NotificationManager;
-use WapplerSystems\Blog\Service\CacheService;
-use WapplerSystems\Blog\Service\CommentService;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
@@ -24,6 +18,12 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Service\ExtensionService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher;
+use WapplerSystems\Blog\Domain\Model\Comment;
+use WapplerSystems\Blog\Domain\Repository\PostRepository;
+use WapplerSystems\Blog\Notification\CommentAddedNotification;
+use WapplerSystems\Blog\Notification\NotificationManager;
+use WapplerSystems\Blog\Service\CacheService;
+use WapplerSystems\Blog\Service\CommentService;
 
 /**
  * This finisher redirects to another Controller.

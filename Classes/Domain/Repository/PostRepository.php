@@ -11,12 +11,6 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Domain\Repository;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WapplerSystems\Blog\Constants;
-use WapplerSystems\Blog\DataTransferObject\PostRepositoryDemand;
-use WapplerSystems\Blog\Domain\Model\Author;
-use WapplerSystems\Blog\Domain\Model\Category;
-use WapplerSystems\Blog\Domain\Model\Post;
-use WapplerSystems\Blog\Domain\Model\Tag;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\Site\Entity\Site;
@@ -29,6 +23,12 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
+use WapplerSystems\Blog\Constants;
+use WapplerSystems\Blog\DataTransferObject\PostRepositoryDemand;
+use WapplerSystems\Blog\Domain\Model\Author;
+use WapplerSystems\Blog\Domain\Model\Category;
+use WapplerSystems\Blog\Domain\Model\Post;
+use WapplerSystems\Blog\Domain\Model\Tag;
 
 /**
  * @extends Repository<Post>

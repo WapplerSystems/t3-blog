@@ -10,14 +10,14 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Tests\Functional\AvatarProvider;
 
-use WapplerSystems\Blog\AvatarProvider\GravatarProvider;
-use WapplerSystems\Blog\Domain\Model\Author;
 use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
 use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\TypoScript\AST\Node\RootNode;
 use TYPO3\CMS\Core\TypoScript\FrontendTypoScript;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use WapplerSystems\Blog\AvatarProvider\GravatarProvider;
+use WapplerSystems\Blog\Domain\Model\Author;
 
 class GravatarProviderTest extends FunctionalTestCase
 {

@@ -12,13 +12,13 @@ namespace WapplerSystems\Blog\Tests\Unit\Service;
 
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use WapplerSystems\Blog\Domain\Model\Comment;
 use WapplerSystems\Blog\Domain\Model\Post;
 use WapplerSystems\Blog\Domain\Repository\CommentRepository;
 use WapplerSystems\Blog\Domain\Repository\PostRepository;
 use WapplerSystems\Blog\Service\CommentService;
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class CommentServiceTest extends UnitTestCase
 {

@@ -7,6 +7,8 @@
  * LICENSE file that was distributed with this source code.
  */
 
+use TYPO3\CMS\Backend\Form\FormDataProvider\DatabaseRowInitializeNew;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use WapplerSystems\Blog\Backend\FormDataProvider\CategoryDefaultValueProvider;
 use WapplerSystems\Blog\Controller\CommentController;
 use WapplerSystems\Blog\Controller\PostController;
@@ -17,8 +19,6 @@ use WapplerSystems\Blog\Notification\CommentAddedNotification;
 use WapplerSystems\Blog\Notification\Processor\AdminNotificationProcessor;
 use WapplerSystems\Blog\Notification\Processor\AuthorNotificationProcessor;
 use WapplerSystems\Blog\Routing\Aspect\StaticDatabaseMapper;
-use TYPO3\CMS\Backend\Form\FormDataProvider\DatabaseRowInitializeNew;
-use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 if (!defined('TYPO3')) {
     die('Access denied.');

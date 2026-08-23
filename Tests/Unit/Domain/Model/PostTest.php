@@ -10,9 +10,9 @@
 namespace WapplerSystems\Blog\Tests\Unit\Domain\Model;
 
 use PHPUnit\Framework\Attributes\Test;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use WapplerSystems\Blog\Constants;
 use WapplerSystems\Blog\Domain\Model\Post;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Tests for domains model News

@@ -13,9 +13,9 @@ namespace WapplerSystems\Blog\Tests\Functional\ViewHelpers\Link;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use WapplerSystems\Blog\Constants;
 use WapplerSystems\Blog\Tests\Functional\SiteBasedTestCase;
-use TYPO3\CMS\Core\Database\ConnectionPool;
 
 final class ArchiveViewHelperTest extends SiteBasedTestCase
 {

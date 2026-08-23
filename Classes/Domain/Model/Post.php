@@ -10,8 +10,6 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Domain\Model;
 
-use WapplerSystems\Blog\Constants;
-use WapplerSystems\Blog\Domain\Repository\CommentRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
@@ -21,6 +19,8 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Typolink\LinkFactory;
+use WapplerSystems\Blog\Constants;
+use WapplerSystems\Blog\Domain\Repository\CommentRepository;
 
 class Post extends AbstractEntity
 {

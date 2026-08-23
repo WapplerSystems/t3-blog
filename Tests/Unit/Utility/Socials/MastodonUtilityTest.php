@@ -10,8 +10,8 @@
 namespace WapplerSystems\Blog\Tests\Unit\Utility\Socials;
 
 use PHPUnit\Framework\Attributes\DataProvider;
-use WapplerSystems\Blog\Utility\Socials\MastodonUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use WapplerSystems\Blog\Utility\Socials\MastodonUtility;
 
 class MastodonUtilityTest extends UnitTestCase
 {

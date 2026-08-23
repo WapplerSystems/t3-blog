@@ -11,8 +11,6 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Domain\Factory;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WapplerSystems\Blog\Domain\Finisher\CommentFormFinisher;
-use WapplerSystems\Blog\Domain\Validator\GoogleCaptchaValidator;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -27,6 +25,8 @@ use TYPO3\CMS\Form\Domain\Factory\AbstractFormFactory;
 use TYPO3\CMS\Form\Domain\Finishers\RedirectFinisher;
 use TYPO3\CMS\Form\Domain\Model\FormDefinition;
 use TYPO3\CMS\Form\Domain\Model\FormElements\GenericFormElement;
+use WapplerSystems\Blog\Domain\Finisher\CommentFormFinisher;
+use WapplerSystems\Blog\Domain\Validator\GoogleCaptchaValidator;
 
 class CommentFormFactory extends AbstractFormFactory
 {

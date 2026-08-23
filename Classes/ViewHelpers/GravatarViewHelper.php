@@ -10,10 +10,10 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\ViewHelpers;
 
-use WapplerSystems\Blog\AvatarProvider\GravatarProvider;
-use WapplerSystems\Blog\Domain\Model\Author;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
+use WapplerSystems\Blog\AvatarProvider\GravatarProvider;
+use WapplerSystems\Blog\Domain\Model\Author;
 
 class GravatarViewHelper extends AbstractTagBasedViewHelper
 {

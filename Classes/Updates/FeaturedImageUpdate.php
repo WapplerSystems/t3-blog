@@ -9,10 +9,10 @@
 
 namespace WapplerSystems\Blog\Updates;
 
-use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 use TYPO3\CMS\Install\Updates\RepeatableInterface;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
+use WapplerSystems\Blog\Constants;
 
 #[UpgradeWizard(FeaturedImageUpdate::class)]
 final class FeaturedImageUpdate extends AbstractUpdate implements UpgradeWizardInterface, RepeatableInterface

@@ -10,14 +10,14 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Service;
 
-use WapplerSystems\Blog\Domain\Model\Comment;
-use WapplerSystems\Blog\Domain\Model\Post;
-use WapplerSystems\Blog\Domain\Repository\CommentRepository;
-use WapplerSystems\Blog\Domain\Repository\PostRepository;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use WapplerSystems\Blog\Domain\Model\Comment;
+use WapplerSystems\Blog\Domain\Model\Post;
+use WapplerSystems\Blog\Domain\Repository\CommentRepository;
+use WapplerSystems\Blog\Domain\Repository\PostRepository;
 
 /**
  * Class CommentService.

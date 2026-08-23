@@ -12,7 +12,6 @@ namespace WapplerSystems\Blog\Domain\Factory;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
-use WapplerSystems\Blog\Domain\Finisher\FrontendUserCommentFormFinisher;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -23,6 +22,7 @@ use TYPO3\CMS\Form\Domain\Configuration\ConfigurationService;
 use TYPO3\CMS\Form\Domain\Factory\AbstractFormFactory;
 use TYPO3\CMS\Form\Domain\Finishers\RedirectFinisher;
 use TYPO3\CMS\Form\Domain\Model\FormDefinition;
+use WapplerSystems\Blog\Domain\Finisher\FrontendUserCommentFormFinisher;
 
 #[Autoconfigure(public: true, shared: false)]
 class FrontendUserCommentFormFactory extends AbstractFormFactory
@@ -86,7 +86,6 @@ class FrontendUserCommentFormFactory extends AbstractFormFactory
             $redirectFinisher->setOption('pageUid', (string)$pageId);
             $form->addFinisher($redirectFinisher);
         }
-
 
         $this->triggerFormBuildingFinished($form);
         return $form;

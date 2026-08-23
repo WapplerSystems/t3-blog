@@ -10,9 +10,9 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Service;
 
-use WapplerSystems\Blog\TitleTagProvider\BlogTitleTagProvider;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use WapplerSystems\Blog\TitleTagProvider\BlogTitleTagProvider;
 
 /**
  * Class MetaTagService.

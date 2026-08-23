@@ -11,11 +11,11 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Controller;
 
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use WapplerSystems\Blog\Domain\Model\Post;
 use WapplerSystems\Blog\Domain\Repository\PostRepository;
 use WapplerSystems\Blog\Service\CacheService;
 use WapplerSystems\Blog\Service\CommentService;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class CommentController extends ActionController
 {

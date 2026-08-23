@@ -261,7 +261,6 @@ $newPagesColumns = [
     'after:subtitle'
 );
 
-
 $GLOBALS['TCA']['pages']['columns']['featured_image']['config']['overrideChildTca']['columns']['crop']['config']['cropVariants']['preview'] = [
     'title' => 'Preview Image',
     'allowedAspectRatios' => [

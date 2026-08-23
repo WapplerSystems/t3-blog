@@ -12,13 +12,13 @@ declare(strict_types=1);
 namespace WapplerSystems\Blog\Tests\Functional\Service;
 
 use PHPUnit\Framework\Attributes\Test;
-use WapplerSystems\Blog\Constants;
-use WapplerSystems\Blog\Service\SetupService;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use WapplerSystems\Blog\Constants;
+use WapplerSystems\Blog\Service\SetupService;
 
 final class SetupServiceTest extends FunctionalTestCase
 {

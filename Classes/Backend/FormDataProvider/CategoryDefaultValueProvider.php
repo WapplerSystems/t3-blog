@@ -10,8 +10,8 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Backend\FormDataProvider;
 
-use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Backend\Form\FormDataProviderInterface;
+use WapplerSystems\Blog\Constants;
 
 class CategoryDefaultValueProvider implements FormDataProviderInterface
 {

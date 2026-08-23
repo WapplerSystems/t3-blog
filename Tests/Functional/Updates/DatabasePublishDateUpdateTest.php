@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace WapplerSystems\Blog\Tests\Functional\Updates;
 
 use PHPUnit\Framework\Attributes\Test;
-use WapplerSystems\Blog\Updates\DatabasePublishDateUpdate;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use WapplerSystems\Blog\Updates\DatabasePublishDateUpdate;
 
 /**
  * @extensionScannerIgnoreFile

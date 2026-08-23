@@ -13,13 +13,13 @@ namespace WapplerSystems\Blog\Tests\Unit\Domain\Validator;
 use PHPUnit\Framework\Attributes\Test;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use WapplerSystems\Blog\Domain\Validator\GoogleCaptchaValidator;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Error\Result;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use WapplerSystems\Blog\Domain\Validator\GoogleCaptchaValidator;
 
 class GoogleCaptchaValidatorTest extends UnitTestCase
 {

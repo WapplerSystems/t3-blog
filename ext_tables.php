@@ -7,9 +7,9 @@
  * LICENSE file that was distributed with this source code.
  */
 
-use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Core\DataHandling\PageDoktypeRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use WapplerSystems\Blog\Constants;
 
 if (!defined('TYPO3')) {
     die('Access denied.');

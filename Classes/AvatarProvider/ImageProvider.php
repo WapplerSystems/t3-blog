@@ -10,11 +10,11 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\AvatarProvider;
 
-use WapplerSystems\Blog\Domain\Model\Author;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Service\ImageService;
+use WapplerSystems\Blog\Domain\Model\Author;
 
 class ImageProvider implements AvatarProviderInterface
 {

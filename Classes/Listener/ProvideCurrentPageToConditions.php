@@ -10,9 +10,9 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Listener;
 
-use WapplerSystems\Blog\ExpressionLanguage\CurrentPageProvider;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Frontend\Event\AfterPageAndLanguageIsResolvedEvent;
+use WapplerSystems\Blog\ExpressionLanguage\CurrentPageProvider;
 
 #[AsEventListener(identifier: 't3g/blog/provide-current-page-to-conditions')]
 readonly class ProvideCurrentPageToConditions

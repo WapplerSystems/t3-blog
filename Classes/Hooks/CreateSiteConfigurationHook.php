@@ -10,8 +10,8 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Hooks;
 
-use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Core\Hooks\CreateSiteConfiguration as CoreCreateSiteConfiguration;
+use WapplerSystems\Blog\Constants;
 
 class CreateSiteConfigurationHook extends CoreCreateSiteConfiguration
 {

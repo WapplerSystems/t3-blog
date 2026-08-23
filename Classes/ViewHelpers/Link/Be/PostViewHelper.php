@@ -11,11 +11,11 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\ViewHelpers\Link\Be;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WapplerSystems\Blog\Domain\Model\Post;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
+use WapplerSystems\Blog\Domain\Model\Post;
 
 class PostViewHelper extends AbstractTagBasedViewHelper
 {

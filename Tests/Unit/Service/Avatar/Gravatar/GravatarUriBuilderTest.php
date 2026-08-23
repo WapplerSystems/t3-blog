@@ -12,9 +12,9 @@ namespace WapplerSystems\Blog\Tests\Unit\Service\Avatar\Gravatar;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarUriBuilder;
 use TYPO3\CMS\Core\Http\UriFactory;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarUriBuilder;
 
 class GravatarUriBuilderTest extends UnitTestCase
 {

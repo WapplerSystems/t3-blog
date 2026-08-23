@@ -13,13 +13,13 @@ namespace WapplerSystems\Blog\Notification\Processor;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use Symfony\Component\Mime\Part\TextPart;
+use TYPO3\CMS\Core\Mail\MailerInterface;
+use TYPO3\CMS\Core\Mail\MailMessage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use WapplerSystems\Blog\Domain\Model\Author;
 use WapplerSystems\Blog\Domain\Model\Post;
 use WapplerSystems\Blog\Notification\CommentAddedNotification;
 use WapplerSystems\Blog\Notification\NotificationInterface;
-use TYPO3\CMS\Core\Mail\MailerInterface;
-use TYPO3\CMS\Core\Mail\MailMessage;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 #[Autoconfigure(public: true)]
 readonly class AuthorNotificationProcessor implements ProcessorInterface

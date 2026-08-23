@@ -13,7 +13,6 @@ namespace WapplerSystems\Blog\Tests\Functional\ViewHelpers\Link\Be;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use WapplerSystems\Blog\Domain\Model\Comment;
 use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
 use TYPO3\CMS\Core\Http\NormalizedParams;
 use TYPO3\CMS\Core\Http\ServerRequest;
@@ -22,6 +21,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextFactory;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3Fluid\Fluid\View\TemplateView;
+use WapplerSystems\Blog\Domain\Model\Comment;
 
 final class CommentViewHelperTest extends FunctionalTestCase
 {

@@ -11,14 +11,14 @@ declare(strict_types=1);
 
 namespace WapplerSystems\Blog\Tests\Functional\Helpers;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 use WapplerSystems\Blog\Domain\Repository\AuthorRepository;
 use WapplerSystems\Blog\Domain\Repository\CategoryRepository;
 use WapplerSystems\Blog\Domain\Repository\CommentRepository;
 use WapplerSystems\Blog\Domain\Repository\PostRepository;
 use WapplerSystems\Blog\Domain\Repository\TagRepository;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
 class TestDataProcessor implements DataProcessorInterface
 {

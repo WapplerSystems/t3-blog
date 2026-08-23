@@ -10,11 +10,11 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Hooks;
 
-use WapplerSystems\Blog\Service\CacheService;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
+use WapplerSystems\Blog\Service\CacheService;
 
 /**
  * Class DataHandlerHook

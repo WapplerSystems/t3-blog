@@ -11,11 +11,11 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\ViewHelpers\Link;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WapplerSystems\Blog\Domain\Model\Author;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
+use WapplerSystems\Blog\Domain\Model\Author;
 
 class AuthorViewHelper extends AbstractTagBasedViewHelper
 {

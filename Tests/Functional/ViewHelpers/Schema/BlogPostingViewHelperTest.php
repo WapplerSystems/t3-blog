@@ -13,10 +13,10 @@ namespace WapplerSystems\Blog\Tests\Functional\ViewHelpers\Schema;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use WapplerSystems\Blog\Constants;
-use WapplerSystems\Blog\Tests\Functional\SiteBasedTestCase;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use WapplerSystems\Blog\Constants;
+use WapplerSystems\Blog\Tests\Functional\SiteBasedTestCase;
 
 final class BlogPostingViewHelperTest extends SiteBasedTestCase
 {

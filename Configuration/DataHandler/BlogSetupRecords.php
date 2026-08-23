@@ -7,8 +7,8 @@
  * LICENSE file that was distributed with this source code.
  */
 
-use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
+use WapplerSystems\Blog\Constants;
 
 $data = [];
 

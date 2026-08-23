@@ -11,12 +11,12 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\ViewHelpers\Schema;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WapplerSystems\Blog\Domain\Model\Post;
-use WapplerSystems\Blog\Utility\SchemaUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use WapplerSystems\Blog\Domain\Model\Post;
+use WapplerSystems\Blog\Utility\SchemaUtility;
 
 class BlogPostingViewHelper extends AbstractViewHelper
 {

@@ -10,9 +10,9 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Updates;
 
-use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
+use WapplerSystems\Blog\Constants;
 
 #[UpgradeWizard(DatabaseMonthYearUpdate::class)]
 final class DatabaseMonthYearUpdate extends AbstractUpdate implements UpgradeWizardInterface

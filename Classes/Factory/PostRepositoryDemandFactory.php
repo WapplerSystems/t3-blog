@@ -10,11 +10,11 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Factory;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use WapplerSystems\Blog\Constants;
 use WapplerSystems\Blog\DataTransferObject\PostRepositoryDemand;
 use WapplerSystems\Blog\Domain\Repository\CategoryRepository;
 use WapplerSystems\Blog\Domain\Repository\TagRepository;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class PostRepositoryDemandFactory
 {

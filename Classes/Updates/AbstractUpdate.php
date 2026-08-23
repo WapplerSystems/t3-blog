@@ -11,17 +11,17 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Updates;
 
 use Doctrine\DBAL\Schema\Name\OptionallyQualifiedName;
+use TYPO3\CMS\Core\Database\Connection;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\QueryBuilder;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use WapplerSystems\Blog\Updates\Criteria\CriteriaInterface;
 use WapplerSystems\Blog\Updates\Criteria\EqualIntCriteria;
 use WapplerSystems\Blog\Updates\Criteria\EqualStringCriteria;
 use WapplerSystems\Blog\Updates\Criteria\InCriteria;
 use WapplerSystems\Blog\Updates\Criteria\IsNullCriteria;
 use WapplerSystems\Blog\Updates\Criteria\NotEqualIntCriteria;
-use TYPO3\CMS\Core\Database\Connection;
-use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Query\QueryBuilder;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 
 abstract class AbstractUpdate
 {

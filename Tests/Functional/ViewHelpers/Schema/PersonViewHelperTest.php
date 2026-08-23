@@ -13,8 +13,8 @@ namespace WapplerSystems\Blog\Tests\Functional\ViewHelpers\Schema;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use WapplerSystems\Blog\Tests\Functional\SiteBasedTestCase;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use WapplerSystems\Blog\Tests\Functional\SiteBasedTestCase;
 
 final class PersonViewHelperTest extends SiteBasedTestCase
 {

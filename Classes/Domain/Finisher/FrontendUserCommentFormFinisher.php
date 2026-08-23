@@ -1,16 +1,15 @@
 <?php
 declare(strict_types = 1);
 
+/*
+ * This file is part of the package wapplersystems/blog.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
 namespace WapplerSystems\Blog\Domain\Finisher;
 
-use WapplerSystems\Blog\Domain\Model\Comment;
-use WapplerSystems\Blog\Domain\Repository\FrontendUserRepository;
-use WapplerSystems\Blog\Domain\Repository\CommentRepository;
-use WapplerSystems\Blog\Domain\Repository\PostRepository;
-use WapplerSystems\Blog\Notification\CommentAddedNotification;
-use WapplerSystems\Blog\Notification\NotificationManager;
-use WapplerSystems\Blog\Service\CacheService;
-use WapplerSystems\Blog\Service\CommentService;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
@@ -19,6 +18,14 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher;
+use WapplerSystems\Blog\Domain\Model\Comment;
+use WapplerSystems\Blog\Domain\Repository\CommentRepository;
+use WapplerSystems\Blog\Domain\Repository\FrontendUserRepository;
+use WapplerSystems\Blog\Domain\Repository\PostRepository;
+use WapplerSystems\Blog\Notification\CommentAddedNotification;
+use WapplerSystems\Blog\Notification\NotificationManager;
+use WapplerSystems\Blog\Service\CacheService;
+use WapplerSystems\Blog\Service\CommentService;
 
 /**
  *
@@ -27,17 +34,16 @@ use TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher;
 class FrontendUserCommentFormFinisher extends AbstractFinisher
 {
 
-    public function __construct(private PostRepository $postRepository,
-                                private CommentRepository  $commentRepository,
-                                private CacheService      $cacheService,
-                                private CommentService    $commentService,
-                                private FrontendUserRepository $frontendUserRepository,
-                                private FlashMessageService $flashMessageService
-    )
-    {
+    public function __construct(
+        private PostRepository $postRepository,
+        private CommentRepository $commentRepository,
+        private CacheService $cacheService,
+        private CommentService $commentService,
+        private FrontendUserRepository $frontendUserRepository,
+        private FlashMessageService $flashMessageService
+    ) {
 
     }
-
 
     protected static $messages = [
         CommentService::STATE_ERROR => [
@@ -67,7 +73,6 @@ class FrontendUserCommentFormFinisher extends AbstractFinisher
         $feId = (int)$context->getPropertyFromAspect('frontend.user', 'id');
         $frontendUser = $feId > 0 ? $this->frontendUserRepository->findByUid($feId) : null;
 
-
         // Create Comment
         $values = $this->finisherContext->getFormValues();
         $comment = new Comment();
@@ -84,7 +89,6 @@ class FrontendUserCommentFormFinisher extends AbstractFinisher
         }
 
         $state = $this->commentService->addComment($post, $comment);
-
 
         // Add FlashMessage
         $flashMessage = GeneralUtility::makeInstance(

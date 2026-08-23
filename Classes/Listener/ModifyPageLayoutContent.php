@@ -11,8 +11,8 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Listener;
 
-use WapplerSystems\Blog\Backend\View\BlogPostHeaderContentRenderer;
 use TYPO3\CMS\Backend\Controller\Event\ModifyPageLayoutContentEvent;
+use WapplerSystems\Blog\Backend\View\BlogPostHeaderContentRenderer;
 
 class ModifyPageLayoutContent
 {

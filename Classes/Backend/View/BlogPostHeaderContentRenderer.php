@@ -12,12 +12,6 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Backend\View;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WapplerSystems\Blog\Constants;
-use WapplerSystems\Blog\Domain\Model\Author;
-use WapplerSystems\Blog\Domain\Model\Category;
-use WapplerSystems\Blog\Domain\Model\Post;
-use WapplerSystems\Blog\Domain\Model\Tag;
-use WapplerSystems\Blog\Domain\Repository\PostRepository;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -29,6 +23,12 @@ use TYPO3\CMS\Core\View\ViewFactoryData;
 use TYPO3\CMS\Core\View\ViewFactoryInterface;
 use TYPO3\CMS\Core\View\ViewInterface;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference as ExtbaseFileReference;
+use WapplerSystems\Blog\Constants;
+use WapplerSystems\Blog\Domain\Model\Author;
+use WapplerSystems\Blog\Domain\Model\Category;
+use WapplerSystems\Blog\Domain\Model\Post;
+use WapplerSystems\Blog\Domain\Model\Tag;
+use WapplerSystems\Blog\Domain\Repository\PostRepository;
 
 class BlogPostHeaderContentRenderer implements SingletonInterface
 {

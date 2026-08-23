@@ -12,8 +12,8 @@ namespace WapplerSystems\Blog\Tests\Functional\ExpressionLanguage;
 
 use Doctrine\DBAL\ParameterType;
 use PHPUnit\Framework\Attributes\DataProvider;
-use WapplerSystems\Blog\Tests\Functional\SiteBasedTestCase;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
+use WapplerSystems\Blog\Tests\Functional\SiteBasedTestCase;
 
 class BlogExpressionsTest extends SiteBasedTestCase
 {

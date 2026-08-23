@@ -11,8 +11,8 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Notification;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WapplerSystems\Blog\Notification\Processor\ProcessorInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use WapplerSystems\Blog\Notification\Processor\ProcessorInterface;
 
 class NotificationManager
 {

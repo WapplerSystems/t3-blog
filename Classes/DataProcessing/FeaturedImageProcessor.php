@@ -1,7 +1,13 @@
 <?php
 
-namespace WapplerSystems\Blog\DataProcessing;
+/*
+ * This file is part of the package wapplersystems/blog.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
 
+namespace WapplerSystems\Blog\DataProcessing;
 
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -37,7 +43,6 @@ class FeaturedImageProcessor implements DataProcessorInterface
         return $processedData;
     }
 
-
     /**
      * Get records, optionally sliding up the page rootline
      *
@@ -56,7 +61,7 @@ class FeaturedImageProcessor implements DataProcessorInterface
                 return $images;
             }
         }
-        $rootLine = GeneralUtility::makeInstance(RootlineUtility::class,$pageUid)->get();
+        $rootLine = GeneralUtility::makeInstance(RootlineUtility::class, $pageUid)->get();
         if ($limit >= 0) {
             $rootLine = array_slice($rootLine, 0, $limit + 1);
         }
@@ -69,7 +74,6 @@ class FeaturedImageProcessor implements DataProcessorInterface
         }
         return null;
     }
-
 
     /**
      * @param ContentObjectRenderer $cObj

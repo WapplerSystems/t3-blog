@@ -10,11 +10,6 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\AvatarProvider;
 
-use WapplerSystems\Blog\Domain\Model\Author;
-use WapplerSystems\Blog\Service\Avatar\AvatarResourceResolverInterface;
-use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarResourceResolver;
-use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarUriBuilder;
-use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarUriBuilderInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Http\Client\GuzzleClientFactory;
@@ -24,6 +19,11 @@ use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use WapplerSystems\Blog\Domain\Model\Author;
+use WapplerSystems\Blog\Service\Avatar\AvatarResourceResolverInterface;
+use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarResourceResolver;
+use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarUriBuilder;
+use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarUriBuilderInterface;
 
 class GravatarProvider implements AvatarProviderInterface, SingletonInterface
 {

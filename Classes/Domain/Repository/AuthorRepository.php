@@ -10,9 +10,9 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Domain\Repository;
 
-use WapplerSystems\Blog\Domain\Model\Author;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
+use WapplerSystems\Blog\Domain\Model\Author;
 
 /**
  * @extends Repository<Author>
