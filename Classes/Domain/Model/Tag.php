@@ -11,6 +11,7 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Domain\Model;
 
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Attribute\ORM\Lazy;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -22,8 +23,8 @@ class Tag extends AbstractEntity
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Content>
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected ObjectStorage $content;
 
     /**

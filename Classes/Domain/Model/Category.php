@@ -11,6 +11,7 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Domain\Model;
 
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Attribute\ORM\Lazy;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -28,20 +29,20 @@ class Category extends AbstractEntity
 
     /**
      * @var \WapplerSystems\Blog\Domain\Model\Category|LazyLoadingProxy
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected $parent;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Content>
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected $content;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Post>
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected $posts;
 
     public function __construct()

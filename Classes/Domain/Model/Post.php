@@ -12,6 +12,7 @@ namespace WapplerSystems\Blog\Domain\Model;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Attribute\ORM\Lazy;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
@@ -41,32 +42,32 @@ class Post extends AbstractEntity
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Category>
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected ObjectStorage $categories;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Comment>
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected ObjectStorage $comments;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Tag>
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected ObjectStorage $tags;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected ObjectStorage $media;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Author>
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected $authors;
 
     public function __construct()

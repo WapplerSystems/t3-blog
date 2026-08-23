@@ -12,6 +12,7 @@ namespace WapplerSystems\Blog\Domain\Model;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Attribute\ORM\Lazy;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -39,8 +40,8 @@ class Author extends AbstractEntity
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Post>
-     * @Extbase\ORM\Lazy
      */
+    #[Lazy]
     protected ObjectStorage $posts;
 
     public function __construct()
