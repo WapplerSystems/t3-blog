@@ -17,10 +17,10 @@
             "homepage": "https://typo3.com/"
         }
     ],
-    "homepage": "https://github.com/WapplerSystems/blog",
+    "homepage": "https://github.com/WapplerSystems/t3-blog",
     "support": {
-        "issues": "https://github.com/WapplerSystems/blog/issues",
-        "source": "https://github.com/WapplerSystems/blog"
+        "issues": "https://github.com/WapplerSystems/t3-blog/issues",
+        "source": "https://github.com/WapplerSystems/t3-blog"
     },
     "autoload": {
         "psr-4": {
