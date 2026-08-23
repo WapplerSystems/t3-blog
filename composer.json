@@ -85,7 +85,9 @@
     },
     "suggest": {
         "bk2k/bootstrap-package": "Theme for TYPO3",
-        "typo3/cms-fluid-styled-content": "Content rendering definition based on fluid"
+        "t3bootstrap/core": "Wird fuer das Site Set \"t3bootstrap/blog\" (Bootstrap-5-Rendering) benoetigt. Privates Paket, liegt nicht auf Packagist.",
+        "typo3/cms-fluid-styled-content": "Content rendering definition based on fluid",
+        "wapplersystems/ws-components": "Komponenten fuer das Bootstrap-Rendering des Site Sets \"t3bootstrap/blog\"."
     },
     "require": {
         "php": "^8.2",
@@ -102,14 +104,10 @@
         "typo3/cms-form": "^14.3",
         "typo3/cms-frontend": "^14.3",
         "typo3/cms-install": "^14.3",
-        "t3bootstrap/core": "*",
-        "wapplersystems/ws-components": "^14",
         "georgringer/numbered-pagination": "^2.0"
     },
     "require-dev": {
         "a9f/typo3-fractor": "^1.0",
-        "bk2k/bootstrap-package": "^15.0 || 16.*.*@dev",
-        "bk2k/extension-helper": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.75",
         "overtrue/phplint": "^9.6",
         "phpstan/phpstan": "^2.1",
