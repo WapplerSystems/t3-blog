@@ -3,21 +3,21 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Backend\View;
+namespace WapplerSystems\Blog\Backend\View;
 
 use Psr\Http\Message\ServerRequestInterface;
-use T3G\AgencyPack\Blog\Constants;
-use T3G\AgencyPack\Blog\Domain\Model\Author;
-use T3G\AgencyPack\Blog\Domain\Model\Category;
-use T3G\AgencyPack\Blog\Domain\Model\Post;
-use T3G\AgencyPack\Blog\Domain\Model\Tag;
-use T3G\AgencyPack\Blog\Domain\Repository\PostRepository;
+use WapplerSystems\Blog\Constants;
+use WapplerSystems\Blog\Domain\Model\Author;
+use WapplerSystems\Blog\Domain\Model\Category;
+use WapplerSystems\Blog\Domain\Model\Post;
+use WapplerSystems\Blog\Domain\Model\Tag;
+use WapplerSystems\Blog\Domain\Repository\PostRepository;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -54,7 +54,7 @@ class BlogPostHeaderContentRenderer implements SingletonInterface
         }
 
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-        $pageRenderer->addCssFile('EXT:blog/Resources/Public/Css/pagelayout.min.css', 'stylesheet', 'all', '', false);
+        $pageRenderer->addCssFile('EXT:ws_blog/Resources/Public/Css/pagelayout.min.css', 'stylesheet', 'all', '', false);
 
         // Skip the Extbase PostRepository for the page-layout header: the full
         // DataMapper hydration (Post + Author + Tag + Category + FileReference,
@@ -208,9 +208,9 @@ class BlogPostHeaderContentRenderer implements SingletonInterface
     protected function getTemplateObject(ServerRequestInterface $request): ViewInterface
     {
         return $this->viewFactory->create(new ViewFactoryData(
-            templateRootPaths: [GeneralUtility::getFileAbsFileName('EXT:blog/Resources/Private/Templates')],
-            partialRootPaths: [GeneralUtility::getFileAbsFileName('EXT:blog/Resources/Private/Partials')],
-            layoutRootPaths: [GeneralUtility::getFileAbsFileName('EXT:blog/Resources/Private/Layouts')],
+            templateRootPaths: [GeneralUtility::getFileAbsFileName('EXT:ws_blog/Resources/Private/Templates')],
+            partialRootPaths: [GeneralUtility::getFileAbsFileName('EXT:ws_blog/Resources/Private/Partials')],
+            layoutRootPaths: [GeneralUtility::getFileAbsFileName('EXT:ws_blog/Resources/Private/Layouts')],
             request: $request,
         ));
     }

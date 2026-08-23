@@ -2,15 +2,15 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Domain\Model;
+namespace WapplerSystems\Blog\Domain\Model;
 
-use T3G\AgencyPack\Blog\Constants;
+use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
@@ -27,19 +27,19 @@ class Category extends AbstractEntity
     protected int $recordType = Constants::CATEGORY_TYPE_BLOG;
 
     /**
-     * @var \T3G\AgencyPack\Blog\Domain\Model\Category|LazyLoadingProxy
+     * @var \WapplerSystems\Blog\Domain\Model\Category|LazyLoadingProxy
      * @Extbase\ORM\Lazy
      */
     protected $parent;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Content>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Content>
      * @Extbase\ORM\Lazy
      */
     protected $content;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Post>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Post>
      * @Extbase\ORM\Lazy
      */
     protected $posts;
@@ -104,7 +104,7 @@ class Category extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Content>
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Content>
      */
     public function getContent(): ObjectStorage
     {
@@ -112,7 +112,7 @@ class Category extends AbstractEntity
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Content> $content
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Content> $content
      */
     public function setContent(ObjectStorage $content): self
     {
@@ -121,7 +121,7 @@ class Category extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Post>
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Post>
      */
     public function getPosts(): ObjectStorage
     {
@@ -129,7 +129,7 @@ class Category extends AbstractEntity
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Post> $posts
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Post> $posts
      */
     public function setPosts(ObjectStorage $posts): self
     {

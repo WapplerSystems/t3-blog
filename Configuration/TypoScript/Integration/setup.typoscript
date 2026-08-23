@@ -1,8 +1,8 @@
 ######################
 #### DEPENDENCIES ####
 ######################
-@import "EXT:blog/Configuration/Sets/Static/setup.typoscript"
-@import "EXT:blog/Configuration/Sets/Shared/setup.typoscript"
+@import "EXT:ws_blog/Configuration/Sets/Static/setup.typoscript"
+@import "EXT:ws_blog/Configuration/Sets/Shared/setup.typoscript"
 
 ###################
 #### BLOG POST ####
@@ -13,10 +13,10 @@ page {
         templateName >
         templateName = BlogList
         layoutRootPaths {
-            -1579272243 = EXT:blog/Resources/Private/Layouts/Page/
+            -1579272243 = EXT:ws_blog/Resources/Private/Layouts/Page/
         }
         templateRootPaths {
-            -1579272243 = EXT:blog/Resources/Private/Templates/Page/
+            -1579272243 = EXT:ws_blog/Resources/Private/Templates/Page/
         }
     }
 }

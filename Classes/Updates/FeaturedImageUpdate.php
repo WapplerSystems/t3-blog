@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Updates;
+namespace WapplerSystems\Blog\Updates;
 
-use T3G\AgencyPack\Blog\Constants;
+use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 use TYPO3\CMS\Install\Updates\RepeatableInterface;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
@@ -17,7 +17,7 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 #[UpgradeWizard(FeaturedImageUpdate::class)]
 final class FeaturedImageUpdate extends AbstractUpdate implements UpgradeWizardInterface, RepeatableInterface
 {
-    protected string $title = 'EXT:blog: Featured Image Update';
+    protected string $title = 'EXT:ws_blog: Featured Image Update';
 
     public function updateNecessary(): bool
     {

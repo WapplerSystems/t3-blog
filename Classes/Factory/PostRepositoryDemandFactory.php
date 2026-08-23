@@ -2,18 +2,18 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Factory;
+namespace WapplerSystems\Blog\Factory;
 
-use T3G\AgencyPack\Blog\Constants;
-use T3G\AgencyPack\Blog\DataTransferObject\PostRepositoryDemand;
-use T3G\AgencyPack\Blog\Domain\Repository\CategoryRepository;
-use T3G\AgencyPack\Blog\Domain\Repository\TagRepository;
+use WapplerSystems\Blog\Constants;
+use WapplerSystems\Blog\DataTransferObject\PostRepositoryDemand;
+use WapplerSystems\Blog\Domain\Repository\CategoryRepository;
+use WapplerSystems\Blog\Domain\Repository\TagRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class PostRepositoryDemandFactory

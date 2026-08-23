@@ -2,13 +2,13 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Domain\Model;
+namespace WapplerSystems\Blog\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
@@ -65,7 +65,7 @@ class Comment extends AbstractEntity
     /**
      * The post related to this comment.
      *
-     * @var \T3G\AgencyPack\Blog\Domain\Model\Post
+     * @var \WapplerSystems\Blog\Domain\Model\Post
      */
     protected $post;
 

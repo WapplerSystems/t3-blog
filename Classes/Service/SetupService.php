@@ -2,15 +2,15 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Service;
+namespace WapplerSystems\Blog\Service;
 
-use T3G\AgencyPack\Blog\Constants;
+use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Configuration\SiteWriter;
 use TYPO3\CMS\Core\Database\Connection;
@@ -84,7 +84,7 @@ class SetupService
         $title = array_key_exists('title', $data) ? (string)$data['title'] : null;
         $recordUidArray = [];
 
-        $blogSetup = require GeneralUtility::getFileAbsFileName('EXT:blog/Configuration/DataHandler/BlogSetupRecords.php');
+        $blogSetup = require GeneralUtility::getFileAbsFileName('EXT:ws_blog/Configuration/DataHandler/BlogSetupRecords.php');
         if ($title !== null) {
             $blogSetup['pages']['NEW_blogRoot']['title'] = $title;
         }
@@ -103,7 +103,7 @@ class SetupService
         $basicSiteConfiguration = [
             'imports' => [
                 [
-                    'resource' => 'EXT:blog/Configuration/Routes/Default.yaml'
+                    'resource' => 'EXT:ws_blog/Configuration/Routes/Default.yaml'
                 ]
             ],
             'dependencies' => [
@@ -133,7 +133,7 @@ class SetupService
         );
 
         // Relations
-        $blogSetupRelations = require GeneralUtility::getFileAbsFileName('EXT:blog/Configuration/DataHandler/BlogSetupRelations.php');
+        $blogSetupRelations = require GeneralUtility::getFileAbsFileName('EXT:ws_blog/Configuration/DataHandler/BlogSetupRelations.php');
         $blogSetupRelations = $this->replaceNewUids($blogSetupRelations, $recordUidArray);
         $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
         $dataHandler->start($blogSetupRelations, []);

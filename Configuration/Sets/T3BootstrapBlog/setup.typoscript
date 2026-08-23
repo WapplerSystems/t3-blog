@@ -2,9 +2,9 @@
 plugin {
   tx_blog {
     view {
-      templateRootPaths.10 = EXT:t3bootstrap_blog/Resources/Private/Templates/Blog/
-      partialRootPaths.10 = EXT:t3bootstrap_blog/Resources/Private/Partials/Blog/
-      layoutRootPaths.10 = EXT:t3bootstrap_blog/Resources/Private/Layouts/Blog/
+      templateRootPaths.10 = EXT:ws_blog/Resources/Private/Templates/Blog/
+      partialRootPaths.10 = EXT:ws_blog/Resources/Private/Partials/Blog/
+      layoutRootPaths.10 = EXT:ws_blog/Resources/Private/Layouts/Blog/
 
     }
 
@@ -12,7 +12,7 @@ plugin {
 }
 
 page.5.templateRootPaths {
-  2 = EXT:t3bootstrap_blog/Resources/Private/Templates/Page/
+  2 = EXT:ws_blog/Resources/Private/Templates/Page/
 }
 
 page.5.dataProcessing {
@@ -26,11 +26,11 @@ page.5.dataProcessing {
 
 plugin.tx_t3bootstrapblog {
   view {
-    templateRootPaths.0 = EXT:t3bootstrap_blog/Resources/Private/Templates/
+    templateRootPaths.0 = EXT:ws_blog/Resources/Private/Templates/
     templateRootPaths.10 = {$plugin.tx_t3bootstrapblog.view.templateRootPath}
-    partialRootPaths.0 = EXT:t3bootstrap_blog/Resources/Private/Partials/
+    partialRootPaths.0 = EXT:ws_blog/Resources/Private/Partials/
     partialRootPaths.10 = {$plugin.tx_t3bootstrapblog.view.partialRootPath}
-    layoutRootPaths.0 = EXT:t3bootstrap_blog/Resources/Private/Layouts/
+    layoutRootPaths.0 = EXT:ws_blog/Resources/Private/Layouts/
     layoutRootPaths.10 = {$plugin.tx_t3bootstrapblog.view.layoutRootPath}
   }
   persistence {

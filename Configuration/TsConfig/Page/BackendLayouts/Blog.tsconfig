@@ -1,6 +1,6 @@
 mod.web_layout.BackendLayouts {
   Blog {
-    title = LLL:EXT:t3bootstrap_blog/Resources/Private/Language/tsconfig.xlf:be_layout.blog
+    title = LLL:EXT:ws_blog/Resources/Private/Language/tsconfig.xlf:be_layout.blog
     icon = EXT:template/Resources/Public/Icons/2columns.svg
     config {
       backend_layout {

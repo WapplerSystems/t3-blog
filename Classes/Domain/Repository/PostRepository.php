@@ -2,21 +2,21 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Domain\Repository;
+namespace WapplerSystems\Blog\Domain\Repository;
 
 use Psr\Http\Message\ServerRequestInterface;
-use T3G\AgencyPack\Blog\Constants;
-use T3G\AgencyPack\Blog\DataTransferObject\PostRepositoryDemand;
-use T3G\AgencyPack\Blog\Domain\Model\Author;
-use T3G\AgencyPack\Blog\Domain\Model\Category;
-use T3G\AgencyPack\Blog\Domain\Model\Post;
-use T3G\AgencyPack\Blog\Domain\Model\Tag;
+use WapplerSystems\Blog\Constants;
+use WapplerSystems\Blog\DataTransferObject\PostRepositoryDemand;
+use WapplerSystems\Blog\Domain\Model\Author;
+use WapplerSystems\Blog\Domain\Model\Category;
+use WapplerSystems\Blog\Domain\Model\Post;
+use WapplerSystems\Blog\Domain\Model\Tag;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\Site\Entity\Site;

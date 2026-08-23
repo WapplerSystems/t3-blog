@@ -28,10 +28,10 @@
                 <li>
                     <f:if condition="{post.authors -> f:count()} > 1">
                         <f:then>
-                            {f:translate(key: 'LLL:EXT:t3bootstrap_blog/Resources/Private/Language/locallang.xlf:authors')}:
+                            {f:translate(key: 'LLL:EXT:ws_blog/Resources/Private/Language/locallang.xlf:authors')}:
                         </f:then>
                         <f:else>
-                            {f:translate(key: 'LLL:EXT:t3bootstrap_blog/Resources/Private/Language/locallang.xlf:author')}:
+                            {f:translate(key: 'LLL:EXT:ws_blog/Resources/Private/Language/locallang.xlf:author')}:
                         </f:else>
                     </f:if>
                     <f:for each="{post.authors}" as="author" iteration="iterator">

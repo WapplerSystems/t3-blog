@@ -2,17 +2,17 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Tests\Unit\Service\Avatar\Gravatar;
+namespace WapplerSystems\Blog\Tests\Unit\Service\Avatar\Gravatar;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use T3G\AgencyPack\Blog\Service\Avatar\Gravatar\GravatarUriBuilder;
+use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarUriBuilder;
 use TYPO3\CMS\Core\Http\UriFactory;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 

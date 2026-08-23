@@ -2,15 +2,15 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\ViewHelpers\Link\Socials;
+namespace WapplerSystems\Blog\ViewHelpers\Link\Socials;
 
-use T3G\AgencyPack\Blog\Utility\Socials\MastodonUtility;
+use WapplerSystems\Blog\Utility\Socials\MastodonUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
 
 class MastodonViewHelper extends AbstractTagBasedViewHelper

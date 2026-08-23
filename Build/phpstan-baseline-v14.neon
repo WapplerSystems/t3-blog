@@ -25,7 +25,7 @@ parameters:
 
 		-
 			message: '''
-				#^Class T3G\\AgencyPack\\Blog\\Updates\\AuthorSlugUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
+				#^Class WapplerSystems\\Blog\\Updates\\AuthorSlugUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
 				since v14\.0, will be removed in TYPO3 v15\.0\. Use \\TYPO3\\CMS\\Core\\Upgrades\\UpgradeWizardInterface instead\.$#
 			'''
 			identifier: class.implementsDeprecatedInterface
@@ -40,7 +40,7 @@ parameters:
 
 		-
 			message: '''
-				#^Class T3G\\AgencyPack\\Blog\\Updates\\AvatarProviderUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
+				#^Class WapplerSystems\\Blog\\Updates\\AvatarProviderUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
 				since v14\.0, will be removed in TYPO3 v15\.0\. Use \\TYPO3\\CMS\\Core\\Upgrades\\UpgradeWizardInterface instead\.$#
 			'''
 			identifier: class.implementsDeprecatedInterface
@@ -55,7 +55,7 @@ parameters:
 
 		-
 			message: '''
-				#^Class T3G\\AgencyPack\\Blog\\Updates\\CategorySlugUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
+				#^Class WapplerSystems\\Blog\\Updates\\CategorySlugUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
 				since v14\.0, will be removed in TYPO3 v15\.0\. Use \\TYPO3\\CMS\\Core\\Upgrades\\UpgradeWizardInterface instead\.$#
 			'''
 			identifier: class.implementsDeprecatedInterface
@@ -70,7 +70,7 @@ parameters:
 
 		-
 			message: '''
-				#^Class T3G\\AgencyPack\\Blog\\Updates\\CategoryTypeUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
+				#^Class WapplerSystems\\Blog\\Updates\\CategoryTypeUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
 				since v14\.0, will be removed in TYPO3 v15\.0\. Use \\TYPO3\\CMS\\Core\\Upgrades\\UpgradeWizardInterface instead\.$#
 			'''
 			identifier: class.implementsDeprecatedInterface
@@ -85,7 +85,7 @@ parameters:
 
 		-
 			message: '''
-				#^Class T3G\\AgencyPack\\Blog\\Updates\\CommentStatusUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
+				#^Class WapplerSystems\\Blog\\Updates\\CommentStatusUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
 				since v14\.0, will be removed in TYPO3 v15\.0\. Use \\TYPO3\\CMS\\Core\\Upgrades\\UpgradeWizardInterface instead\.$#
 			'''
 			identifier: class.implementsDeprecatedInterface
@@ -100,7 +100,7 @@ parameters:
 
 		-
 			message: '''
-				#^Class T3G\\AgencyPack\\Blog\\Updates\\DatabaseMonthYearUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
+				#^Class WapplerSystems\\Blog\\Updates\\DatabaseMonthYearUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
 				since v14\.0, will be removed in TYPO3 v15\.0\. Use \\TYPO3\\CMS\\Core\\Upgrades\\UpgradeWizardInterface instead\.$#
 			'''
 			identifier: class.implementsDeprecatedInterface
@@ -115,7 +115,7 @@ parameters:
 
 		-
 			message: '''
-				#^Class T3G\\AgencyPack\\Blog\\Updates\\DatabasePublishDateUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
+				#^Class WapplerSystems\\Blog\\Updates\\DatabasePublishDateUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
 				since v14\.0, will be removed in TYPO3 v15\.0\. Use \\TYPO3\\CMS\\Core\\Upgrades\\UpgradeWizardInterface instead\.$#
 			'''
 			identifier: class.implementsDeprecatedInterface
@@ -130,7 +130,7 @@ parameters:
 
 		-
 			message: '''
-				#^Class T3G\\AgencyPack\\Blog\\Updates\\FeaturedImageUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\RepeatableInterface\:
+				#^Class WapplerSystems\\Blog\\Updates\\FeaturedImageUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\RepeatableInterface\:
 				since v14\.0, will be removed in TYPO3 v15\.0\. Use \\TYPO3\\CMS\\Core\\Upgrades\\RepeatableInterface instead\.$#
 			'''
 			identifier: class.implementsDeprecatedInterface
@@ -139,7 +139,7 @@ parameters:
 
 		-
 			message: '''
-				#^Class T3G\\AgencyPack\\Blog\\Updates\\FeaturedImageUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
+				#^Class WapplerSystems\\Blog\\Updates\\FeaturedImageUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
 				since v14\.0, will be removed in TYPO3 v15\.0\. Use \\TYPO3\\CMS\\Core\\Upgrades\\UpgradeWizardInterface instead\.$#
 			'''
 			identifier: class.implementsDeprecatedInterface
@@ -154,7 +154,7 @@ parameters:
 
 		-
 			message: '''
-				#^Class T3G\\AgencyPack\\Blog\\Updates\\ListTypeMigration extends deprecated class TYPO3\\CMS\\Install\\Updates\\AbstractListTypeToCTypeUpdate\:
+				#^Class WapplerSystems\\Blog\\Updates\\ListTypeMigration extends deprecated class TYPO3\\CMS\\Install\\Updates\\AbstractListTypeToCTypeUpdate\:
 				since v14\.0, will be removed in TYPO3 v15\.0\. Use \\TYPO3\\CMS\\Core\\Upgrades\\AbstractListTypeToCTypeUpdate instead\.$#
 			'''
 			identifier: class.extendsDeprecatedClass
@@ -169,7 +169,7 @@ parameters:
 
 		-
 			message: '''
-				#^Class T3G\\AgencyPack\\Blog\\Updates\\TagSlugUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
+				#^Class WapplerSystems\\Blog\\Updates\\TagSlugUpdate implements deprecated interface TYPO3\\CMS\\Install\\Updates\\UpgradeWizardInterface\:
 				since v14\.0, will be removed in TYPO3 v15\.0\. Use \\TYPO3\\CMS\\Core\\Upgrades\\UpgradeWizardInterface instead\.$#
 			'''
 			identifier: class.implementsDeprecatedInterface

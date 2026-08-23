@@ -1,1 +1,1 @@
-@import "EXT:blog/Configuration/Sets/Static/setup.typoscript"
+@import "EXT:ws_blog/Configuration/Sets/Static/setup.typoscript"

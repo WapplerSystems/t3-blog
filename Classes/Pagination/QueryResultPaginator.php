@@ -9,7 +9,7 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Pagination;
+namespace WapplerSystems\Blog\Pagination;
 
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 

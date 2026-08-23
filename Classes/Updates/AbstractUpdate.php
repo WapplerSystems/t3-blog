@@ -2,21 +2,21 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Updates;
+namespace WapplerSystems\Blog\Updates;
 
 use Doctrine\DBAL\Schema\Name\OptionallyQualifiedName;
-use T3G\AgencyPack\Blog\Updates\Criteria\CriteriaInterface;
-use T3G\AgencyPack\Blog\Updates\Criteria\EqualIntCriteria;
-use T3G\AgencyPack\Blog\Updates\Criteria\EqualStringCriteria;
-use T3G\AgencyPack\Blog\Updates\Criteria\InCriteria;
-use T3G\AgencyPack\Blog\Updates\Criteria\IsNullCriteria;
-use T3G\AgencyPack\Blog\Updates\Criteria\NotEqualIntCriteria;
+use WapplerSystems\Blog\Updates\Criteria\CriteriaInterface;
+use WapplerSystems\Blog\Updates\Criteria\EqualIntCriteria;
+use WapplerSystems\Blog\Updates\Criteria\EqualStringCriteria;
+use WapplerSystems\Blog\Updates\Criteria\InCriteria;
+use WapplerSystems\Blog\Updates\Criteria\IsNullCriteria;
+use WapplerSystems\Blog\Updates\Criteria\NotEqualIntCriteria;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;

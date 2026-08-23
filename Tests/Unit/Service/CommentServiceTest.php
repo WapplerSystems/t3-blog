@@ -2,21 +2,21 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Tests\Unit\Service;
+namespace WapplerSystems\Blog\Tests\Unit\Service;
 
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
-use T3G\AgencyPack\Blog\Domain\Model\Comment;
-use T3G\AgencyPack\Blog\Domain\Model\Post;
-use T3G\AgencyPack\Blog\Domain\Repository\CommentRepository;
-use T3G\AgencyPack\Blog\Domain\Repository\PostRepository;
-use T3G\AgencyPack\Blog\Service\CommentService;
+use WapplerSystems\Blog\Domain\Model\Comment;
+use WapplerSystems\Blog\Domain\Model\Post;
+use WapplerSystems\Blog\Domain\Repository\CommentRepository;
+use WapplerSystems\Blog\Domain\Repository\PostRepository;
+use WapplerSystems\Blog\Service\CommentService;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 

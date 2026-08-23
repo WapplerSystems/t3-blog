@@ -1,7 +1,7 @@
 mod.wizards.newContentElement.wizardItems {
     blog {
         after = common, menu, special, forms, plugins
-        header = LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:wizard.group.blog
+        header = LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:wizard.group.blog
         removeItems := addToList(blog_authors)
         removeItems := addToList(blog_commentform)
         removeItems := addToList(blog_comments)

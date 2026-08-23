@@ -10,17 +10,17 @@ settings:
   page.fluidtemplate.layoutRootPath:
     category: blog_standalone.templates
     type: string
-    default: 'EXT:blog/Resources/Private/Layouts/Page/'
+    default: 'EXT:ws_blog/Resources/Private/Layouts/Page/'
 
   page.fluidtemplate.partialRootPath:
     category: blog_standalone.templates
     type: string
-    default: 'EXT:blog/Resources/Private/Partials/Page/'
+    default: 'EXT:ws_blog/Resources/Private/Partials/Page/'
 
   page.fluidtemplate.templateRootPath:
     category: blog_standalone.templates
     type: string
-    default: 'EXT:blog/Resources/Private/Templates/Page/'
+    default: 'EXT:ws_blog/Resources/Private/Templates/Page/'
 
   page.theme.copyright.text:
     category: blog_standalone.copyright

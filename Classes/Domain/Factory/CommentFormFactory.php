@@ -2,17 +2,17 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Domain\Factory;
+namespace WapplerSystems\Blog\Domain\Factory;
 
 use Psr\Http\Message\ServerRequestInterface;
-use T3G\AgencyPack\Blog\Domain\Finisher\CommentFormFinisher;
-use T3G\AgencyPack\Blog\Domain\Validator\GoogleCaptchaValidator;
+use WapplerSystems\Blog\Domain\Finisher\CommentFormFinisher;
+use WapplerSystems\Blog\Domain\Validator\GoogleCaptchaValidator;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -59,7 +59,7 @@ class CommentFormFactory extends AbstractFormFactory
         $form->setRenderingOption('controllerAction', 'form');
         $form->setRenderingOption('submitButtonLabel', LocalizationUtility::translate('form.comment.submit', 'blog'));
         $renderingOptions = $form->getRenderingOptions();
-        $renderingOptions['partialRootPaths'][-1634043971] = 'EXT:blog/Resources/Private/Partials/Form/';
+        $renderingOptions['partialRootPaths'][-1634043971] = 'EXT:ws_blog/Resources/Private/Partials/Form/';
         $form->setRenderingOption('partialRootPaths', $renderingOptions['partialRootPaths']);
 
         $page = $form->createPage('commentform');

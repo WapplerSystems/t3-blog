@@ -2,22 +2,22 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Controller;
+namespace WapplerSystems\Blog\Controller;
 
 use Psr\Http\Message\ResponseInterface;
-use T3G\AgencyPack\Blog\Domain\Model\Category;
-use T3G\AgencyPack\Blog\Domain\Repository\CategoryRepository;
-use T3G\AgencyPack\Blog\Domain\Repository\CommentRepository;
-use T3G\AgencyPack\Blog\Domain\Repository\PostRepository;
-use T3G\AgencyPack\Blog\Domain\Repository\TagRepository;
-use T3G\AgencyPack\Blog\Service\CacheService;
-use T3G\AgencyPack\Blog\Utility\ArchiveUtility;
+use WapplerSystems\Blog\Domain\Model\Category;
+use WapplerSystems\Blog\Domain\Repository\CategoryRepository;
+use WapplerSystems\Blog\Domain\Repository\CommentRepository;
+use WapplerSystems\Blog\Domain\Repository\PostRepository;
+use WapplerSystems\Blog\Domain\Repository\TagRepository;
+use WapplerSystems\Blog\Service\CacheService;
+use WapplerSystems\Blog\Utility\ArchiveUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 

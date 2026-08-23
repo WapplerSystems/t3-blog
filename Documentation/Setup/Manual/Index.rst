@@ -107,7 +107,7 @@ Prerequisites:
          :linenos:
 
          imports:
-            - { resource: "EXT:blog/Configuration/Routes/Default.yaml" }
+            - { resource: "EXT:ws_blog/Configuration/Routes/Default.yaml" }
 
       .. tip::
 

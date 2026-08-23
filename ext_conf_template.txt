@@ -2,8 +2,8 @@
 ### FEATURES ###
 ################
 
-# cat=Features; type=boolean; label=LLL:EXT:blog/Resources/Private/Language/locallang.xlf:extensionconfiguration.disablePageLayoutHeader
+# cat=Features; type=boolean; label=LLL:EXT:ws_blog/Resources/Private/Language/locallang.xlf:extensionconfiguration.disablePageLayoutHeader
 disablePageLayoutHeader = 0
 
-# cat=Features; type=boolean; label=LLL:EXT:blog/Resources/Private/Language/locallang.xlf:extensionconfiguration.enableGravatarProxy
+# cat=Features; type=boolean; label=LLL:EXT:ws_blog/Resources/Private/Language/locallang.xlf:extensionconfiguration.enableGravatarProxy
 enableGravatarProxy = 0

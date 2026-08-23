@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
@@ -11,7 +11,7 @@ if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
-$ll = 'LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:';
+$ll = 'LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:';
 
 return [
     'ctrl' => [

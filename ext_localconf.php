@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-use T3G\AgencyPack\Blog\Backend\FormDataProvider\CategoryDefaultValueProvider;
-use T3G\AgencyPack\Blog\Controller\CommentController;
-use T3G\AgencyPack\Blog\Controller\PostController;
-use T3G\AgencyPack\Blog\Controller\WidgetController;
-use T3G\AgencyPack\Blog\Hooks\CreateSiteConfigurationHook;
-use T3G\AgencyPack\Blog\Hooks\DataHandlerHook;
-use T3G\AgencyPack\Blog\Notification\CommentAddedNotification;
-use T3G\AgencyPack\Blog\Notification\Processor\AdminNotificationProcessor;
-use T3G\AgencyPack\Blog\Notification\Processor\AuthorNotificationProcessor;
-use T3G\AgencyPack\Blog\Routing\Aspect\StaticDatabaseMapper;
+use WapplerSystems\Blog\Backend\FormDataProvider\CategoryDefaultValueProvider;
+use WapplerSystems\Blog\Controller\CommentController;
+use WapplerSystems\Blog\Controller\PostController;
+use WapplerSystems\Blog\Controller\WidgetController;
+use WapplerSystems\Blog\Hooks\CreateSiteConfigurationHook;
+use WapplerSystems\Blog\Hooks\DataHandlerHook;
+use WapplerSystems\Blog\Notification\CommentAddedNotification;
+use WapplerSystems\Blog\Notification\Processor\AdminNotificationProcessor;
+use WapplerSystems\Blog\Notification\Processor\AuthorNotificationProcessor;
+use WapplerSystems\Blog\Routing\Aspect\StaticDatabaseMapper;
 use TYPO3\CMS\Backend\Form\FormDataProvider\DatabaseRowInitializeNew;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
@@ -25,7 +25,7 @@ if (!defined('TYPO3')) {
 }
 
 // Register "blogvh" as global fluid namespace
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['blogvh'][] = 'T3G\\AgencyPack\\Blog\\ViewHelpers';
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['blogvh'][] = 'WapplerSystems\\Blog\\ViewHelpers';
 
 // Register new form data provider
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['tcaDatabaseRecord'][CategoryDefaultValueProvider::class] = [

@@ -1,6 +1,6 @@
 <?php
 
-namespace T3G\AgencyPack\Blog\DataProcessing;
+namespace WapplerSystems\Blog\DataProcessing;
 
 
 use TYPO3\CMS\Core\Resource\FileReference;

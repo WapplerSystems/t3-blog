@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
@@ -11,7 +11,7 @@ if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
-$ll = 'LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:';
+$ll = 'LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:';
 
 return [
     'ctrl' => [
@@ -61,7 +61,7 @@ return [
             ],
         ],
         'author' => [
-            'label' => 'LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:tx_blog_domain_model_comment.author',
+            'label' => 'LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:tx_blog_domain_model_comment.author',
             'config' => [
                 'type' => 'group',
                 'allowed' => 'fe_users',
@@ -112,10 +112,10 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['label' => $ll . 'tx_blog_domain_model_comment.status.pending', 'value' => \T3G\AgencyPack\Blog\Domain\Model\Comment::STATUS_PENDING],
-                    ['label' => $ll . 'tx_blog_domain_model_comment.status.approved', 'value' => \T3G\AgencyPack\Blog\Domain\Model\Comment::STATUS_APPROVED],
-                    ['label' => $ll . 'tx_blog_domain_model_comment.status.declined', 'value' => \T3G\AgencyPack\Blog\Domain\Model\Comment::STATUS_DECLINED],
-                    ['label' => $ll . 'tx_blog_domain_model_comment.status.deleted', 'value' => \T3G\AgencyPack\Blog\Domain\Model\Comment::STATUS_DELETED],
+                    ['label' => $ll . 'tx_blog_domain_model_comment.status.pending', 'value' => \WapplerSystems\Blog\Domain\Model\Comment::STATUS_PENDING],
+                    ['label' => $ll . 'tx_blog_domain_model_comment.status.approved', 'value' => \WapplerSystems\Blog\Domain\Model\Comment::STATUS_APPROVED],
+                    ['label' => $ll . 'tx_blog_domain_model_comment.status.declined', 'value' => \WapplerSystems\Blog\Domain\Model\Comment::STATUS_DECLINED],
+                    ['label' => $ll . 'tx_blog_domain_model_comment.status.deleted', 'value' => \WapplerSystems\Blog\Domain\Model\Comment::STATUS_DELETED],
                 ],
             ],
         ],
@@ -124,7 +124,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'pages',
-                'foreign_table_where' => ' AND doktype = ' . \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_POST,
+                'foreign_table_where' => ' AND doktype = ' . \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_POST,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,

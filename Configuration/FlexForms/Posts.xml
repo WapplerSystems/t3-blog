@@ -6,17 +6,17 @@
     <sheets>
         <layoutOptions>
             <ROOT>
-                <sheetTitle>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:flexform.sheet_general</sheetTitle>
+                <sheetTitle>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:flexform.sheet_general</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.lists.posts.layout>
-                        <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.lists.posts.layout</label>
+                        <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.lists.posts.layout</label>
                         <config>
                             <type>select</type>
                             <renderType>selectSingle</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.lists.posts.layout.default</label>
+                                    <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.lists.posts.layout.default</label>
                                     <value>default</value>
                                 </numIndex>
                             </items>
@@ -25,8 +25,8 @@
                     </settings.lists.posts.layout>
 
                     <settings.lists.posts.showImages>
-                        <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.lists.posts.showImages</label>
-                        <description>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.lists.posts.showImages.description</description>
+                        <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.lists.posts.showImages</label>
+                        <description>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.lists.posts.showImages.description</description>
                         <config>
                             <type>check</type>
                             <renderType>checkboxToggle</renderType>

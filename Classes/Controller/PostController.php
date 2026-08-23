@@ -2,35 +2,35 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Controller;
+namespace WapplerSystems\Blog\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use GeorgRinger\NumberedPagination\NumberedPagination;
-use T3G\AgencyPack\Blog\Domain\Model\Author;
-use T3G\AgencyPack\Blog\Domain\Model\Category;
-use T3G\AgencyPack\Blog\Domain\Model\Post;
-use T3G\AgencyPack\Blog\Domain\Model\Tag;
-use T3G\AgencyPack\Blog\Domain\Repository\AuthorRepository;
-use T3G\AgencyPack\Blog\Domain\Repository\CategoryRepository;
-use T3G\AgencyPack\Blog\Domain\Repository\PostRepository;
-use T3G\AgencyPack\Blog\Domain\Repository\TagRepository;
-use T3G\AgencyPack\Blog\Factory\PostRepositoryDemandFactory;
-use T3G\AgencyPack\Blog\Pagination\BlogPagination;
-use T3G\AgencyPack\Blog\Service\CacheService;
-use T3G\AgencyPack\Blog\Pagination\QueryResultPaginator;
+use WapplerSystems\Blog\Domain\Model\Author;
+use WapplerSystems\Blog\Domain\Model\Category;
+use WapplerSystems\Blog\Domain\Model\Post;
+use WapplerSystems\Blog\Domain\Model\Tag;
+use WapplerSystems\Blog\Domain\Repository\AuthorRepository;
+use WapplerSystems\Blog\Domain\Repository\CategoryRepository;
+use WapplerSystems\Blog\Domain\Repository\PostRepository;
+use WapplerSystems\Blog\Domain\Repository\TagRepository;
+use WapplerSystems\Blog\Factory\PostRepositoryDemandFactory;
+use WapplerSystems\Blog\Pagination\BlogPagination;
+use WapplerSystems\Blog\Service\CacheService;
+use WapplerSystems\Blog\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Core\Pagination\PaginationInterface;
 use TYPO3\CMS\Core\Pagination\PaginatorInterface;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
-use T3G\AgencyPack\Blog\Service\MetaTagService;
-use T3G\AgencyPack\Blog\Utility\ArchiveUtility;
-use T3G\AgencyPack\Blog\Utility\Socials\MastodonUtility;
+use WapplerSystems\Blog\Service\MetaTagService;
+use WapplerSystems\Blog\Utility\ArchiveUtility;
+use WapplerSystems\Blog\Utility\Socials\MastodonUtility;
 use TYPO3\CMS\Core\Http\NormalizedParams;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;

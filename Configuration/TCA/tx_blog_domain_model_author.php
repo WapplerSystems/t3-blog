@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
@@ -11,7 +11,7 @@ if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
-$ll = 'LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf' . ':';
+$ll = 'LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf' . ':';
 
 return [
     'ctrl' => [
@@ -105,15 +105,15 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => [
                     ['label' => 'Please choose one avatar provider', 'value' => '--div--'],
-                    ['label' => 'Gravatar', 'value' => \T3G\AgencyPack\Blog\AvatarProvider\GravatarProvider::class],
-                    ['label' => 'Image', 'value' => \T3G\AgencyPack\Blog\AvatarProvider\ImageProvider::class],
+                    ['label' => 'Gravatar', 'value' => \WapplerSystems\Blog\AvatarProvider\GravatarProvider::class],
+                    ['label' => 'Image', 'value' => \WapplerSystems\Blog\AvatarProvider\ImageProvider::class],
                 ],
             ],
             'l10n_mode' => 'exclude',
         ],
         'image' => [
             'label' => $ll . 'tx_blog_domain_model_author.image',
-            'displayCond' => 'FIELD:avatar_provider:=:T3G\AgencyPack\Blog\AvatarProvider\ImageProvider',
+            'displayCond' => 'FIELD:avatar_provider:=:WapplerSystems\Blog\AvatarProvider\ImageProvider',
             'config' => [
                 'type' => 'file',
                 'appearance' => [
@@ -238,7 +238,7 @@ return [
                 'renderType' => 'selectMultipleSideBySide',
                 'multiple' => 0,
                 'foreign_table' => 'pages',
-                'foreign_table_where' => 'AND {#pages}.{#doktype}=' . \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_POST . ' AND {#pages}.{#sys_language_uid} IN (-1,0)',
+                'foreign_table_where' => 'AND {#pages}.{#doktype}=' . \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_POST . ' AND {#pages}.{#sys_language_uid} IN (-1,0)',
                 'MM' => 'tx_blog_post_author_mm',
                 'MM_opposite_field' => 'authors',
                 'minitems' => 0,

@@ -7,15 +7,15 @@ plugin.tx_blog {
     }
     view {
         templateRootPaths {
-            0 = EXT:blog/Resources/Private/Templates/
+            0 = EXT:ws_blog/Resources/Private/Templates/
             1 = {$plugin.tx_blog.view.templateRootPath}
         }
         partialRootPaths {
-            0 = EXT:blog/Resources/Private/Partials/
+            0 = EXT:ws_blog/Resources/Private/Partials/
             1 = {$plugin.tx_blog.view.partialRootPath}
         }
         layoutRootPaths {
-            0 = EXT:blog/Resources/Private/Layouts/
+            0 = EXT:ws_blog/Resources/Private/Layouts/
             1 = {$plugin.tx_blog.view.layoutRootPath}
         }
     }
@@ -344,7 +344,7 @@ plugin.tx_blog {
 ### PAGE ###
 ############
 page.includeCSSLibs {
-    blogFrontend = EXT:blog/Resources/Public/Css/frontend.min.css
+    blogFrontend = EXT:ws_blog/Resources/Public/Css/frontend.min.css
     blogFrontend {
         forceOnTop = 1
     }
@@ -356,7 +356,7 @@ page.includeCSSLibs {
 ##############
 config.pageTitleProviders {
     blog {
-        provider = T3G\AgencyPack\Blog\TitleTagProvider\BlogTitleTagProvider
+        provider = WapplerSystems\Blog\TitleTagProvider\BlogTitleTagProvider
         before = seo
         after = altPageTitle
     }

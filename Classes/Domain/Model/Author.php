@@ -2,16 +2,16 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Domain\Model;
+namespace WapplerSystems\Blog\Domain\Model;
 
-use T3G\AgencyPack\Blog\AvatarProvider\AvatarProviderInterface;
-use T3G\AgencyPack\Blog\AvatarProvider\GravatarProvider;
+use WapplerSystems\Blog\AvatarProvider\AvatarProviderInterface;
+use WapplerSystems\Blog\AvatarProvider\GravatarProvider;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
@@ -38,7 +38,7 @@ class Author extends AbstractEntity
     protected int $detailsPage = 0;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Post>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Post>
      * @Extbase\ORM\Lazy
      */
     protected ObjectStorage $posts;
@@ -62,7 +62,7 @@ class Author extends AbstractEntity
             : GeneralUtility::makeInstance(GravatarProvider::class);
 
         if (!$avatarProvider instanceof AvatarProviderInterface) {
-            throw new \InvalidArgumentException('The avatarProvider must implement the "T3G\AgencyPack\Blog\AvatarProvider\AvatarProviderInterface" interface.', 1684505832);
+            throw new \InvalidArgumentException('The avatarProvider must implement the "WapplerSystems\Blog\AvatarProvider\AvatarProviderInterface" interface.', 1684505832);
         }
 
         return $avatarProvider;
@@ -253,7 +253,7 @@ class Author extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Post>
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Post>
      */
     public function getPosts(): ObjectStorage
     {
@@ -261,7 +261,7 @@ class Author extends AbstractEntity
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Post> $posts
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Post> $posts
      */
     public function setPosts(ObjectStorage $posts): self
     {

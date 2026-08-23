@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
@@ -11,12 +11,12 @@ if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
-$ll = 'LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:';
+$ll = 'LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:';
 
 // Add category types
 $GLOBALS['TCA']['sys_category']['ctrl']['type'] = 'record_type';
 $GLOBALS['TCA']['sys_category']['ctrl']['typeicon_column'] = 'record_type';
-$GLOBALS['TCA']['sys_category']['ctrl']['typeicon_classes'][(string) \T3G\AgencyPack\Blog\Constants::CATEGORY_TYPE_BLOG] = 'record-blog-category';
+$GLOBALS['TCA']['sys_category']['ctrl']['typeicon_classes'][(string) \WapplerSystems\Blog\Constants::CATEGORY_TYPE_BLOG] = 'record-blog-category';
 $GLOBALS['TCA']['sys_category']['columns']['record_type'] = [
     'label' => $ll . 'sys_category.record_type',
     'config' => [
@@ -24,17 +24,17 @@ $GLOBALS['TCA']['sys_category']['columns']['record_type'] = [
         'renderType' => 'selectSingle',
         'items' => [
             [
-                'label' => 'LLL:EXT:blog/Resources/Private/Language/locallang_tca.xlf:sys_category.record_type.default',
-                'value' => (string) \T3G\AgencyPack\Blog\Constants::CATEGORY_TYPE_DEFAULT,
+                'label' => 'LLL:EXT:ws_blog/Resources/Private/Language/locallang_tca.xlf:sys_category.record_type.default',
+                'value' => (string) \WapplerSystems\Blog\Constants::CATEGORY_TYPE_DEFAULT,
                 'icon' => $GLOBALS['TCA']['sys_category']['ctrl']['typeicon_classes']['default']
             ],
             [
-                'label' => 'LLL:EXT:blog/Resources/Private/Language/locallang_tca.xlf:sys_category.record_type.blog',
-                'value' => (string) \T3G\AgencyPack\Blog\Constants::CATEGORY_TYPE_BLOG,
+                'label' => 'LLL:EXT:ws_blog/Resources/Private/Language/locallang_tca.xlf:sys_category.record_type.blog',
+                'value' => (string) \WapplerSystems\Blog\Constants::CATEGORY_TYPE_BLOG,
                 'icon' => 'record-blog-category'
             ]
         ],
-        'default' => (string) \T3G\AgencyPack\Blog\Constants::CATEGORY_TYPE_DEFAULT
+        'default' => (string) \WapplerSystems\Blog\Constants::CATEGORY_TYPE_DEFAULT
     ]
 ];
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
@@ -43,15 +43,15 @@ $GLOBALS['TCA']['sys_category']['columns']['record_type'] = [
     '',
     'before:title'
 );
-$GLOBALS['TCA']['sys_category']['types'][(string) \T3G\AgencyPack\Blog\Constants::CATEGORY_TYPE_BLOG] =
-    $GLOBALS['TCA']['sys_category']['types'][(string) \T3G\AgencyPack\Blog\Constants::CATEGORY_TYPE_DEFAULT];
+$GLOBALS['TCA']['sys_category']['types'][(string) \WapplerSystems\Blog\Constants::CATEGORY_TYPE_BLOG] =
+    $GLOBALS['TCA']['sys_category']['types'][(string) \WapplerSystems\Blog\Constants::CATEGORY_TYPE_DEFAULT];
 
 // Limit parent categories to blog types
-$GLOBALS['TCA']['sys_category']['types'][\T3G\AgencyPack\Blog\Constants::CATEGORY_TYPE_BLOG]['columnsOverrides'] = [
+$GLOBALS['TCA']['sys_category']['types'][\WapplerSystems\Blog\Constants::CATEGORY_TYPE_BLOG]['columnsOverrides'] = [
     'parent' => [
         'config' => [
             'foreign_table_where' => '' .
-                ' AND sys_category.record_type = ' . (string) \T3G\AgencyPack\Blog\Constants::CATEGORY_TYPE_BLOG . ' ' .
+                ' AND sys_category.record_type = ' . (string) \WapplerSystems\Blog\Constants::CATEGORY_TYPE_BLOG . ' ' .
                 ' AND sys_category.pid = ###CURRENT_PID### ' .
                 ($GLOBALS['TCA']['pages']['columns']['categories']['config']['foreign_table_where'] ?? '')
         ]
@@ -137,5 +137,5 @@ $GLOBALS['TCA']['sys_category']['columns'] = array_replace_recursive(
         --div--;' . $ll . 'sys_category.tabs.blog,
             posts
     ',
-    (string) \T3G\AgencyPack\Blog\Constants::CATEGORY_TYPE_BLOG
+    (string) \WapplerSystems\Blog\Constants::CATEGORY_TYPE_BLOG
 );

@@ -4,35 +4,35 @@ services:
     autoconfigure: true
     public: false
 
-  T3G\AgencyPack\Blog\:
+  WapplerSystems\Blog\:
     resource: '../Classes/*'
 
-  T3G\AgencyPack\Blog\Domain\Factory\CommentFormFactory:
+  WapplerSystems\Blog\Domain\Factory\CommentFormFactory:
     public: true
 
-  T3G\AgencyPack\Blog\Domain\Factory\FrontendUserCommentFormFactory:
+  WapplerSystems\Blog\Domain\Factory\FrontendUserCommentFormFactory:
     public: true
     shared: false
 
 
-  T3G\AgencyPack\Blog\Listener\RenderAdditionalContentToRecordList:
+  WapplerSystems\Blog\Listener\RenderAdditionalContentToRecordList:
     tags:
       - name: event.listener
         identifier: 't3g/blog/render-additional-content-to-record-list'
 
-  T3G\AgencyPack\Blog\Listener\ModifyPageLayoutContent:
+  WapplerSystems\Blog\Listener\ModifyPageLayoutContent:
     tags:
       - name: event.listener
         identifier: 't3g/blog/modify-page-module-content'
 
-  T3G\AgencyPack\Blog\Mail\MailContent:
+  WapplerSystems\Blog\Mail\MailContent:
     public: true
 
-  T3G\AgencyPack\Blog\Service\CacheService:
+  WapplerSystems\Blog\Service\CacheService:
     public: true
 
-  T3G\AgencyPack\Blog\Service\CommentService:
+  WapplerSystems\Blog\Service\CommentService:
     public: true
 
-  T3G\AgencyPack\Blog\Service\SetupService:
+  WapplerSystems\Blog\Service\SetupService:
     public: true

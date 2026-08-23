@@ -1,13 +1,13 @@
 <?php
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Tests\Functional;
+namespace WapplerSystems\Blog\Tests\Functional;
 
 use TYPO3\CMS\Core\Configuration\SiteWriter;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -58,7 +58,7 @@ abstract class SiteBasedTestCase extends FunctionalTestCase
             ],
             'imports' => [
                 [
-                    'resource' => 'EXT:blog/Configuration/Routes/Default.yaml'
+                    'resource' => 'EXT:ws_blog/Configuration/Routes/Default.yaml'
                 ]
             ],
             'dependencies' => [
@@ -128,7 +128,7 @@ abstract class SiteBasedTestCase extends FunctionalTestCase
                     '    extbase.controllerName = Posts',
                     '    extbase.controllerActionName = listRecentPosts',
                     '    dataProcessing {',
-                    '       1 = T3G\AgencyPack\Blog\Tests\Functional\Helpers\TestDataProcessor',
+                    '       1 = WapplerSystems\Blog\Tests\Functional\Helpers\TestDataProcessor',
                     '       1 {',
                     '           data {',
                     '               ' . $instructionString,

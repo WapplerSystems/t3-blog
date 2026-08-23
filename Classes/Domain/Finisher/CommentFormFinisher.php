@@ -2,20 +2,20 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Domain\Finisher;
+namespace WapplerSystems\Blog\Domain\Finisher;
 
-use T3G\AgencyPack\Blog\Domain\Model\Comment;
-use T3G\AgencyPack\Blog\Domain\Repository\PostRepository;
-use T3G\AgencyPack\Blog\Notification\CommentAddedNotification;
-use T3G\AgencyPack\Blog\Notification\NotificationManager;
-use T3G\AgencyPack\Blog\Service\CacheService;
-use T3G\AgencyPack\Blog\Service\CommentService;
+use WapplerSystems\Blog\Domain\Model\Comment;
+use WapplerSystems\Blog\Domain\Repository\PostRepository;
+use WapplerSystems\Blog\Notification\CommentAddedNotification;
+use WapplerSystems\Blog\Notification\NotificationManager;
+use WapplerSystems\Blog\Service\CacheService;
+use WapplerSystems\Blog\Service\CommentService;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;

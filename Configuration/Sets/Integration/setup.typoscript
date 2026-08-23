@@ -7,10 +7,10 @@ page {
         templateName >
         templateName = BlogList
         layoutRootPaths {
-            -1579272243 = EXT:blog/Resources/Private/Layouts/Page/
+            -1579272243 = EXT:ws_blog/Resources/Private/Layouts/Page/
         }
         templateRootPaths {
-            -1579272243 = EXT:blog/Resources/Private/Templates/Page/
+            -1579272243 = EXT:ws_blog/Resources/Private/Templates/Page/
         }
     }
 }

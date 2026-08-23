@@ -1,32 +1,35 @@
 {
-    "name": "t3g/blog",
-    "description": "This blog extension uses TYPO3s core concepts and elements to provide a full-blown blog that users of TYPO3 can instantly understand and use.",
+    "name": "wapplersystems/blog",
+    "description": "WapplerSystems fork of t3g/blog with the t3bootstrap bridge folded in: Bootstrap 5 rendering, frontend-user comments, separate storage folders per record type.",
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "authors": [
         {
+            "name": "Sven Wappler",
+            "email": "typo3@wappler.systems",
+            "role": "Maintainer of fork"
+        },
+        {
             "name": "TYPO3 GmbH",
-            "role": "Developer",
+            "role": "Upstream developer",
             "homepage": "https://typo3.com/"
         }
     ],
-    "homepage": "https://extensions.typo3.org/extension/blog/",
+    "homepage": "https://github.com/WapplerSystems/blog",
     "support": {
-        "issues": "https://github.com/TYPO3GmbH/blog/issues",
-        "docs": "https://docs.typo3.org/typo3cms/extensions/blog/",
-        "source": "https://github.com/TYPO3GmbH/blog",
-        "slack": "https://typo3.slack.com/archives/t3g-ext-blog"
+        "issues": "https://github.com/WapplerSystems/blog/issues",
+        "source": "https://github.com/WapplerSystems/blog"
     },
     "autoload": {
         "psr-4": {
-            "T3G\\AgencyPack\\Blog\\": "Classes/"
+            "WapplerSystems\\Blog\\": "Classes/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "T3G\\AgencyPack\\Blog\\Tests\\": "Tests/"
+            "WapplerSystems\\Blog\\Tests\\": "Tests/"
         }
     },
     "config": {
@@ -43,11 +46,15 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-v14.0": "14.0.x-dev"
+            "dev-release/v14": "14.0.x-dev"
         },
         "typo3/cms": {
-            "extension-key": "blog",
-            "web-dir": ".build/public"
+            "extension-key": "ws_blog"
+        },
+        "typo3/class-alias-loader": {
+            "class-alias-maps": [
+                "Migrations/Code/ClassAliasMap.php"
+            ]
         }
     },
     "scripts": {
@@ -87,14 +94,17 @@
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0",
         "psr/http-message": "^1.1 || ^2.0",
-        "typo3/cms-backend": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-core": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-extbase": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-extensionmanager": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-fluid": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-form": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-frontend": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-install": "^13.4.15 || ^14.3 || 15.*.*@dev"
+        "typo3/cms-backend": "^14.3",
+        "typo3/cms-core": "^14.3",
+        "typo3/cms-extbase": "^14.3",
+        "typo3/cms-extensionmanager": "^14.3",
+        "typo3/cms-fluid": "^14.3",
+        "typo3/cms-form": "^14.3",
+        "typo3/cms-frontend": "^14.3",
+        "typo3/cms-install": "^14.3",
+        "t3bootstrap/core": "*",
+        "wapplersystems/ws-components": "^14",
+        "georgringer/numbered-pagination": "^2.0"
     },
     "require-dev": {
         "a9f/typo3-fractor": "^1.0",
@@ -106,15 +116,19 @@
         "phpstan/phpstan-deprecation-rules": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
-        "typo3/cms-belog": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-beuser": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-filelist": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-fluid-styled-content": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-lowlevel": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-rte-ckeditor": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-seo": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-setup": "^13.4.15 || ^14.3 || 15.*.*@dev",
-        "typo3/cms-tstemplate": "^13.4.15 || ^14.3 || 15.*.*@dev",
+        "typo3/cms-belog": "^14.3",
+        "typo3/cms-beuser": "^14.3",
+        "typo3/cms-filelist": "^14.3",
+        "typo3/cms-fluid-styled-content": "^14.3",
+        "typo3/cms-lowlevel": "^14.3",
+        "typo3/cms-rte-ckeditor": "^14.3",
+        "typo3/cms-seo": "^14.3",
+        "typo3/cms-setup": "^14.3",
+        "typo3/cms-tstemplate": "^14.3",
         "typo3/testing-framework": "^9.0.0 || dev-main"
+    },
+    "replace": {
+        "t3g/blog": "self.version",
+        "t3bootstrap/t3bootstrap-blog": "self.version"
     }
 }

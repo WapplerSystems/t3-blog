@@ -2,19 +2,19 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Notification\Processor;
+namespace WapplerSystems\Blog\Notification\Processor;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use Symfony\Component\Mime\Part\TextPart;
-use T3G\AgencyPack\Blog\Notification\CommentAddedNotification;
-use T3G\AgencyPack\Blog\Notification\NotificationInterface;
+use WapplerSystems\Blog\Notification\CommentAddedNotification;
+use WapplerSystems\Blog\Notification\NotificationInterface;
 use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

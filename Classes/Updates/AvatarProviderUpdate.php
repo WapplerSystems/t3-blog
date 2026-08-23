@@ -2,22 +2,22 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Updates;
+namespace WapplerSystems\Blog\Updates;
 
-use T3G\AgencyPack\Blog\AvatarProvider\GravatarProvider;
+use WapplerSystems\Blog\AvatarProvider\GravatarProvider;
 use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
 #[UpgradeWizard(AvatarProviderUpdate::class)]
 final class AvatarProviderUpdate extends AbstractUpdate implements UpgradeWizardInterface
 {
-    protected string $title = 'EXT:blog: Migrate AvatarProvider';
+    protected string $title = 'EXT:ws_blog: Migrate AvatarProvider';
     protected string $table = 'tx_blog_domain_model_author';
 
     public function updateNecessary(): bool

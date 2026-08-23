@@ -1,11 +1,11 @@
 # This route enhancer config is not final
 # But you can simply include it in your site configuration:
 # imports:
-#  - { resource: "EXT:blog/Configuration/Routes/Default.yaml" }
+#  - { resource: "EXT:ws_blog/Configuration/Routes/Default.yaml" }
 imports:
-  - { resource: 'EXT:blog/Configuration/Routes/BlogCategory.yaml' }
-  - { resource: 'EXT:blog/Configuration/Routes/BlogTag.yaml' }
-  - { resource: 'EXT:blog/Configuration/Routes/BlogArchive.yaml' }
-  - { resource: 'EXT:blog/Configuration/Routes/BlogAuthorPosts.yaml' }
-  - { resource: 'EXT:blog/Configuration/Routes/BlogFeedWidget.yaml' }
-  - { resource: 'EXT:blog/Configuration/Routes/BlogPosts.yaml' }
+  - { resource: 'EXT:ws_blog/Configuration/Routes/BlogCategory.yaml' }
+  - { resource: 'EXT:ws_blog/Configuration/Routes/BlogTag.yaml' }
+  - { resource: 'EXT:ws_blog/Configuration/Routes/BlogArchive.yaml' }
+  - { resource: 'EXT:ws_blog/Configuration/Routes/BlogAuthorPosts.yaml' }
+  - { resource: 'EXT:ws_blog/Configuration/Routes/BlogFeedWidget.yaml' }
+  - { resource: 'EXT:ws_blog/Configuration/Routes/BlogPosts.yaml' }

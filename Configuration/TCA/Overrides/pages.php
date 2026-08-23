@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
@@ -11,7 +11,7 @@ if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
-$ll = 'LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:';
+$ll = 'LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:';
 
 // Add folder configuration
 $GLOBALS['TCA']['pages']['columns']['module']['config']['items'][] = [
@@ -29,8 +29,8 @@ $GLOBALS['TCA']['pages']['columns']['doktype']['config']['itemGroups']['blog'] =
     'pages',
     'doktype',
     [
-        'label' => 'LLL:EXT:blog/Resources/Private/Language/locallang_tca.xlf:pages.doktype.blog-post',
-        'value' => (string) \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_POST,
+        'label' => 'LLL:EXT:ws_blog/Resources/Private/Language/locallang_tca.xlf:pages.doktype.blog-post',
+        'value' => (string) \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_POST,
         'icon' => 'record-blog-post',
         'group' => 'blog',
     ],
@@ -41,12 +41,12 @@ $GLOBALS['TCA']['pages']['columns']['doktype']['config']['itemGroups']['blog'] =
     'pages',
     'doktype',
     [
-        'label' => 'LLL:EXT:blog/Resources/Private/Language/locallang_tca.xlf:pages.doktype.blog-page',
-        'value' => (string) \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_PAGE,
+        'label' => 'LLL:EXT:ws_blog/Resources/Private/Language/locallang_tca.xlf:pages.doktype.blog-page',
+        'value' => (string) \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_PAGE,
         'icon' => 'record-blog-page',
         'group' => 'blog',
     ],
-    (string) \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_POST,
+    (string) \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_POST,
     'after'
 );
 
@@ -56,13 +56,13 @@ $GLOBALS['TCA']['pages']['columns']['doktype']['config']['itemGroups']['blog'] =
     [
         'ctrl' => [
             'typeicon_classes' => [
-                (string) \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_PAGE => 'record-blog-page',
-                (string) \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_PAGE . '-root' => 'record-blog-page-root',
-                (string) \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_POST => 'record-blog-post',
+                (string) \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_PAGE => 'record-blog-page',
+                (string) \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_PAGE . '-root' => 'record-blog-page-root',
+                (string) \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_POST => 'record-blog-post',
             ],
         ],
         'types' => [
-            (string) \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_POST => $GLOBALS['TCA']['pages']['types'][\TYPO3\CMS\Core\Domain\Repository\PageRepository::DOKTYPE_DEFAULT],
+            (string) \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_POST => $GLOBALS['TCA']['pages']['types'][\TYPO3\CMS\Core\Domain\Repository\PageRepository::DOKTYPE_DEFAULT],
         ],
     ]
 );
@@ -71,11 +71,11 @@ $GLOBALS['TCA']['pages']['columns']['doktype']['config']['itemGroups']['blog'] =
     [
         'ctrl' => [
             'typeicon_classes' => [
-                (string) \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_PAGE => 'record-blog-page',
+                (string) \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_PAGE => 'record-blog-page',
             ],
         ],
         'types' => [
-            (string) \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_PAGE => $GLOBALS['TCA']['pages']['types'][\TYPO3\CMS\Core\Domain\Repository\PageRepository::DOKTYPE_DEFAULT],
+            (string) \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_PAGE => $GLOBALS['TCA']['pages']['types'][\TYPO3\CMS\Core\Domain\Repository\PageRepository::DOKTYPE_DEFAULT],
         ],
     ]
 );
@@ -215,7 +215,7 @@ $GLOBALS['TCA']['pages']['columns'] = array_replace_recursive(
     ]
 );
 
-$GLOBALS['TCA']['pages']['types'][\T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_POST]['columnsOverrides'] = [
+$GLOBALS['TCA']['pages']['types'][\WapplerSystems\Blog\Constants::DOKTYPE_BLOG_POST]['columnsOverrides'] = [
     'categories' => [
         'config' => [
             'foreign_table_where' => 'AND sys_category.sys_language_uid IN (0,-1) AND sys_category.pid = ###PAGE_TSCONFIG_ID###',
@@ -228,7 +228,7 @@ $GLOBALS['TCA']['pages']['types'][\T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_P
     'pages',
     '--div--;' . $ll . 'pages.tabs.blog,
     --palette--;' . $ll . 'pages.palettes.publish_date;publish_date, featured_image, archive_date, tags, authors, comments_active, comments',
-    (string) \T3G\AgencyPack\Blog\Constants::DOKTYPE_BLOG_POST
+    (string) \WapplerSystems\Blog\Constants::DOKTYPE_BLOG_POST
 );
 
 // --- Custom fields for blog posts (aus t3bootstrap_blog) ---

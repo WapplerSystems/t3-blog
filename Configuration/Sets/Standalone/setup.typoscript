@@ -39,15 +39,15 @@ page {
     10 {
         templateName = BlogList
         templateRootPaths {
-            0 = EXT:blog/Resources/Private/Templates/Page/
+            0 = EXT:ws_blog/Resources/Private/Templates/Page/
             1 = {$page.fluidtemplate.templateRootPath}
         }
         partialRootPaths {
-            0 = EXT:blog/Resources/Private/Partials/Page/
+            0 = EXT:ws_blog/Resources/Private/Partials/Page/
             1 = {$page.fluidtemplate.partialRootPath}
         }
         layoutRootPaths {
-            0 = EXT:blog/Resources/Private/Layouts/Page/
+            0 = EXT:ws_blog/Resources/Private/Layouts/Page/
             1 = {$page.fluidtemplate.layoutRootPath}
         }
         dataProcessing {

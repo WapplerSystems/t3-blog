@@ -2,22 +2,22 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Updates;
+namespace WapplerSystems\Blog\Updates;
 
-use T3G\AgencyPack\Blog\Constants;
+use WapplerSystems\Blog\Constants;
 use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
 #[UpgradeWizard(CategoryTypeUpdate::class)]
 final class CategoryTypeUpdate extends AbstractUpdate implements UpgradeWizardInterface
 {
-    protected string $title = 'EXT:blog: Use Blog-Type for Categories';
+    protected string $title = 'EXT:ws_blog: Use Blog-Type for Categories';
     protected string $table = 'sys_category';
 
     public function updateNecessary(): bool

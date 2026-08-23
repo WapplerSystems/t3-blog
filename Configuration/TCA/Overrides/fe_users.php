@@ -6,7 +6,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 $addColumnArray = [
     'blog_comments' => [
         'exclude' => 0,
-        'label' => 'LLL:EXT:t3bootstrap_blog/Resources/Private/Language/locallang.xlf:fe_users.blog_comments',
+        'label' => 'LLL:EXT:ws_blog/Resources/Private/Language/locallang.xlf:fe_users.blog_comments',
         'config' => [
             'type' => 'inline',
             'foreign_table' => 'tx_blog_domain_model_comment',

@@ -2,16 +2,16 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\ViewHelpers\Link;
+namespace WapplerSystems\Blog\ViewHelpers\Link;
 
 use Psr\Http\Message\ServerRequestInterface;
-use T3G\AgencyPack\Blog\Domain\Model\Tag;
+use WapplerSystems\Blog\Domain\Model\Tag;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;

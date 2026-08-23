@@ -2,19 +2,19 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\AvatarProvider;
+namespace WapplerSystems\Blog\AvatarProvider;
 
-use T3G\AgencyPack\Blog\Domain\Model\Author;
-use T3G\AgencyPack\Blog\Service\Avatar\AvatarResourceResolverInterface;
-use T3G\AgencyPack\Blog\Service\Avatar\Gravatar\GravatarResourceResolver;
-use T3G\AgencyPack\Blog\Service\Avatar\Gravatar\GravatarUriBuilder;
-use T3G\AgencyPack\Blog\Service\Avatar\Gravatar\GravatarUriBuilderInterface;
+use WapplerSystems\Blog\Domain\Model\Author;
+use WapplerSystems\Blog\Service\Avatar\AvatarResourceResolverInterface;
+use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarResourceResolver;
+use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarUriBuilder;
+use WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarUriBuilderInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Http\Client\GuzzleClientFactory;

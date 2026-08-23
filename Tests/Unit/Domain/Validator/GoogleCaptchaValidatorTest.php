@@ -2,18 +2,18 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Tests\Unit\Domain\Validator;
+namespace WapplerSystems\Blog\Tests\Unit\Domain\Validator;
 
 use PHPUnit\Framework\Attributes\Test;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use T3G\AgencyPack\Blog\Domain\Validator\GoogleCaptchaValidator;
+use WapplerSystems\Blog\Domain\Validator\GoogleCaptchaValidator;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

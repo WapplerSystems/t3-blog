@@ -2,13 +2,13 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Updates;
+namespace WapplerSystems\Blog\Updates;
 
 use TYPO3\CMS\Core\DataHandling\Model\RecordStateFactory;
 use TYPO3\CMS\Core\DataHandling\SlugHelper;
@@ -19,7 +19,7 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 #[UpgradeWizard(AuthorSlugUpdate::class)]
 final class AuthorSlugUpdate extends AbstractUpdate implements UpgradeWizardInterface
 {
-    protected string $title = 'EXT:blog: Generate Path-Segments for Authors';
+    protected string $title = 'EXT:ws_blog: Generate Path-Segments for Authors';
     protected string $table = 'tx_blog_domain_model_author';
 
     public function updateNecessary(): bool

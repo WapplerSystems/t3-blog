@@ -2,16 +2,16 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Domain\Model;
+namespace WapplerSystems\Blog\Domain\Model;
 
-use T3G\AgencyPack\Blog\Constants;
-use T3G\AgencyPack\Blog\Domain\Repository\CommentRepository;
+use WapplerSystems\Blog\Constants;
+use WapplerSystems\Blog\Domain\Repository\CommentRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
@@ -40,19 +40,19 @@ class Post extends AbstractEntity
     protected ?FileReference $featuredImage = null;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Category>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Category>
      * @Extbase\ORM\Lazy
      */
     protected ObjectStorage $categories;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Comment>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Comment>
      * @Extbase\ORM\Lazy
      */
     protected ObjectStorage $comments;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Tag>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Tag>
      * @Extbase\ORM\Lazy
      */
     protected ObjectStorage $tags;
@@ -64,7 +64,7 @@ class Post extends AbstractEntity
     protected ObjectStorage $media;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Author>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Author>
      * @Extbase\ORM\Lazy
      */
     protected $authors;
@@ -114,7 +114,7 @@ class Post extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Author>
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Author>
      */
     public function getAuthors(): ObjectStorage
     {
@@ -122,7 +122,7 @@ class Post extends AbstractEntity
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Author> $authors
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Author> $authors
      * @return Post
      */
     public function setAuthors(ObjectStorage $authors): self
@@ -176,7 +176,7 @@ class Post extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Category>
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Category>
      */
     public function getCategories(): ObjectStorage
     {
@@ -184,7 +184,7 @@ class Post extends AbstractEntity
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Category> $categories
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Category> $categories
      */
     public function setCategories($categories): self
     {
@@ -244,7 +244,7 @@ class Post extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Comment>
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Comment>
      */
     public function getComments(): ObjectStorage
     {
@@ -261,7 +261,7 @@ class Post extends AbstractEntity
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Comment> $comments
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Comment> $comments
      */
     public function setComments(ObjectStorage $comments): self
     {
@@ -288,7 +288,7 @@ class Post extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Tag>
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Tag>
      */
     public function getTags(): ObjectStorage
     {
@@ -296,7 +296,7 @@ class Post extends AbstractEntity
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\T3G\AgencyPack\Blog\Domain\Model\Tag> $tags
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\Blog\Domain\Model\Tag> $tags
      */
     public function setTags(ObjectStorage $tags): self
     {

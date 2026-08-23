@@ -1,26 +1,31 @@
 <?php
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'TYPO3 Blog Extension',
-    'description' => 'This blog extension uses TYPO3s core concepts and elements to provide a full-blown blog that users of TYPO3 can instantly understand and use.',
+    'title' => 'Blog (WapplerSystems)',
+    'description' => 'Fork von t3g/blog mit eingefalteter t3bootstrap-Bruecke: Bootstrap-5-Rendering, Kommentare fuer eingeloggte Frontend-Benutzer, getrennte Ablageordner je Datensatztyp.',
     'category' => 'fe',
     'state' => 'stable',
-    'author' => 'TYPO3 GmbH',
-    'author_email' => 'info@typo3.com',
+    'author' => 'Sven Wappler',
+    'author_email' => 'typo3@wappler.systems',
+    'author_company' => 'WapplerSystems',
     'version' => '14.0.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '13.4.15-14.3.99',
-            'form' => '13.4.15-14.3.99',
+            'typo3' => '14.3.0-14.99.99',
+            'form' => '14.3.0-14.99.99',
+            't3b_core' => '',
         ],
-        'conflicts' => [],
+        'conflicts' => [
+            'blog' => '',
+            't3bootstrap_blog' => '',
+        ],
         'suggests' => [],
     ],
 ];

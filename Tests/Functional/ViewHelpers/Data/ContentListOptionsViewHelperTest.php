@@ -3,17 +3,17 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Tests\Functional\ViewHelpers\Data;
+namespace WapplerSystems\Blog\Tests\Functional\ViewHelpers\Data;
 
 use PHPUnit\Framework\Attributes\Test;
-use T3G\AgencyPack\Blog\Constants;
-use T3G\AgencyPack\Blog\Tests\Functional\SiteBasedTestCase;
+use WapplerSystems\Blog\Constants;
+use WapplerSystems\Blog\Tests\Functional\SiteBasedTestCase;
 use TYPO3\CMS\Core\Domain\RecordFactory;
 use TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability;
 use TYPO3\CMS\Core\Schema\TcaSchemaFactory;

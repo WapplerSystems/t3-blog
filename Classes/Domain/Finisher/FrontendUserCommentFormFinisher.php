@@ -1,16 +1,16 @@
 <?php
 declare(strict_types = 1);
 
-namespace T3G\AgencyPack\Blog\Domain\Finisher;
+namespace WapplerSystems\Blog\Domain\Finisher;
 
-use T3G\AgencyPack\Blog\Domain\Model\Comment;
-use T3G\AgencyPack\Blog\Domain\Repository\FrontendUserRepository;
-use T3G\AgencyPack\Blog\Domain\Repository\CommentRepository;
-use T3G\AgencyPack\Blog\Domain\Repository\PostRepository;
-use T3G\AgencyPack\Blog\Notification\CommentAddedNotification;
-use T3G\AgencyPack\Blog\Notification\NotificationManager;
-use T3G\AgencyPack\Blog\Service\CacheService;
-use T3G\AgencyPack\Blog\Service\CommentService;
+use WapplerSystems\Blog\Domain\Model\Comment;
+use WapplerSystems\Blog\Domain\Repository\FrontendUserRepository;
+use WapplerSystems\Blog\Domain\Repository\CommentRepository;
+use WapplerSystems\Blog\Domain\Repository\PostRepository;
+use WapplerSystems\Blog\Notification\CommentAddedNotification;
+use WapplerSystems\Blog\Notification\NotificationManager;
+use WapplerSystems\Blog\Service\CacheService;
+use WapplerSystems\Blog\Service\CommentService;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
@@ -71,7 +71,7 @@ class FrontendUserCommentFormFinisher extends AbstractFinisher
         // Create Comment
         $values = $this->finisherContext->getFormValues();
         $comment = new Comment();
-        if ($frontendUser instanceof \T3G\AgencyPack\Blog\Domain\Model\FrontendUser) {
+        if ($frontendUser instanceof \WapplerSystems\Blog\Domain\Model\FrontendUser) {
             $comment->setAuthor($frontendUser);
             $comment->setName(trim($frontendUser->getFirstName() . ' ' . $frontendUser->getLastName()) ?: $frontendUser->getName() ?: $frontendUser->getUsername());
             $comment->setEmail($frontendUser->getEmail());

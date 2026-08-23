@@ -10,8 +10,8 @@
                 <type>array</type>
                 <el>
                     <settings.demand.posts>
-                        <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.posts</label>
-                        <description>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.posts.description</description>
+                        <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.posts</label>
+                        <description>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.posts.description</description>
                         <config>
                             <type>group</type>
                             <allowed>pages</allowed>
@@ -25,7 +25,7 @@
                     </settings.demand.posts>
 
                     <settings.demand.categories>
-                        <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.categories</label>
+                        <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.categories</label>
                         <config>
                             <type>select</type>
                             <renderType>selectTree</renderType>
@@ -43,17 +43,17 @@
                     </settings.demand.categories>
 
                     <settings.demand.categoriesConjunction>
-                        <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.categoriesConjunction</label>
+                        <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.categoriesConjunction</label>
                         <config>
                             <type>select</type>
                             <renderType>selectSingle</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.categoriesConjunction.AND</label>
+                                    <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.categoriesConjunction.AND</label>
                                     <value>AND</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.categoriesConjunction.OR</label>
+                                    <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.categoriesConjunction.OR</label>
                                     <value>OR</value>
                                 </numIndex>
                             </items>
@@ -61,7 +61,7 @@
                     </settings.demand.categoriesConjunction>
 
                     <settings.demand.tags>
-                        <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.tags</label>
+                        <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.tags</label>
                         <config>
                             <type>select</type>
                             <renderType>selectMultipleSideBySide</renderType>
@@ -71,17 +71,17 @@
                     </settings.demand.tags>
 
                     <settings.demand.tagsConjunction>
-                        <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.tagsConjunction</label>
+                        <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.tagsConjunction</label>
                         <config>
                             <type>select</type>
                             <renderType>selectSingle</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.tagsConjunction.AND</label>
+                                    <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.tagsConjunction.AND</label>
                                     <value>AND</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.tagsConjunction.OR</label>
+                                    <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.tagsConjunction.OR</label>
                                     <value>OR</value>
                                 </numIndex>
                             </items>
@@ -89,13 +89,13 @@
                     </settings.demand.tagsConjunction>
 
                     <settings.demand.sortBy>
-                        <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.sortBy</label>
+                        <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.sortBy</label>
                         <config>
                             <type>select</type>
                             <renderType>selectSingle</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:pages.publish_date</label>
+                                    <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:pages.publish_date</label>
                                     <value>publish_date</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
@@ -107,17 +107,17 @@
                     </settings.demand.sortBy>
 
                     <settings.demand.sortDirection>
-                        <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.sortDirection</label>
+                        <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.sortDirection</label>
                         <config>
                             <type>select</type>
                             <renderType>selectSingle</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.sortDirection.ASC</label>
+                                    <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.sortDirection.ASC</label>
                                     <value>ASC</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.sortDirection.DESC</label>
+                                    <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.sortDirection.DESC</label>
                                     <value>DESC</value>
                                 </numIndex>
                             </items>
@@ -126,7 +126,7 @@
                     </settings.demand.sortDirection>
 
                     <settings.demand.limit>
-                        <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.demand.limit</label>
+                        <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.demand.limit</label>
                         <config>
                             <type>input</type>
                             <eval>int+</eval>
@@ -135,8 +135,8 @@
                     </settings.demand.limit>
 
                     <settings._noTranslationHintMessage>
-                        <label>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.noTranslationHintMessage.title</label>
-                        <description>LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:settings.noTranslationHintMessage.description</description>
+                        <label>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.noTranslationHintMessage.title</label>
+                        <description>LLL:EXT:ws_blog/Resources/Private/Language/locallang_db.xlf:settings.noTranslationHintMessage.description</description>
                         <displayCond>FIELD:parentRec.sys_language_uid:!=:0</displayCond>
                         <config>
                             <type>none</type>

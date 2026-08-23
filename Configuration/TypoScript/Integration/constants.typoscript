@@ -1,4 +1,4 @@
 ######################
 #### DEPENDENCIES ####
 ######################
-@import "EXT:blog/Configuration/TypoScript/Static/constants.typoscript"
+@import "EXT:ws_blog/Configuration/TypoScript/Static/constants.typoscript"

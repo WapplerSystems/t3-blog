@@ -2,17 +2,17 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Tests\Functional\ExpressionLanguage;
+namespace WapplerSystems\Blog\Tests\Functional\ExpressionLanguage;
 
 use Doctrine\DBAL\ParameterType;
 use PHPUnit\Framework\Attributes\DataProvider;
-use T3G\AgencyPack\Blog\Tests\Functional\SiteBasedTestCase;
+use WapplerSystems\Blog\Tests\Functional\SiteBasedTestCase;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
 
 class BlogExpressionsTest extends SiteBasedTestCase

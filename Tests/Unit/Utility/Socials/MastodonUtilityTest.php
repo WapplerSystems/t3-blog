@@ -1,16 +1,16 @@
 <?php
 
 /*
- * This file is part of the package t3g/blog.
+ * This file is part of the package wapplersystems/blog.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3G\AgencyPack\Blog\Tests\Unit\Utility\Socials;
+namespace WapplerSystems\Blog\Tests\Unit\Utility\Socials;
 
 use PHPUnit\Framework\Attributes\DataProvider;
-use T3G\AgencyPack\Blog\Utility\Socials\MastodonUtility;
+use WapplerSystems\Blog\Utility\Socials\MastodonUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class MastodonUtilityTest extends UnitTestCase

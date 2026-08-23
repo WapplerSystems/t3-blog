@@ -1,5 +1,5 @@
 
-@import 'EXT:t3bootstrap_blog/Configuration/TsConfig/Page/BackendLayouts/*.tsconfig'
+@import 'EXT:ws_blog/Configuration/TsConfig/Page/BackendLayouts/*.tsconfig'
 
 # Allow doktype 139 (Blog External Link) in page tree drag area
 options.pageTree.doktypesToShowInNewPageDragArea := addToList(139)

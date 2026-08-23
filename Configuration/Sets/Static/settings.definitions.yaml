@@ -68,32 +68,32 @@ settings:
   plugin.tx_blog.view.templateRootPath:
     category: blog.templates.frontend
     type: string
-    default: 'EXT:blog/Resources/Private/Templates/'
+    default: 'EXT:ws_blog/Resources/Private/Templates/'
 
   plugin.tx_blog.view.partialRootPath:
     category: blog.templates.frontend
     type: string
-    default: 'EXT:blog/Resources/Private/Partials/'
+    default: 'EXT:ws_blog/Resources/Private/Partials/'
 
   plugin.tx_blog.view.layoutRootPath:
     category: blog.templates.frontend
     type: string
-    default: 'EXT:blog/Resources/Private/Layouts/'
+    default: 'EXT:ws_blog/Resources/Private/Layouts/'
 
   plugin.tx_blog.view.emails.templateRootPath:
     category: blog.templates.email
     type: string
-    default: 'EXT:blog/Resources/Private/Mails/Templates/'
+    default: 'EXT:ws_blog/Resources/Private/Mails/Templates/'
 
   plugin.tx_blog.view.emails.partialRootPath:
     category: blog.templates.email
     type: string
-    default: 'EXT:blog/Resources/Private/Mails/Partials/'
+    default: 'EXT:ws_blog/Resources/Private/Mails/Partials/'
 
   plugin.tx_blog.view.emails.layoutRootPath:
     category: blog.templates.email
     type: string
-    default: 'EXT:blog/Resources/Private/Mails/Layouts/'
+    default: 'EXT:ws_blog/Resources/Private/Mails/Layouts/'
 
 
 
