@@ -11,6 +11,7 @@ declare(strict_types = 1);
 namespace WapplerSystems\Blog\Updates;
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Registry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
@@ -33,6 +34,8 @@ final class ExtensionKeyReferenceUpdate implements UpgradeWizardInterface
      * Alte Extension-Pfade und ihre Entsprechung. Reihenfolge egal, die Ersetzung
      * ist fuer jeden Wert unabhaengig.
      */
+    private const WIZARD_NAMESPACE = 'WapplerSystems\\Blog\\Updates\\';
+
     private const REPLACEMENTS = [
         'EXT:t3bootstrap_blog/' => 'EXT:ws_blog/',
         'EXT:blog/' => 'EXT:ws_blog/',
@@ -79,7 +82,7 @@ final class ExtensionKeyReferenceUpdate implements UpgradeWizardInterface
             return true;
         }
 
-        return false;
+        return $this->collectStaleWizardFlags() !== [];
     }
 
     public function executeUpdate(): bool
@@ -94,7 +97,43 @@ final class ExtensionKeyReferenceUpdate implements UpgradeWizardInterface
             );
         }
 
+        $registry = GeneralUtility::makeInstance(Registry::class);
+        foreach ($this->collectStaleWizardFlags() as $oldIdentifier => $newIdentifier) {
+            $registry->set('installUpdate', $newIdentifier, $registry->get('installUpdate', $oldIdentifier));
+        }
+
         return true;
+    }
+
+    /**
+     * Die Wizards des Forks heissen jetzt WapplerSystems\Blog\Updates\*, in sys_registry
+     * stehen sie aber unter ihrem alten Namen als erledigt. Ohne diese Uebernahme bietet
+     * der Installer sie erneut an - und ListTypeMigration wuerde bereits migrierte Plugins
+     * ein zweites Mal anfassen.
+     *
+     * @return array<string, string> alter Bezeichner => neuer Bezeichner
+     */
+    private function collectStaleWizardFlags(): array
+    {
+        $registry = GeneralUtility::makeInstance(Registry::class);
+        $flags = [];
+
+        foreach (glob(__DIR__ . '/*.php') ?: [] as $file) {
+            $className = self::WIZARD_NAMESPACE . basename($file, '.php');
+            if ($className === self::class || !class_exists($className)) {
+                continue;
+            }
+            $oldIdentifier = str_replace('WapplerSystems\\Blog\\', 'T3G\\AgencyPack\\Blog\\', $className);
+            if ($registry->get('installUpdate', $oldIdentifier) === null) {
+                continue;
+            }
+            if ($registry->get('installUpdate', $className) !== null) {
+                continue;
+            }
+            $flags[$oldIdentifier] = $className;
+        }
+
+        return $flags;
     }
 
     /**
