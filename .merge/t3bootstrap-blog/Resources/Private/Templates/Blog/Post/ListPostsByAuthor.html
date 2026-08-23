@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+      xmlns:ws="http://typo3.org/ns/WapplerSystems/WsT3bootstrap/ViewHelpers"
+      xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+<f:section name="Content">
+    <f:if condition="{author}">
+        <f:then>
+
+
+            <div class="blog__author__header mb-5">
+                <h1 class="">
+                    <f:translate key="headline.author.simple" />:
+                    {author.name}
+                </h1>
+
+                <div class="row">
+                    <t3bc:column lg="3">
+                        <f:if condition="{author.image}">
+                            <t3bc:picture image="{author.image}" alt="{author.name}" class="img-fluid"/>
+                        </f:if>
+                    </t3bc:column>
+                    <div class="col-12 col-lg-9 pt-lg-5">
+
+                        <f:if condition="{author.bio}">
+                            <div class="blog__author__header__description">
+                                <p>{author.bio}</p>
+                            </div>
+                        </f:if>
+
+                        <h4>Kontakt</h4>
+                        <f:if condition="{author.email}">
+                            <f:link.email class="me-3" email="{author.email}">{author.email}</f:link.email>
+                        </f:if>
+
+                        <f:if condition="{author.linkedin}">
+                            <a href="{author.linkedin}" target="_blank" title="Visit the linkedin page of {author.name}"></a>
+                        </f:if>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <h2><f:translate key="LLL:EXT:t3bootstrap_blog/Resources/Private/Language/locallang.xlf:blog.articles_of_author">Articles of this author</f:translate></h2>
+
+            <ul class="blog__author__posts list-unstyled">
+            <f:for each="{posts}" iteration="iterator" as="post">
+                <li class="py-4">
+                    <blogvh:cache post="{post}" />
+                    <blogvh:link.post post="{post}" />
+                </li>
+            </f:for>
+            </ul>
+
+
+        </f:then>
+        <f:else>
+
+            <header class="blogarchiveheader blogarchiveheader--authors">
+                <h1 class="blogarchiveheader__title">
+                    <span class="blogarchiveheader__titletext"><f:translate key="headline.authors" /></span>
+                </h1>
+            </header>
+            <div class="bloglist bloglist--authors">
+                <f:for each="{authors}" as="author">
+                    <f:render partial="List/Author" arguments="{_all}" />
+                </f:for>
+            </div>
+
+        </f:else>
+    </f:if>
+</f:section>
+</html>

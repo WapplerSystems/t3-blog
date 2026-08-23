@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+      xmlns:ws="http://typo3.org/ns/WapplerSystems/WsT3bootstrap/ViewHelpers"
+      xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Page"/>
+
+
+<f:section name="HeaderContent">
+
+</f:section>
+
+<f:section name="Content">
+
+    <div class="main">
+
+        {blogvh:data.contentListOptions(listType: 'blog_header')}
+        <f:cObject typoscriptObjectPath="tt_content" data="{contentObjectData}" table="tt_content"/>
+
+        <f:if condition="{featuredImage.0}">
+            <div class="container">
+                <t3bc:picture cropVariants="{xs:'blog_detail',sm:'blog_detail',md:'blog_detail',lg:'blog_detail',xl:'blog_detail',xxl:'blog_detail'}" useBootstrapCropVariants="false" class="img-fluid mb-5" image="{featuredImage.0}"/>
+            </div>
+        </f:if>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12 col-xl-1 col-xxl-2 d-flex align-items-end pe-xxl-6">
+
+                </div>
+                <t3bc:column lg="9" xl="8" xxl="8" class="col-main high-ct ">
+                    <!--TYPO3SEARCH_begin-->
+                    <f:cObject typoscriptObjectPath="lib.content" data="{colPos: '0'}" />
+                    <!--TYPO3SEARCH_end-->
+
+                    <f:if condition="{post.tags -> f:count()}">
+                        <hr />
+                        <ul class="list-tags list-pipe my-4">
+                            <f:for as="tag" each="{post.tags}">
+                                <li>{tag.title}</li>
+                            </f:for>
+                        </ul>
+                    </f:if>
+
+                    <hr />
+
+                    <div class="mb-5">
+                        {blogvh:data.contentListOptions(listType: 'blog_authors')}
+                        <f:cObject typoscriptObjectPath="tt_content" data="{contentObjectData}" table="tt_content"/>
+                    </div>
+
+                    <hr />
+
+
+
+                </t3bc:column>
+                <t3bc:column lg="3" xl="3" xxl="2" class="col-menu ps-xxl-6" role="complementary">
+
+                    <f:render section="renderPlugin" arguments="{listType: 'blog_sidebar'}" />
+
+                    <!--TYPO3SEARCH_begin-->
+                    <f:cObject typoscriptObjectPath="lib.content" data="{colPos: '1'}" />
+                    <!--TYPO3SEARCH_end-->
+                </t3bc:column>
+            </div>
+
+
+        </div>
+    </div>
+
+</f:section>
+
+<f:section name="renderPlugin">
+
+    {blogvh:data.contentListOptions(listType: listType)}
+    <f:cObject typoscriptObjectPath="tt_content" data="{contentObjectData}" table="tt_content"/>
+
+</f:section>
+
+</html>

@@ -1,0 +1,46 @@
+<f:layout name="Default" />
+<f:section name="Content">
+    <f:if condition="{category}">
+        <f:then>
+
+            <div class="blogarchiveheader blogarchiveheader--category">
+                <h1 class="blogarchiveheader__title">
+                    <span class="blogarchiveheader__titletext">
+                        <f:translate key="headline.category.simple" />:
+                        {category.title}
+                    </span>
+                </h1>
+                <div class="blogarchiveheader__description">
+                    <p>{category.description}</p>
+                </div>
+            </div>
+            <f:render partial="List" arguments="{_all}" />
+            <f:if condition="{settings.categoryUid} || {category.content}">
+                <div class="blogarchivefooter blogarchivefooter--category">
+                    <f:if condition="{category.content}">
+                        <div class="blogarchivefooter__content">
+                            <f:cObject typoscriptObjectPath="lib.blog.contentElementRendering">{category.contentElementUidList}</f:cObject>
+                        </div>
+                    </f:if>
+                </div>
+            </f:if>
+
+        </f:then>
+        <f:else>
+
+            <div class="blogarchiveheader blogarchiveheader--categories">
+                <h1 class="blogarchiveheader__title">
+                    <span class="blogarchiveheader__titletext">
+                        <f:translate key="headline.categories" />
+                    </span>
+                </h1>
+            </div>
+            <div class="bloglist bloglist--categories">
+                <f:for each="{categories}" as="category">
+                    <f:render partial="List/Category" arguments="{_all}" />
+                </f:for>
+            </div>
+
+        </f:else>
+    </f:if>
+</f:section>

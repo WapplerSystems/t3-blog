@@ -1,0 +1,45 @@
+<f:layout name="Default" />
+<f:section name="Content">
+    <f:if condition="{tag}">
+        <f:then>
+
+            <div class="blogarchiveheader blogarchiveheader--tag">
+                <h1 class="blogarchiveheader__title">
+                    <span class="page__titletext">
+                        <f:translate key="headline.tag.simple" />:
+                        {tag.title}
+                    </span>
+                </h1>
+                <div class="blogarchiveheader__description">
+                    <p>{tag.description}</p>
+                </div>
+            </div>
+            <f:render partial="List" arguments="{_all}" />
+            <f:if condition="{settings.tagUid} || {tag.content}">
+                <div class="blogarchivefooter blogarchivefooter--tag">
+                    <f:if condition="{tag.content}">
+                        <div class="blogarchivefooter__content">
+                            <f:cObject typoscriptObjectPath="lib.blog.contentElementRendering">{tag.contentElementUidList}</f:cObject>
+                        </div>
+                    </f:if>
+                </div>
+            </f:if>
+        </f:then>
+        <f:else>
+
+            <div class="blogarchiveheader blogarchiveheader--tags">
+                <h1 class="blogarchiveheader__title">
+                    <span class="blogarchiveheader__titletext">
+                        <f:translate key="headline.tags" />
+                    </span>
+                </h1>
+            </div>
+            <div class="bloglist bloglist--tag">
+                <f:for each="{tags}" as="tag">
+                    <f:render partial="List/Tag" arguments="{_all}" />
+                </f:for>
+            </div>
+
+        </f:else>
+    </f:if>
+</f:section>

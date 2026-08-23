@@ -1,0 +1,38 @@
+mod.web_layout.BackendLayouts {
+  Blog {
+    title = LLL:EXT:t3bootstrap_blog/Resources/Private/Language/tsconfig.xlf:be_layout.blog
+    icon = EXT:template/Resources/Public/Icons/2columns.svg
+    config {
+      backend_layout {
+        colCount = 6
+        rowCount = 2
+        rows {
+          1 {
+            columns {
+              1 {
+                name = LLL:EXT:template/Resources/Private/Language/tsconfig.xlf:be_layout.hero
+                colPos = 5
+                colspan = 6
+              }
+            }
+          }
+          2 {
+            columns {
+              1 {
+                name = LLL:EXT:template/Resources/Private/Language/tsconfig.xlf:be_layout.main_content
+                colPos = 0
+                colspan = 5
+              }
+              2 {
+                name = LLL:EXT:template/Resources/Private/Language/tsconfig.xlf:be_layout.menu_column
+                colPos = 1
+              }
+
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

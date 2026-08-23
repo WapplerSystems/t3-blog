@@ -1,0 +1,10 @@
+<f:layout name="Default" />
+<f:section name="Content">
+    <div class="blog__widgets">
+        <f:for each="{settings.sidebarWidgets}" as="widget">
+            <f:cObject typoscriptObjectPath="{widget}" />
+        </f:for>
+    </div>
+
+
+</f:section>

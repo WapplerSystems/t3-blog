@@ -1,0 +1,21 @@
+<f:spaceless>
+    <div class="postauthor postauthor--full" itemprop="author" itemscope itemtype="http://schema.org/Person" data-blog-author="{author.uid}">
+        <div class="postauthor__body">
+            <div class="postauthor__intro"><f:translate key="author.aboutTheAuthor"/></div>
+            <div class="postauthor__name"><f:render section="ProfileLink" arguments="{_all}" contentAs="content">{author.name}</f:render></div>
+            <f:if condition="{author.title} || {author.location}">
+                <div class="postauthor__subline">
+                    <f:if condition="{author.title}"><span class="postauthor__title" itemprop="jobTitle">{author.title}</span></f:if>
+                    <f:if condition="{author.title} && {author.location}"><span class="postauthor__sublinedivider">,</span></f:if>
+                    <f:if condition="{author.location}"><span class="postauthor__location" itemprop="homeLocation">{author.location}</span></f:if>
+                </div>
+            </f:if>
+        </div>
+    </div>
+    <f:section name="ProfileLink">
+        <f:if condition="{author.detailsPage} || {settings.authorUid}">
+            <f:then><blogvh:link.author rel="author" author="{author}"><span itemprop="name">{content}</span></blogvh:link.author></f:then>
+            <f:else><span itemprop="name">{content}</span></f:else>
+        </f:if>
+    </f:section>
+</f:spaceless>
