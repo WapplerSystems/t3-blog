@@ -28,3 +28,5 @@ var/
 
 # AI
 .mcp.json
+# vom TYPO3-Composer-Installer erzeugt
+/public/

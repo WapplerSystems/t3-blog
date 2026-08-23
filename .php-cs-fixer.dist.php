@@ -69,6 +69,7 @@ return (new PhpCsFixer\Config())
             ->exclude('.build')
             ->exclude('config')
             ->exclude('node_modules')
+            ->exclude('public')
             ->exclude('var')
             ->in(__DIR__)
     );
