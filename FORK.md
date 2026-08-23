@@ -29,6 +29,35 @@ Fork von [t3g/blog](https://github.com/TYPO3GmbH/blog) mit eingefalteter Bruecke
   `FrontendUserCommentFormFinisher`, dazu `Comment::$author` auf `fe_users`. Der
   Upstream-Pfad fuer anonyme Kommentare mit Captcha bleibt unveraendert daneben bestehen.
 
+## Performance
+
+Auf der Blog-Uebersicht (12 dargestellte Beitraege) kostete ein ungecachter
+Seitenaufbau urspruenglich 5,9 Sekunden und 5.244 SQL-Statements, eine normale
+Inhaltsseite derselben Installation 1,3 Sekunden und 472 Statements.
+
+Ursache waren nicht die Abfragen selbst, sondern ihre Zahl: die
+ObjectStorage-Relationen der Modelle trugen `@Extbase\ORM\Lazy` im Doc-Block.
+**TYPO3 v14 liest die Lazy-Markierung nur noch als PHP-Attribut**
+(`ClassSchema::reflectProperties` wertet `\ReflectionProperty::getAttributes()`
+aus, Doc-Bloecke werden nicht mehr geparst). Saemtliche Relationen waren damit
+eager, und jeder hydrierte Beitrag zog drei MM-Abfragen plus eine
+Kommentar-Abfrage nach - letztere braucht eine Listenansicht nie.
+
+Nach der Umstellung auf `#[Lazy]`:
+
+| | vorher | nachher |
+|---|---|---|
+| SQL-Statements | 5.244 | 985 |
+| TTFB ungecacht | 5,9 s | 2,0 s |
+| `SELECT * FROM pages WHERE uid = ?` | 1.340 | 36 |
+
+Der Fehler steckt genauso im Upstream - ein Kandidat fuer einen Pull Request.
+
+Wer hier weiter optimiert: messen laesst sich das am ehrlichsten ueber das
+MySQL-General-Log. Achtung, mysqli protokolliert vorbereitete Anweisungen als
+`Prepare`/`Execute`, nicht als `Query` - ein Filter auf `command_type='Query'`
+zeigt faelschlich fast nichts an.
+
 ## Fallstricke beim Umstieg von blog/t3bootstrap_blog
 
 1. **Der Extbase-Extensionname bleibt `Blog`.** CType (`blog_posts`, `blog_category`, ...),
