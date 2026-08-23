@@ -133,6 +133,12 @@ lib.blog.element.sidebar {
 plugin.tx_blog {
 
   settings {
+    # Seitentypen der Ajax-Nachladeseiten weiter unten in dieser Datei (blog_ajax*).
+    ajax.pageTypes {
+      recent = 74385
+      category = 74386
+      tag = 74387
+    }
     listDesign = {$t3bootstrap-blog.listDesign}
     sidebarWidgets >
     sidebarWidgets {

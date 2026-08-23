@@ -1,6 +1,6 @@
 <?php
 
-namespace T3Bootstrap\Blog\DataProcessing;
+namespace T3G\AgencyPack\Blog\DataProcessing;
 
 
 use TYPO3\CMS\Core\Resource\FileReference;

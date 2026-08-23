@@ -12,6 +12,7 @@ namespace T3G\AgencyPack\Blog\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use GeorgRinger\NumberedPagination\NumberedPagination;
 use T3G\AgencyPack\Blog\Domain\Model\Author;
 use T3G\AgencyPack\Blog\Domain\Model\Category;
 use T3G\AgencyPack\Blog\Domain\Model\Post;
@@ -23,13 +24,16 @@ use T3G\AgencyPack\Blog\Domain\Repository\TagRepository;
 use T3G\AgencyPack\Blog\Factory\PostRepositoryDemandFactory;
 use T3G\AgencyPack\Blog\Pagination\BlogPagination;
 use T3G\AgencyPack\Blog\Service\CacheService;
+use T3G\AgencyPack\Blog\Pagination\QueryResultPaginator;
+use TYPO3\CMS\Core\Pagination\PaginationInterface;
+use TYPO3\CMS\Core\Pagination\PaginatorInterface;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
 use T3G\AgencyPack\Blog\Service\MetaTagService;
 use T3G\AgencyPack\Blog\Utility\ArchiveUtility;
 use T3G\AgencyPack\Blog\Utility\Socials\MastodonUtility;
 use TYPO3\CMS\Core\Http\NormalizedParams;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3Fluid\Fluid\View\ViewInterface;
@@ -120,19 +124,64 @@ class PostController extends ActionController
     {
         if ($this->request->getFormat() === 'rss') {
             $maximumItems = (int) ($this->settings['rss']['maximumDisplayedItems'] ?? 10);
-        } else {
-            $maximumItems = (int) ($this->settings['lists']['posts']['maximumDisplayedItems'] ?? 0);
+            $this->view->assign('type', 'recent');
+            $this->view->assign('posts', $this->postRepository->findAllWithLimit($maximumItems));
+            $this->view->assign('pagination', null);
+
+            return $this->htmlResponse();
         }
+
+        $maximumItems = (int) ($this->settings['lists']['posts']['maximumDisplayedItems'] ?? 0);
         $posts = (0 === $maximumItems)
             ? $this->postRepository->findAll()
             : $this->postRepository->findAllWithLimit($maximumItems);
-        if ($this->request->getFormat() !== 'rss') {
-            $pagination = $this->getPagination($posts, $currentPage);
+
+        $paginationConfiguration = $this->settings['lists']['pagination'] ?? [];
+        $itemsPerPage = (int) (($paginationConfiguration['itemsPerPage'] ?? '') ?: 12);
+        $maximumNumberOfLinks = (int) ($paginationConfiguration['maximumNumberOfLinks'] ?? 0);
+
+        $paginator = GeneralUtility::makeInstance(
+            QueryResultPaginator::class,
+            $posts,
+            $currentPage,
+            $itemsPerPage,
+            (int) ($this->settings['limit'] ?? 0),
+            (int) ($this->settings['offset'] ?? 0)
+        );
+        $pagination = $this->getPaginationInstance(
+            $paginationConfiguration['class'] ?? BlogPagination::class,
+            $maximumNumberOfLinks,
+            $paginator
+        );
+
+        $ajaxPageType = $this->getAjaxPageType('recent');
+        $previousPageAjaxUri = '';
+        if ($pagination->getPreviousPageNumber() && ($pagination->getPreviousPageNumber() >= $pagination->getFirstPageNumber())) {
+            $previousPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
+                ->setTargetPageType($ajaxPageType)
+                ->uriFor('listRecentPosts', ['currentPage' => $currentPage - 1], 'Post', 'blog', 'Posts');
         }
 
-        $this->view->assign('type', 'recent');
-        $this->view->assign('posts', $posts);
-        $this->view->assign('pagination', $pagination ?? null);
+        $nextPageAjaxUri = '';
+        if ($pagination->getNextPageNumber() && ($pagination->getNextPageNumber() <= $pagination->getLastPageNumber())) {
+            $nextPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
+                ->setTargetPageType($ajaxPageType)
+                ->uriFor('listRecentPosts', ['currentPage' => $currentPage + 1], 'Post', 'blog', 'Posts');
+        }
+
+        $this->view->assignMultiple([
+            'settings' => $this->settings,
+            'type' => 'recent',
+            'posts' => $posts,
+            'nextPage' => $currentPage + 1,
+            'previousPage' => $currentPage - 1,
+            'currentPage' => $currentPage,
+            'paginator' => $paginator,
+            'pagination' => $pagination,
+            'previousPageAjaxUri' => $previousPageAjaxUri,
+            'nextPageAjaxUri' => $nextPageAjaxUri,
+        ]);
+
         return $this->htmlResponse();
     }
 
@@ -219,23 +268,83 @@ class PostController extends ActionController
             }
         }
 
-        if ($category !== null) {
-            if ($this->request->getFormat() === 'rss') {
-                $maximumItems = (int) ($this->settings['rss']['maximumDisplayedItems'] ?? 10);
-            }
-            $posts = $this->postRepository->findAllByCategoryWithLimit($category, $maximumItems ?? 0);
-            if ($this->request->getFormat() !== 'rss') {
-                $pagination = $this->getPagination($posts, $currentPage);
-            }
+        if ($category === null) {
+            $this->view->assign('categories', $this->categoryRepository->findAll());
+
+            return $this->htmlResponse();
+        }
+
+        if ($this->request->getFormat() === 'rss') {
+            $maximumItems = (int) ($this->settings['rss']['maximumDisplayedItems'] ?? 10);
             $this->view->assign('type', 'bycategory');
-            $this->view->assign('posts', $posts);
-            $this->view->assign('pagination', $pagination ?? null);
+            $this->view->assign('posts', $this->postRepository->findAllByCategoryWithLimit($category, $maximumItems));
+            $this->view->assign('pagination', null);
             $this->view->assign('category', $category);
             MetaTagService::set(MetaTagService::META_TITLE, (string) $category->getTitle());
             MetaTagService::set(MetaTagService::META_DESCRIPTION, (string) $category->getDescription());
-        } else {
-            $this->view->assign('categories', $this->categoryRepository->findAll());
+
+            return $this->htmlResponse();
         }
+
+        $posts = $this->postRepository->findAllByCategory($category);
+
+        $paginationConfiguration = $this->settings['lists']['pagination'] ?? [];
+        $itemsPerPage = (int) (($paginationConfiguration['itemsPerPage'] ?? '') ?: 12);
+        $maximumNumberOfLinks = (int) ($paginationConfiguration['maximumNumberOfLinks'] ?? 0);
+
+        $paginator = GeneralUtility::makeInstance(
+            QueryResultPaginator::class,
+            $posts,
+            $currentPage,
+            $itemsPerPage,
+            (int) ($this->settings['limit'] ?? 0),
+            (int) ($this->settings['offset'] ?? 0)
+        );
+        $pagination = $this->getPaginationInstance(
+            $paginationConfiguration['class'] ?? SimplePagination::class,
+            $maximumNumberOfLinks,
+            $paginator
+        );
+
+        $ajaxPageType = $this->getAjaxPageType('category');
+        $ajaxArguments = ['tx_blog_category[category]' => $category->getUid()];
+        $previousPageAjaxUri = '';
+        if ($pagination->getPreviousPageNumber() && ($pagination->getPreviousPageNumber() >= $pagination->getFirstPageNumber())) {
+            $previousPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
+                ->setTargetPageType($ajaxPageType)
+                ->setArguments($ajaxArguments)
+                ->uriFor('listPostsByCategory', ['currentPage' => $currentPage - 1], 'Post', 'blog', 'Category');
+        }
+
+        $nextPageAjaxUri = '';
+        if ($pagination->getNextPageNumber() && ($pagination->getNextPageNumber() <= $pagination->getLastPageNumber())) {
+            $nextPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
+                ->setTargetPageType($ajaxPageType)
+                ->setArguments($ajaxArguments)
+                ->uriFor('listPostsByCategory', ['currentPage' => $currentPage + 1], 'Post', 'blog', 'Category');
+        }
+
+        $this->view->assignMultiple([
+            'settings' => $this->settings,
+            'type' => 'bycategory',
+            'posts' => $posts,
+            'category' => $category,
+            'nextPage' => $currentPage + 1,
+            'previousPage' => $currentPage - 1,
+            // Die verschachtelte Form stammt aus t3bootstrap_blog; die Bootstrap-Partials
+            // lesen pagination.paginator und pagination.pagination.
+            'pagination' => [
+                'currentPage' => $currentPage,
+                'paginator' => $paginator,
+                'pagination' => $pagination,
+            ],
+            'previousPageAjaxUri' => $previousPageAjaxUri,
+            'nextPageAjaxUri' => $nextPageAjaxUri,
+        ]);
+
+        MetaTagService::set(MetaTagService::META_TITLE, (string) $category->getTitle());
+        MetaTagService::set(MetaTagService::META_DESCRIPTION, (string) $category->getDescription());
+
         return $this->htmlResponse();
     }
 
@@ -269,23 +378,81 @@ class PostController extends ActionController
      */
     public function listPostsByTagAction(?Tag $tag = null, int $currentPage = 1): ResponseInterface
     {
-        if ($tag !== null) {
-            if ($this->request->getFormat() === 'rss') {
-                $maximumItems = (int) ($this->settings['rss']['maximumDisplayedItems'] ?? 10);
-            }
-            $posts = $this->postRepository->findAllByTagWithLimit($tag, $maximumItems ?? 0);
-            if ($this->request->getFormat() !== 'rss') {
-                $pagination = $this->getPagination($posts, $currentPage);
-            }
+        if ($tag === null) {
+            $this->view->assign('tags', $this->tagRepository->findAll());
+
+            return $this->htmlResponse();
+        }
+
+        if ($this->request->getFormat() === 'rss') {
+            $maximumItems = (int) ($this->settings['rss']['maximumDisplayedItems'] ?? 10);
             $this->view->assign('type', 'bytag');
-            $this->view->assign('posts', $posts);
-            $this->view->assign('pagination', $pagination ?? null);
+            $this->view->assign('posts', $this->postRepository->findAllByTagWithLimit($tag, $maximumItems));
+            $this->view->assign('pagination', null);
             $this->view->assign('tag', $tag);
             MetaTagService::set(MetaTagService::META_TITLE, (string) $tag->getTitle());
             MetaTagService::set(MetaTagService::META_DESCRIPTION, (string) $tag->getDescription());
-        } else {
-            $this->view->assign('tags', $this->tagRepository->findAll());
+
+            return $this->htmlResponse();
         }
+
+        $posts = $this->postRepository->findAllByTag($tag);
+
+        $paginationConfiguration = $this->settings['lists']['pagination'] ?? [];
+        $itemsPerPage = (int) (($paginationConfiguration['itemsPerPage'] ?? '') ?: 12);
+        $maximumNumberOfLinks = (int) ($paginationConfiguration['maximumNumberOfLinks'] ?? 0);
+
+        $paginator = GeneralUtility::makeInstance(
+            QueryResultPaginator::class,
+            $posts,
+            $currentPage,
+            $itemsPerPage,
+            (int) ($this->settings['limit'] ?? 0),
+            (int) ($this->settings['offset'] ?? 0)
+        );
+        $pagination = $this->getPaginationInstance(
+            $paginationConfiguration['class'] ?? SimplePagination::class,
+            $maximumNumberOfLinks,
+            $paginator
+        );
+
+        $ajaxPageType = $this->getAjaxPageType('tag');
+        $ajaxArguments = ['tx_blog_tag[tag]' => $tag->getUid()];
+        $previousPageAjaxUri = '';
+        if ($pagination->getPreviousPageNumber() && ($pagination->getPreviousPageNumber() >= $pagination->getFirstPageNumber())) {
+            $previousPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
+                ->setTargetPageType($ajaxPageType)
+                ->setArguments($ajaxArguments)
+                ->uriFor('listPostsByTag', ['currentPage' => $currentPage - 1], 'Post', 'blog', 'Tag');
+        }
+
+        $nextPageAjaxUri = '';
+        if ($pagination->getNextPageNumber() && ($pagination->getNextPageNumber() <= $pagination->getLastPageNumber())) {
+            $nextPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
+                ->setTargetPageType($ajaxPageType)
+                ->setArguments($ajaxArguments)
+                ->uriFor('listPostsByTag', ['currentPage' => $currentPage + 1], 'Post', 'blog', 'Tag');
+        }
+
+        $this->view->assignMultiple([
+            'settings' => $this->settings,
+            'type' => 'bytag',
+            'posts' => $posts,
+            'tag' => $tag,
+            'nextPage' => $currentPage + 1,
+            'previousPage' => $currentPage - 1,
+            'pagination' => [
+                'currentPage' => $currentPage,
+                'paginator' => $paginator,
+                'pagination' => $pagination,
+            ],
+            'previousPageAjaxUri' => $previousPageAjaxUri,
+            'nextPageAjaxUri' => $nextPageAjaxUri,
+        ]);
+
+        MetaTagService::set(MetaTagService::META_TITLE, (string) $tag->getTitle());
+        MetaTagService::set(MetaTagService::META_DESCRIPTION, (string) $tag->getDescription());
+
         return $this->htmlResponse();
     }
 
@@ -379,6 +546,34 @@ class PostController extends ActionController
                 MetaTagService::set(MetaTagService::META_FEDIVERSE_CREATOR, $mastodonHandle);
             }
         }
+    }
+
+    /**
+     * Die Ajax-Nachladeseiten sind PAGE-Objekte des Sets (typeNum 74385/74386/74387).
+     * Ueber die Settings ueberschreibbar, damit ein Projekt eigene Typen vergeben kann.
+     */
+    protected function getAjaxPageType(string $listType): int
+    {
+        $defaults = ['recent' => 74385, 'category' => 74386, 'tag' => 74387];
+
+        return (int) ($this->settings['ajax']['pageTypes'][$listType] ?? $defaults[$listType] ?? 0);
+    }
+
+    /**
+     * Baut die Pagination zum konfigurierten Klassennamen; faellt auf SimplePagination
+     * zurueck, wenn die konfigurierte Klasse fehlt.
+     */
+    protected function getPaginationInstance(string $paginationClass, int $maximumNumberOfLinks, PaginatorInterface $paginator): PaginationInterface
+    {
+        if ($maximumNumberOfLinks && $paginationClass === NumberedPagination::class && class_exists(NumberedPagination::class)) {
+            return GeneralUtility::makeInstance(NumberedPagination::class, $paginator, $maximumNumberOfLinks);
+        }
+
+        if (class_exists($paginationClass)) {
+            return GeneralUtility::makeInstance($paginationClass, $paginator);
+        }
+
+        return GeneralUtility::makeInstance(SimplePagination::class, $paginator);
     }
 
     protected function getPagination(QueryResultInterface $objects, int $currentPage = 1): ?BlogPagination

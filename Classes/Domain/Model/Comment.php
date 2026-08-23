@@ -27,6 +27,14 @@ class Comment extends AbstractEntity
     protected $name;
 
     /**
+     * The frontend user who wrote the comment. Only set when the comment was
+     * submitted through the logged-in variant of the comment form; anonymous
+     * comments carry name/email/url instead.
+     */
+    protected ?FrontendUser $author = null;
+
+
+    /**
      * The email of the comment author.
      *
      * @var string
@@ -270,5 +278,15 @@ class Comment extends AbstractEntity
     {
         $this->status = $status;
         return $this;
+    }
+
+    public function getAuthor(): ?FrontendUser
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?FrontendUser $author): void
+    {
+        $this->author = $author;
     }
 }

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace T3Bootstrap\Blog\Domain\Finisher;
+namespace T3G\AgencyPack\Blog\Domain\Finisher;
 
-use T3Bootstrap\Blog\Domain\Model\Comment;
-use T3Bootstrap\Blog\Domain\Repository\FrontendUserRepository;
+use T3G\AgencyPack\Blog\Domain\Model\Comment;
+use T3G\AgencyPack\Blog\Domain\Repository\FrontendUserRepository;
 use T3G\AgencyPack\Blog\Domain\Repository\CommentRepository;
 use T3G\AgencyPack\Blog\Domain\Repository\PostRepository;
 use T3G\AgencyPack\Blog\Notification\CommentAddedNotification;
@@ -24,7 +24,7 @@ use TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher;
  *
  * Scope: frontend
  */
-class CommentFormFinisher extends AbstractFinisher
+class FrontendUserCommentFormFinisher extends AbstractFinisher
 {
 
     public function __construct(private PostRepository $postRepository,
@@ -71,7 +71,7 @@ class CommentFormFinisher extends AbstractFinisher
         // Create Comment
         $values = $this->finisherContext->getFormValues();
         $comment = new Comment();
-        if ($frontendUser instanceof \T3Bootstrap\Blog\Domain\Model\FrontendUser) {
+        if ($frontendUser instanceof \T3G\AgencyPack\Blog\Domain\Model\FrontendUser) {
             $comment->setAuthor($frontendUser);
             $comment->setName(trim($frontendUser->getFirstName() . ' ' . $frontendUser->getLastName()) ?: $frontendUser->getName() ?: $frontendUser->getUsername());
             $comment->setEmail($frontendUser->getEmail());

@@ -8,11 +8,11 @@ declare(strict_types = 1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace T3Bootstrap\Blog\Domain\Factory;
+namespace T3G\AgencyPack\Blog\Domain\Factory;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
-use T3Bootstrap\Blog\Domain\Finisher\CommentFormFinisher;
+use T3G\AgencyPack\Blog\Domain\Finisher\FrontendUserCommentFormFinisher;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -25,7 +25,7 @@ use TYPO3\CMS\Form\Domain\Finishers\RedirectFinisher;
 use TYPO3\CMS\Form\Domain\Model\FormDefinition;
 
 #[Autoconfigure(public: true, shared: false)]
-class CommentFormFactory extends AbstractFormFactory
+class FrontendUserCommentFormFactory extends AbstractFormFactory
 {
     /**
      * Build a FormDefinition.
@@ -71,9 +71,9 @@ class CommentFormFactory extends AbstractFormFactory
         $userIsLoggedIn = $context->getPropertyFromAspect('frontend.user', 'isLoggedIn');
         if ($userIsLoggedIn) {
             // Finisher
-            $commentFinisher = GeneralUtility::makeInstance(CommentFormFinisher::class);
+            $commentFinisher = GeneralUtility::makeInstance(FrontendUserCommentFormFinisher::class);
             if (method_exists($commentFinisher, 'setFinisherIdentifier')) {
-                $commentFinisher->setFinisherIdentifier(CommentFormFinisher::class);
+                $commentFinisher->setFinisherIdentifier(FrontendUserCommentFormFinisher::class);
             }
             $form->addFinisher($commentFinisher);
 

@@ -60,6 +60,15 @@ return [
                 'default' => 0,
             ],
         ],
+        'author' => [
+            'label' => 'LLL:EXT:blog/Resources/Private/Language/locallang_db.xlf:tx_blog_domain_model_comment.author',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'fe_users',
+                'size' => 1,
+                'maxitems' => 1,
+            ],
+        ],
         'name' => [
             'label' => $ll . 'tx_blog_domain_model_comment.name',
             'config' => [

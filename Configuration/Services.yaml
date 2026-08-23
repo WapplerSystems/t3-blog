@@ -10,6 +10,11 @@ services:
   T3G\AgencyPack\Blog\Domain\Factory\CommentFormFactory:
     public: true
 
+  T3G\AgencyPack\Blog\Domain\Factory\FrontendUserCommentFormFactory:
+    public: true
+    shared: false
+
+
   T3G\AgencyPack\Blog\Listener\RenderAdditionalContentToRecordList:
     tags:
       - name: event.listener

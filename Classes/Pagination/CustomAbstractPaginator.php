@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 
-namespace T3Bootstrap\Blog\Pagination;
+namespace T3G\AgencyPack\Blog\Pagination;
 
 use TYPO3\CMS\Core\Pagination\AbstractPaginator;
 

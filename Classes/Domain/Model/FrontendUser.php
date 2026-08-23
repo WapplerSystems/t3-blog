@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace T3Bootstrap\Blog\Domain\Model;
+namespace T3G\AgencyPack\Blog\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 

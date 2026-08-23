@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace T3Bootstrap\Blog\Domain\Repository;
+namespace T3G\AgencyPack\Blog\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
