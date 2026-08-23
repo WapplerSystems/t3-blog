@@ -28,7 +28,7 @@ final class SetupServiceTest extends FunctionalTestCase
     ];
 
     protected array $testExtensionsToLoad = [
-        'blog'
+        'ws_blog'
     ];
 
     protected function setUp(): void

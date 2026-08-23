@@ -19,7 +19,6 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher;
 use WapplerSystems\Blog\Domain\Model\Comment;
-use WapplerSystems\Blog\Domain\Repository\CommentRepository;
 use WapplerSystems\Blog\Domain\Repository\FrontendUserRepository;
 use WapplerSystems\Blog\Domain\Repository\PostRepository;
 use WapplerSystems\Blog\Notification\CommentAddedNotification;
@@ -36,7 +35,6 @@ class FrontendUserCommentFormFinisher extends AbstractFinisher
 
     public function __construct(
         private PostRepository $postRepository,
-        private CommentRepository $commentRepository,
         private CacheService $cacheService,
         private CommentService $commentService,
         private FrontendUserRepository $frontendUserRepository,
@@ -45,7 +43,8 @@ class FrontendUserCommentFormFinisher extends AbstractFinisher
 
     }
 
-    protected static $messages = [
+    /** @var array<int|string, array{title: string, text: string, severity: ContextualFeedbackSeverity}> */
+    protected static array $messages = [
         CommentService::STATE_ERROR => [
             'title' => 'message.addComment.error.title',
             'text' => 'message.addComment.error.text',
@@ -78,7 +77,14 @@ class FrontendUserCommentFormFinisher extends AbstractFinisher
         $comment = new Comment();
         if ($frontendUser instanceof \WapplerSystems\Blog\Domain\Model\FrontendUser) {
             $comment->setAuthor($frontendUser);
-            $comment->setName(trim($frontendUser->getFirstName() . ' ' . $frontendUser->getLastName()) ?: $frontendUser->getName() ?: $frontendUser->getUsername());
+            $name = trim($frontendUser->getFirstName() . ' ' . $frontendUser->getLastName());
+            if ($name === '') {
+                $name = $frontendUser->getName();
+            }
+            if ($name === '') {
+                $name = $frontendUser->getUsername();
+            }
+            $comment->setName($name);
             $comment->setEmail($frontendUser->getEmail());
         }
         $comment->setComment($values['comment'] ?? '');
@@ -100,7 +106,10 @@ class FrontendUserCommentFormFinisher extends AbstractFinisher
         );
 
         $request = $this->finisherContext->getRequest();
-        $pluginNamespace = 'tx_' . strtolower($request->getControllerExtensionName() ?: 'blog') . '_' . strtolower($request->getPluginName() ?: 'commentform');
+        $extensionName = $request->getControllerExtensionName();
+        $pluginName = $request->getPluginName();
+        $pluginNamespace = 'tx_' . strtolower($extensionName !== '' ? $extensionName : 'blog')
+            . '_' . strtolower($pluginName !== '' ? $pluginName : 'commentform');
         $this->flashMessageService
             ->getMessageQueueByIdentifier('extbase.flashmessages.' . $pluginNamespace)
             ->addMessage($flashMessage);

@@ -10,12 +10,12 @@ declare(strict_types = 1);
 
 namespace WapplerSystems\Blog\Updates;
 
+use TYPO3\CMS\Core\Attribute\UpgradeWizard;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Registry;
+use TYPO3\CMS\Core\Upgrades\DatabaseUpdatedPrerequisite;
+use TYPO3\CMS\Core\Upgrades\UpgradeWizardInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Install\Attribute\UpgradeWizard;
-use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
-use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
 /**
  * Beim Zusammenlegen von blog und t3bootstrap_blog zu ws_blog aendern sich die
@@ -53,11 +53,6 @@ final class ExtensionKeyReferenceUpdate implements UpgradeWizardInterface
         'sys_template' => ['config', 'constants', 'include_static_file'],
         'backend_layout' => ['config', 'icon'],
     ];
-
-    public function getIdentifier(): string
-    {
-        return self::class;
-    }
 
     public function getTitle(): string
     {
@@ -118,7 +113,8 @@ final class ExtensionKeyReferenceUpdate implements UpgradeWizardInterface
         $registry = GeneralUtility::makeInstance(Registry::class);
         $flags = [];
 
-        foreach (glob(__DIR__ . '/*.php') ?: [] as $file) {
+        $files = glob(__DIR__ . '/*.php');
+        foreach ($files === false ? [] : $files as $file) {
             $className = self::WIZARD_NAMESPACE . basename($file, '.php');
             if ($className === self::class || !class_exists($className)) {
                 continue;
@@ -153,13 +149,13 @@ final class ExtensionKeyReferenceUpdate implements UpgradeWizardInterface
             if (!$schemaManager->tablesExist([$table])) {
                 continue;
             }
-            $existingColumns = array_map(
-                static fn ($column) => $column->getName(),
-                $schemaManager->listTableColumns($table)
-            );
+            $existingColumns = [];
+            foreach ($schemaManager->introspectTableByUnquotedName($table)->getColumns() as $columnObject) {
+                $existingColumns[] = strtolower($columnObject->getObjectName()->getIdentifier()->getValue());
+            }
 
             foreach ($columns as $column) {
-                if (!in_array(strtolower($column), array_map('strtolower', $existingColumns), true)) {
+                if (!in_array(strtolower($column), $existingColumns, true)) {
                     continue;
                 }
 

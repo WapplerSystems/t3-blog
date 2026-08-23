@@ -1,13 +1,35 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '''
-				#^Call to deprecated method addPiFlexFormValue\(\) of class TYPO3\\CMS\\Core\\Utility\\ExtensionManagementUtility\:
-				Will be removed in TYPO3 v15$#
-			'''
-			identifier: staticMethod.deprecated
-			count: 2
-			path: ../Configuration/TCA/Overrides/tt_content.php
+			message: '#^Method WapplerSystems\\Blog\\DataProcessing\\FeaturedImageProcessor\:\:getFileReference\(\) has parameter \$fieldName with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../Classes/DataProcessing/FeaturedImageProcessor.php
+
+		-
+			message: '#^Method WapplerSystems\\Blog\\DataProcessing\\FeaturedImageProcessor\:\:getSlideRecords\(\) has parameter \$fieldName with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../Classes/DataProcessing/FeaturedImageProcessor.php
+
+		-
+			message: '#^Possibly invalid array key type int\<1, max\>\|null\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 6
+			path: ../Classes/DataTransferObject/PostRepositoryDemand.php
+
+		-
+			message: '#^Call to an undefined method TYPO3\\CMS\\Form\\Domain\\Model\\FormElements\\FormElementInterface\:\:setLabel\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: ../Classes/Domain/Factory/FrontendUserCommentFormFactory.php
+
+		-
+			message: '#^Possibly invalid array key type int\<1, max\>\|null\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 1
+			path: ../Classes/Domain/Repository/PostRepository.php
+
 		-
 			message: '''
 				#^Access to constant on deprecated class TYPO3\\CMS\\Install\\Updates\\DatabaseUpdatedPrerequisite\:
@@ -175,3 +197,42 @@ parameters:
 			identifier: class.implementsDeprecatedInterface
 			count: 1
 			path: ../Classes/Updates/TagSlugUpdate.php
+
+		-
+			message: '#^Possibly invalid array key type int\<1, max\>\|null\.$#'
+			identifier: array.invalidKey
+			count: 1
+			path: ../Classes/ViewHelpers/Link/Be/AuthorViewHelper.php
+
+		-
+			message: '#^Possibly invalid array key type int\<1, max\>\|null\.$#'
+			identifier: array.invalidKey
+			count: 1
+			path: ../Classes/ViewHelpers/Link/Be/CategoryViewHelper.php
+
+		-
+			message: '#^Possibly invalid array key type int\<1, max\>\|null\.$#'
+			identifier: array.invalidKey
+			count: 1
+			path: ../Classes/ViewHelpers/Link/Be/CommentViewHelper.php
+
+		-
+			message: '#^Possibly invalid array key type int\<1, max\>\|null\.$#'
+			identifier: array.invalidKey
+			count: 1
+			path: ../Classes/ViewHelpers/Link/Be/PostViewHelper.php
+
+		-
+			message: '#^Possibly invalid array key type int\<1, max\>\|null\.$#'
+			identifier: array.invalidKey
+			count: 1
+			path: ../Classes/ViewHelpers/Link/Be/TagViewHelper.php
+
+		-
+			message: '''
+				#^Call to deprecated method addPiFlexFormValue\(\) of class TYPO3\\CMS\\Core\\Utility\\ExtensionManagementUtility\:
+				Will be removed in TYPO3 v15$#
+			'''
+			identifier: staticMethod.deprecated
+			count: 2
+			path: ../Configuration/TCA/Overrides/tt_content.php

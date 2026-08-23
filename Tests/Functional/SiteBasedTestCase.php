@@ -27,7 +27,7 @@ abstract class SiteBasedTestCase extends FunctionalTestCase
     ];
 
     protected array $testExtensionsToLoad = [
-        'blog'
+        'ws_blog'
     ];
 
     protected function createTestSite(): void

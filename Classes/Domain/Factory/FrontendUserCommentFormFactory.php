@@ -49,7 +49,7 @@ class FrontendUserCommentFormFactory extends AbstractFormFactory
 
         $form = GeneralUtility::makeInstance(FormDefinition::class, 'postcomment', $prototypeConfiguration);
         $form->setRenderingOption('controllerAction', 'form');
-        $form->setRenderingOption('submitButtonLabel', LocalizationUtility::translate('form.comment.submit', 'ws_blog'));
+        $form->setRenderingOption('submitButtonLabel', (string) LocalizationUtility::translate('form.comment.submit', 'ws_blog'));
         $renderingOptions = $form->getRenderingOptions();
         $renderingOptions['partialRootPaths'][-1634043971] = 'EXT:ws_blog/Resources/Private/Partials/Form/';
         $form->setRenderingOption('partialRootPaths', $renderingOptions['partialRootPaths']);
@@ -57,7 +57,7 @@ class FrontendUserCommentFormFactory extends AbstractFormFactory
         $page = $form->createPage('commentform');
 
         $commentField = $page->createElement('comment', 'Textarea');
-        $commentField->setLabel(LocalizationUtility::translate('form.comment.comment', 'ws_blog'));
+        $commentField->setLabel((string) LocalizationUtility::translate('form.comment.comment', 'ws_blog'));
         $commentField->addValidator(GeneralUtility::makeInstance(NotEmptyValidator::class));
 
         $stringValidator = GeneralUtility::makeInstance(StringLengthValidator::class);
@@ -68,19 +68,15 @@ class FrontendUserCommentFormFactory extends AbstractFormFactory
         $explanationText->setProperty('text', LocalizationUtility::translate('label.required.field', 'ws_blog') . ' ' . LocalizationUtility::translate('label.required.field.explanation', 'ws_blog'));
 
         $context = GeneralUtility::makeInstance(Context::class);
-        $userIsLoggedIn = $context->getPropertyFromAspect('frontend.user', 'isLoggedIn');
+        $userIsLoggedIn = (bool) $context->getPropertyFromAspect('frontend.user', 'isLoggedIn');
         if ($userIsLoggedIn) {
             // Finisher
             $commentFinisher = GeneralUtility::makeInstance(FrontendUserCommentFormFinisher::class);
-            if (method_exists($commentFinisher, 'setFinisherIdentifier')) {
-                $commentFinisher->setFinisherIdentifier(FrontendUserCommentFormFinisher::class);
-            }
+            $commentFinisher->setFinisherIdentifier(FrontendUserCommentFormFinisher::class);
             $form->addFinisher($commentFinisher);
 
             $redirectFinisher = GeneralUtility::makeInstance(RedirectFinisher::class);
-            if (method_exists($redirectFinisher, 'setFinisherIdentifier')) {
-                $redirectFinisher->setFinisherIdentifier(RedirectFinisher::class);
-            }
+            $redirectFinisher->setFinisherIdentifier(RedirectFinisher::class);
             $request = $GLOBALS['TYPO3_REQUEST'] ?? null;
             $pageId = $request?->getAttribute('frontend.page.information')?->getId() ?? 0;
             $redirectFinisher->setOption('pageUid', (string)$pageId);

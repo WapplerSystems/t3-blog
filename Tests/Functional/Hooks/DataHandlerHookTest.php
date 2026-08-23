@@ -26,7 +26,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
     ];
 
     protected array $testExtensionsToLoad = [
-        'typo3conf/ext/blog'
+        'typo3conf/ext/ws_blog'
     ];
 
     protected function setUp(): void

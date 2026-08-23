@@ -79,13 +79,13 @@ class BlogPostHeaderContentRenderer implements SingletonInterface
         $pageRow = $this->connectionPool->getConnectionForTable('pages')
             ->select(['*'], 'pages', ['uid' => $pageUid])
             ->fetchAssociative();
-        if (!$pageRow || (int)($pageRow['doktype'] ?? 0) !== Constants::DOKTYPE_BLOG_POST) {
+        if ($pageRow === false || (int)($pageRow['doktype'] ?? 0) !== Constants::DOKTYPE_BLOG_POST) {
             return null;
         }
 
         $post = new Post();
         $post->_setProperty('uid', (int)$pageRow['uid']);
-        $post->setPid((int)($pageRow['pid'] ?? 0));
+        $post->setPid(max(0, (int)($pageRow['pid'] ?? 0)));
         $post->setTitle((string)($pageRow['title'] ?? ''));
         $post->setSubtitle((string)($pageRow['subtitle'] ?? ''));
         $post->setAbstract((string)($pageRow['abstract'] ?? ''));
@@ -202,7 +202,7 @@ class BlogPostHeaderContentRenderer implements SingletonInterface
             ->setMaxResults(1)
             ->executeQuery()
             ->fetchAssociative();
-        return $row ? (int)$row['uid'] : null;
+        return $row === false ? null : (int)$row['uid'];
     }
 
     protected function getTemplateObject(ServerRequestInterface $request): ViewInterface

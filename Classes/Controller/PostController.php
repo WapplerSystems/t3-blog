@@ -138,7 +138,8 @@ class PostController extends ActionController
             : $this->postRepository->findAllWithLimit($maximumItems);
 
         $paginationConfiguration = $this->settings['lists']['pagination'] ?? [];
-        $itemsPerPage = (int) (($paginationConfiguration['itemsPerPage'] ?? '') ?: 12);
+        $itemsPerPage = (int) ($paginationConfiguration['itemsPerPage'] ?? 0);
+        $itemsPerPage = $itemsPerPage > 0 ? $itemsPerPage : 12;
         $maximumNumberOfLinks = (int) ($paginationConfiguration['maximumNumberOfLinks'] ?? 0);
 
         $paginator = GeneralUtility::makeInstance(
@@ -157,14 +158,14 @@ class PostController extends ActionController
 
         $ajaxPageType = $this->getAjaxPageType('recent');
         $previousPageAjaxUri = '';
-        if ($pagination->getPreviousPageNumber() && ($pagination->getPreviousPageNumber() >= $pagination->getFirstPageNumber())) {
+        if ($pagination->getPreviousPageNumber() !== null && $pagination->getPreviousPageNumber() >= $pagination->getFirstPageNumber()) {
             $previousPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
                 ->setTargetPageType($ajaxPageType)
                 ->uriFor('listRecentPosts', ['currentPage' => $currentPage - 1], 'Post', 'blog', 'Posts');
         }
 
         $nextPageAjaxUri = '';
-        if ($pagination->getNextPageNumber() && ($pagination->getNextPageNumber() <= $pagination->getLastPageNumber())) {
+        if ($pagination->getNextPageNumber() !== null && $pagination->getNextPageNumber() <= $pagination->getLastPageNumber()) {
             $nextPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
                 ->setTargetPageType($ajaxPageType)
                 ->uriFor('listRecentPosts', ['currentPage' => $currentPage + 1], 'Post', 'blog', 'Posts');
@@ -290,7 +291,8 @@ class PostController extends ActionController
         $posts = $this->postRepository->findAllByCategory($category);
 
         $paginationConfiguration = $this->settings['lists']['pagination'] ?? [];
-        $itemsPerPage = (int) (($paginationConfiguration['itemsPerPage'] ?? '') ?: 12);
+        $itemsPerPage = (int) ($paginationConfiguration['itemsPerPage'] ?? 0);
+        $itemsPerPage = $itemsPerPage > 0 ? $itemsPerPage : 12;
         $maximumNumberOfLinks = (int) ($paginationConfiguration['maximumNumberOfLinks'] ?? 0);
 
         $paginator = GeneralUtility::makeInstance(
@@ -310,7 +312,7 @@ class PostController extends ActionController
         $ajaxPageType = $this->getAjaxPageType('category');
         $ajaxArguments = ['tx_blog_category[category]' => $category->getUid()];
         $previousPageAjaxUri = '';
-        if ($pagination->getPreviousPageNumber() && ($pagination->getPreviousPageNumber() >= $pagination->getFirstPageNumber())) {
+        if ($pagination->getPreviousPageNumber() !== null && $pagination->getPreviousPageNumber() >= $pagination->getFirstPageNumber()) {
             $previousPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
                 ->setTargetPageType($ajaxPageType)
                 ->setArguments($ajaxArguments)
@@ -318,7 +320,7 @@ class PostController extends ActionController
         }
 
         $nextPageAjaxUri = '';
-        if ($pagination->getNextPageNumber() && ($pagination->getNextPageNumber() <= $pagination->getLastPageNumber())) {
+        if ($pagination->getNextPageNumber() !== null && $pagination->getNextPageNumber() <= $pagination->getLastPageNumber()) {
             $nextPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
                 ->setTargetPageType($ajaxPageType)
                 ->setArguments($ajaxArguments)
@@ -400,7 +402,8 @@ class PostController extends ActionController
         $posts = $this->postRepository->findAllByTag($tag);
 
         $paginationConfiguration = $this->settings['lists']['pagination'] ?? [];
-        $itemsPerPage = (int) (($paginationConfiguration['itemsPerPage'] ?? '') ?: 12);
+        $itemsPerPage = (int) ($paginationConfiguration['itemsPerPage'] ?? 0);
+        $itemsPerPage = $itemsPerPage > 0 ? $itemsPerPage : 12;
         $maximumNumberOfLinks = (int) ($paginationConfiguration['maximumNumberOfLinks'] ?? 0);
 
         $paginator = GeneralUtility::makeInstance(
@@ -420,7 +423,7 @@ class PostController extends ActionController
         $ajaxPageType = $this->getAjaxPageType('tag');
         $ajaxArguments = ['tx_blog_tag[tag]' => $tag->getUid()];
         $previousPageAjaxUri = '';
-        if ($pagination->getPreviousPageNumber() && ($pagination->getPreviousPageNumber() >= $pagination->getFirstPageNumber())) {
+        if ($pagination->getPreviousPageNumber() !== null && $pagination->getPreviousPageNumber() >= $pagination->getFirstPageNumber()) {
             $previousPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
                 ->setTargetPageType($ajaxPageType)
                 ->setArguments($ajaxArguments)
@@ -428,7 +431,7 @@ class PostController extends ActionController
         }
 
         $nextPageAjaxUri = '';
-        if ($pagination->getNextPageNumber() && ($pagination->getNextPageNumber() <= $pagination->getLastPageNumber())) {
+        if ($pagination->getNextPageNumber() !== null && $pagination->getNextPageNumber() <= $pagination->getLastPageNumber()) {
             $nextPageAjaxUri = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)
                 ->setTargetPageType($ajaxPageType)
                 ->setArguments($ajaxArguments)
@@ -566,12 +569,15 @@ class PostController extends ActionController
      */
     protected function getPaginationInstance(string $paginationClass, int $maximumNumberOfLinks, PaginatorInterface $paginator): PaginationInterface
     {
-        if ($maximumNumberOfLinks && $paginationClass === NumberedPagination::class && class_exists(NumberedPagination::class)) {
+        if ($maximumNumberOfLinks > 0 && $paginationClass === NumberedPagination::class && class_exists(NumberedPagination::class)) {
             return GeneralUtility::makeInstance(NumberedPagination::class, $paginator, $maximumNumberOfLinks);
         }
 
         if (class_exists($paginationClass)) {
-            return GeneralUtility::makeInstance($paginationClass, $paginator);
+            $pagination = GeneralUtility::makeInstance($paginationClass, $paginator);
+            if ($pagination instanceof PaginationInterface) {
+                return $pagination;
+            }
         }
 
         return GeneralUtility::makeInstance(SimplePagination::class, $paginator);
