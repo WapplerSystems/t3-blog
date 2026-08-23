@@ -6,7 +6,7 @@
             <header class="blogarchiveheader blogarchiveheader--tag">
                 <h1 class="blogarchiveheader__title">
                     <span class="page__titletext">
-                        <f:translate key="headline.tag.simple" />:
+                        <f:translate extensionName="WsBlog" key="headline.tag.simple" />:
                         {tag.title}
                     </span>
                     <blogvh:link.tag class="page__titlelink" rss="true" tag="{tag}">
@@ -23,7 +23,7 @@
                     <f:if condition="{settings.tagUid}">
                         <div class="blogarchivefooter__backlink">
                             <f:link.page pageUid="{settings.tagUid}">
-                                <f:translate key="list.backlink.tags" />
+                                <f:translate extensionName="WsBlog" key="list.backlink.tags" />
                             </f:link.page>
                         </div>
                     </f:if>
@@ -40,7 +40,7 @@
             <header class="blogarchiveheader blogarchiveheader--tags">
                 <h1 class="blogarchiveheader__title">
                     <span class="blogarchiveheader__titletext">
-                        <f:translate key="headline.tags" />
+                        <f:translate extensionName="WsBlog" key="headline.tags" />
                     </span>
                 </h1>
             </header>

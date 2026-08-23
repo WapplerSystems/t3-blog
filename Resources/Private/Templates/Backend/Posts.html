@@ -3,8 +3,8 @@
 <f:section name="Content">
     <f:flashMessages/>
 
-    <h1><f:translate key="backend.headline.posts" /></h1>
-    <p><f:translate key="backend.lead.posts" /></p>
+    <h1><f:translate extensionName="WsBlog" key="backend.headline.posts" /></h1>
+    <p><f:translate extensionName="WsBlog" key="backend.lead.posts" /></p>
 
     <f:render partial="Backend/BlogFilter" arguments="{blogSetups: blogSetups, activeBlogSetup: activeBlogSetup, action: 'posts'}" />
     <f:if condition="{f:count() -> posts} > 0">
@@ -13,12 +13,12 @@
             <table class="table table-striped table-hover dataTables" data-columns='[{"type": "string"}, {"type": "string"}, {"type": "string"}, {"type": "string"}, {"type": "string"}, {"type": "num"}]'>
                 <thead>
                     <tr>
-                        <th><f:translate key="backend.table.title" /></th>
-                        <th data-filter="true"><f:translate key="backend.table.hidden" /></th>
-                        <th data-filter="true"><f:translate key="backend.table.author" /></th>
-                        <th data-filter="true"><f:translate key="backend.table.categories" /></th>
-                        <th data-filter="true"><f:translate key="backend.table.tags" /></th>
-                        <th><f:translate key="backend.table.date" /></th>
+                        <th><f:translate extensionName="WsBlog" key="backend.table.title" /></th>
+                        <th data-filter="true"><f:translate extensionName="WsBlog" key="backend.table.hidden" /></th>
+                        <th data-filter="true"><f:translate extensionName="WsBlog" key="backend.table.author" /></th>
+                        <th data-filter="true"><f:translate extensionName="WsBlog" key="backend.table.categories" /></th>
+                        <th data-filter="true"><f:translate extensionName="WsBlog" key="backend.table.tags" /></th>
+                        <th><f:translate extensionName="WsBlog" key="backend.table.date" /></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +33,7 @@
                             </td>
 
                             <f:variable name="hiddenString" value="{f:if(condition: post.hidden, then: 'yes', else: 'no')}" />
-                            <f:variable name="hiddenString" value="{f:translate(key: 'backend.table.hidden.{hiddenString}')}" />
+                            <f:variable name="hiddenString" value="{f:translate(key: 'backend.table.hidden.{hiddenString}', extensionName: 'WsBlog')}" />
                             <td class="nowrap" data-order="{hiddenString}" data-search="{hiddenString}" data-filter="{hiddenString}">
                                 {hiddenString}
                             </td>
@@ -94,8 +94,8 @@
 
         </f:then>
         <f:else>
-            <f:be.infobox state="-1" title="{f:translate(key: 'backend.warning')}">
-                <p><f:translate key="backend.message.noposts" /></p>
+            <f:be.infobox state="-1" title="{f:translate(key: 'backend.warning', extensionName: 'WsBlog')}">
+                <p><f:translate extensionName="WsBlog" key="backend.message.noposts" /></p>
             </f:be.infobox>
         </f:else>
     </f:if>

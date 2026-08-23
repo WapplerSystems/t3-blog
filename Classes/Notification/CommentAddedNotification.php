@@ -23,7 +23,7 @@ class CommentAddedNotification extends AbstractNotification
     {
         /** @var Post $post */
         $post = $this->data['post'];
-        return sprintf((string)LocalizationUtility::translate('emails.CommentAddedNotification.subject', 'blog'), $post->getTitle());
+        return sprintf((string)LocalizationUtility::translate('emails.CommentAddedNotification.subject', 'ws_blog'), $post->getTitle());
     }
 
     public function getMessage(): string

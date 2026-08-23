@@ -3,8 +3,8 @@
 <f:section name="Content">
     <f:flashMessages/>
 
-    <h1><f:translate key="backend.headline.comments" /></h1>
-    <p><f:translate key="backend.lead.comments" /></p>
+    <h1><f:translate extensionName="WsBlog" key="backend.headline.comments" /></h1>
+    <p><f:translate extensionName="WsBlog" key="backend.lead.comments" /></p>
 
     <f:render partial="Backend/BlogFilter" arguments="{blogSetups: blogSetups, activeBlogSetup: activeBlogSetup, action: 'comments'}" />
     <f:render partial="Backend/CommentsFilter" arguments="{_all}" />
@@ -17,11 +17,11 @@
                     <thead>
                         <tr>
                             <th class="col-datatable-checkbox"></th>
-                            <th class="col-datatable-actions"><f:translate key="backend.table.actions" /></th>
-                            <th class="col-datatable-author" data-filter="true"><f:translate key="backend.table.author" /></th>
-                            <th class="col-datatable-text"><f:translate key="backend.table.comment" /></th>
-                            <th class="col-datatable-post" data-filter="true"><f:translate key="backend.table.post" /></th>
-                            <th class="col-datatable-date"><f:translate key="backend.table.date" /></th>
+                            <th class="col-datatable-actions"><f:translate extensionName="WsBlog" key="backend.table.actions" /></th>
+                            <th class="col-datatable-author" data-filter="true"><f:translate extensionName="WsBlog" key="backend.table.author" /></th>
+                            <th class="col-datatable-text"><f:translate extensionName="WsBlog" key="backend.table.comment" /></th>
+                            <th class="col-datatable-post" data-filter="true"><f:translate extensionName="WsBlog" key="backend.table.post" /></th>
+                            <th class="col-datatable-date"><f:translate extensionName="WsBlog" key="backend.table.date" /></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,26 +37,26 @@
                                         <f:switch expression="{comment.status}">
                                             <f:case value="0">
                                                 <f:comment>Status: pending</f:comment>
-                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.approve')}" action="updateCommentStatus" arguments="{comment: comment, status: 'approve', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-approve" /></f:link.action>
-                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.decline')}" action="updateCommentStatus" arguments="{comment: comment, status: 'decline', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-ban" /></f:link.action>
+                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.approve', extensionName: 'WsBlog')}" action="updateCommentStatus" arguments="{comment: comment, status: 'approve', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-approve" /></f:link.action>
+                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.decline', extensionName: 'WsBlog')}" action="updateCommentStatus" arguments="{comment: comment, status: 'decline', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-ban" /></f:link.action>
                                             </f:case>
                                             <f:case value="10">
                                                 <f:comment>Status: approved</f:comment>
-                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.decline')}" action="updateCommentStatus" arguments="{comment: comment, status: 'decline', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-ban" /></f:link.action>
-                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.delete')}" action="updateCommentStatus" arguments="{comment: comment, status: 'delete', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-delete" /></f:link.action>
+                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.decline', extensionName: 'WsBlog')}" action="updateCommentStatus" arguments="{comment: comment, status: 'decline', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-ban" /></f:link.action>
+                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.delete', extensionName: 'WsBlog')}" action="updateCommentStatus" arguments="{comment: comment, status: 'delete', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-delete" /></f:link.action>
                                             </f:case>
                                             <f:case value="50">
                                                 <f:comment>Status: declined</f:comment>
-                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.approve')}" action="updateCommentStatus" arguments="{comment: comment, status: 'approve', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-approve" /></f:link.action>
-                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.delete')}" action="updateCommentStatus" arguments="{comment: comment, status: 'delete', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-delete" /></f:link.action>
+                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.approve', extensionName: 'WsBlog')}" action="updateCommentStatus" arguments="{comment: comment, status: 'approve', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-approve" /></f:link.action>
+                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.delete', extensionName: 'WsBlog')}" action="updateCommentStatus" arguments="{comment: comment, status: 'delete', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-delete" /></f:link.action>
                                             </f:case>
                                             <f:case value="90">
                                                 <f:comment>Status: deleted</f:comment>
-                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.approve')}" action="updateCommentStatus" arguments="{comment: comment, status: 'approve', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-approve" /></f:link.action>
-                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.decline')}" action="updateCommentStatus" arguments="{comment: comment, status: 'decline', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-ban" /></f:link.action>
+                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.approve', extensionName: 'WsBlog')}" action="updateCommentStatus" arguments="{comment: comment, status: 'approve', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-approve" /></f:link.action>
+                                                <f:link.action class="btn btn-default" data="{toggle: 'tooltip', container: 'body'}" title="{f:translate(key: 'action.decline', extensionName: 'WsBlog')}" action="updateCommentStatus" arguments="{comment: comment, status: 'decline', filter: activeFilter, blogSetup: activeBlogSetup}"><core:icon identifier="actions-ban" /></f:link.action>
                                             </f:case>
                                         </f:switch>
-                                        <blogvh:link.be.comment class="btn btn-default" title="{f:translate(key: 'action.editComment')}" comment="{comment}"><core:icon identifier="actions-open" /></blogvh:link.be.comment>
+                                        <blogvh:link.be.comment class="btn btn-default" title="{f:translate(key: 'action.editComment', extensionName: 'WsBlog')}" comment="{comment}"><core:icon identifier="actions-open" /></blogvh:link.be.comment>
                                     </div>
                                 </td>
                                 <td class="col-nowrap" data-order="{comment.name}" data-search="{comment.name}" data-filter="{comment.name}">
@@ -66,7 +66,7 @@
                                 <td data-order="{comment.post.title}" data-search="{comment.post.title}" data-filter="{comment.post.title}">
                                     <f:if condition="{comment.post}">
                                         <f:then><blogvh:link.be.post post="{comment.post}" /></f:then>
-                                        <f:else><f:translate key="backend.message.nopost" /></f:else>
+                                        <f:else><f:translate extensionName="WsBlog" key="backend.message.nopost" /></f:else>
                                     </f:if>
                                 </td>
                                 <td class="col-date" data-order="{f:format.date(format: 'U', date: comment.crdate)}">
@@ -78,9 +78,9 @@
                     <tfoot>
                         <tr>
                             <th colspan="6">
-                                <f:form.button class="btn btn-default t3js-blog-massupdate-action" name="status" value="approve" disabled="true"><f:translate key="action.multiple.approve" /></f:form.button>
-                                <f:form.button class="btn btn-default t3js-blog-massupdate-action" name="status" value="decline" disabled="true"><f:translate key="action.multiple.decline" /></f:form.button>
-                                <f:form.button class="btn btn-default t3js-blog-massupdate-action" name="status" value="delete" disabled="true"><f:translate key="action.multiple.delete" /></f:form.button>
+                                <f:form.button class="btn btn-default t3js-blog-massupdate-action" name="status" value="approve" disabled="true"><f:translate extensionName="WsBlog" key="action.multiple.approve" /></f:form.button>
+                                <f:form.button class="btn btn-default t3js-blog-massupdate-action" name="status" value="decline" disabled="true"><f:translate extensionName="WsBlog" key="action.multiple.decline" /></f:form.button>
+                                <f:form.button class="btn btn-default t3js-blog-massupdate-action" name="status" value="delete" disabled="true"><f:translate extensionName="WsBlog" key="action.multiple.delete" /></f:form.button>
                             </th>
                         </tr>
                     </tfoot>
@@ -88,8 +88,8 @@
             </f:form>
         </f:then>
         <f:else>
-            <f:be.infobox state="-1" title="{f:translate(key: 'backend.warning')}">
-                <p><f:translate key="backend.message.nocomments" /></p>
+            <f:be.infobox state="-1" title="{f:translate(key: 'backend.warning', extensionName: 'WsBlog')}">
+                <p><f:translate extensionName="WsBlog" key="backend.message.nocomments" /></p>
             </f:be.infobox>
         </f:else>
     </f:if>

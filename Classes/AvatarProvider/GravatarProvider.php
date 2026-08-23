@@ -45,7 +45,7 @@ class GravatarProvider implements AvatarProviderInterface, SingletonInterface
 
         /** @var ExtensionConfiguration $extensionConfiguration */
         $extensionConfiguration = GeneralUtility::makeInstance(ExtensionConfiguration::class);
-        $this->proxyGravatarImage = (bool)($extensionConfiguration->get('blog', 'enableGravatarProxy') ?? false);
+        $this->proxyGravatarImage = (bool)($extensionConfiguration->get('ws_blog', 'enableGravatarProxy') ?? false);
     }
 
     public function getAvatarUrl(Author $author, int $size): string

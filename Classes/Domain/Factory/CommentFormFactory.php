@@ -57,7 +57,7 @@ class CommentFormFactory extends AbstractFormFactory
 
         $form = GeneralUtility::makeInstance(FormDefinition::class, 'postcomment', $prototypeConfiguration);
         $form->setRenderingOption('controllerAction', 'form');
-        $form->setRenderingOption('submitButtonLabel', LocalizationUtility::translate('form.comment.submit', 'blog'));
+        $form->setRenderingOption('submitButtonLabel', LocalizationUtility::translate('form.comment.submit', 'ws_blog'));
         $renderingOptions = $form->getRenderingOptions();
         $renderingOptions['partialRootPaths'][-1634043971] = 'EXT:ws_blog/Resources/Private/Partials/Form/';
         $form->setRenderingOption('partialRootPaths', $renderingOptions['partialRootPaths']);
@@ -67,25 +67,25 @@ class CommentFormFactory extends AbstractFormFactory
         // Form
         /** @var GenericFormElement $nameField */
         $nameField = $page->createElement('name', 'Text');
-        $nameField->setLabel((string) LocalizationUtility::translate('form.comment.name', 'blog'));
+        $nameField->setLabel((string) LocalizationUtility::translate('form.comment.name', 'ws_blog'));
         $nameField->addValidator(GeneralUtility::makeInstance(NotEmptyValidator::class));
 
         /** @var GenericFormElement $emailField */
         $emailField = $page->createElement('email', 'Text');
-        $emailField->setLabel((string) LocalizationUtility::translate('form.comment.email', 'blog'));
+        $emailField->setLabel((string) LocalizationUtility::translate('form.comment.email', 'ws_blog'));
         $emailField->addValidator(GeneralUtility::makeInstance(NotEmptyValidator::class));
         $emailField->addValidator(GeneralUtility::makeInstance(EmailAddressValidator::class));
 
         if ((bool) $settings['comments']['features']['urls']) {
             /** @var GenericFormElement $urlField */
             $urlField = $page->createElement('url', 'Text');
-            $urlField->setLabel((string) LocalizationUtility::translate('form.comment.url', 'blog'));
+            $urlField->setLabel((string) LocalizationUtility::translate('form.comment.url', 'ws_blog'));
             $urlField->addValidator(GeneralUtility::makeInstance(UrlValidator::class));
         }
 
         /** @var GenericFormElement $commentField */
         $commentField = $page->createElement('comment', 'Textarea');
-        $commentField->setLabel((string) LocalizationUtility::translate('form.comment.comment', 'blog'));
+        $commentField->setLabel((string) LocalizationUtility::translate('form.comment.comment', 'ws_blog'));
         $commentField->addValidator(GeneralUtility::makeInstance(NotEmptyValidator::class));
         if ((GeneralUtility::makeInstance(Typo3Version::class))->getMajorVersion() < 12) {
             $stringLengthValidator = GeneralUtility::makeInstance(StringLengthValidator::class, ['minimum' => 5]);
@@ -96,7 +96,7 @@ class CommentFormFactory extends AbstractFormFactory
         $commentField->addValidator($stringLengthValidator);
 
         $explanationText = $page->createElement('explanation', 'StaticText');
-        $explanationText->setProperty('text', LocalizationUtility::translate('label.required.field', 'blog') . ' ' . LocalizationUtility::translate('label.required.field.explanation', 'blog'));
+        $explanationText->setProperty('text', LocalizationUtility::translate('label.required.field', 'ws_blog') . ' ' . LocalizationUtility::translate('label.required.field.explanation', 'ws_blog'));
 
         if ((bool) $captcha['enable'] === true && $captcha['sitekey'] !== '' && $captcha['secret'] !== '') {
             $captchaField = $page->createElement('captcha', 'BlogGoogleCaptcha');

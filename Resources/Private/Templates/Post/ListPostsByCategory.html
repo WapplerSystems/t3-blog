@@ -6,7 +6,7 @@
             <header class="blogarchiveheader blogarchiveheader--category">
                 <h1 class="blogarchiveheader__title">
                     <span class="blogarchiveheader__titletext">
-                        <f:translate key="headline.category.simple" />:
+                        <f:translate extensionName="WsBlog" key="headline.category.simple" />:
                         {category.title}
                     </span>
                     <blogvh:link.category class="blogarchiveheader__titlelink" rss="true" category="{category}">
@@ -23,7 +23,7 @@
                     <f:if condition="{settings.categoryUid}">
                         <div class="blogarchivefooter__backlink">
                             <f:link.page pageUid="{settings.categoryUid}">
-                                <f:translate key="list.backlink.categories" />
+                                <f:translate extensionName="WsBlog" key="list.backlink.categories" />
                             </f:link.page>
                         </div>
                     </f:if>
@@ -41,7 +41,7 @@
             <header class="blogarchiveheader blogarchiveheader--categories">
                 <h1 class="blogarchiveheader__title">
                     <span class="blogarchiveheader__titletext">
-                        <f:translate key="headline.categories" />
+                        <f:translate extensionName="WsBlog" key="headline.categories" />
                     </span>
                 </h1>
             </header>

@@ -1,22 +1,22 @@
 <f:layout name="Default"/>
 <f:section name="ContentSection">
     <p>
-        <strong><f:translate key="email.label.post" extensionName="Blog" />: </strong>
+        <strong><f:translate key="email.label.post" extensionName="WsBlog" />: </strong>
         <a href="{post.uri}" target="_blank">{post.uri}</a>
     </p>
     <p>
-        <strong><f:translate key="email.label.date" extensionName="Blog" />: </strong>
+        <strong><f:translate key="email.label.date" extensionName="WsBlog" />: </strong>
         <f:format.date format="d.m.Y H:i:s">{comment.crdate}</f:format.date>
     </p>
     <p>
-        <strong><f:translate key="email.label.author" extensionName="Blog" />: </strong>
+        <strong><f:translate key="email.label.author" extensionName="WsBlog" />: </strong>
         <f:if condition="{comment.author}">
             <f:then>{comment.author.name} <{comment.author.email}></f:then>
             <f:else>{comment.name} <{comment.email}></f:else>
         </f:if>
     </p>
     <p>
-        <strong><f:translate key="email.label.comment" extensionName="Blog" />: </strong><br>
+        <strong><f:translate key="email.label.comment" extensionName="WsBlog" />: </strong><br>
         <f:format.nl2br>{comment.comment}</f:format.nl2br>
     </p>
 </f:section>

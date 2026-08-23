@@ -65,7 +65,7 @@ class PostViewHelper extends AbstractTagBasedViewHelper
             return htmlspecialchars($uri, ENT_QUOTES | ENT_HTML5);
         }
 
-        $linkText = $this->renderChildren() ?? ($post->getTitle() !== '' ? $post->getTitle() : LocalizationUtility::translate('backend.message.nopost', 'blog'));
+        $linkText = $this->renderChildren() ?? ($post->getTitle() !== '' ? $post->getTitle() : LocalizationUtility::translate('backend.message.nopost', 'ws_blog'));
         $this->tag->addAttribute('href', $uri);
         $this->tag->setContent($linkText);
 

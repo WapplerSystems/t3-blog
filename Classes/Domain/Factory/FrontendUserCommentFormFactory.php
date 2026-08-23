@@ -49,7 +49,7 @@ class FrontendUserCommentFormFactory extends AbstractFormFactory
 
         $form = GeneralUtility::makeInstance(FormDefinition::class, 'postcomment', $prototypeConfiguration);
         $form->setRenderingOption('controllerAction', 'form');
-        $form->setRenderingOption('submitButtonLabel', LocalizationUtility::translate('form.comment.submit', 'blog'));
+        $form->setRenderingOption('submitButtonLabel', LocalizationUtility::translate('form.comment.submit', 'ws_blog'));
         $renderingOptions = $form->getRenderingOptions();
         $renderingOptions['partialRootPaths'][-1634043971] = 'EXT:ws_blog/Resources/Private/Partials/Form/';
         $form->setRenderingOption('partialRootPaths', $renderingOptions['partialRootPaths']);
@@ -57,7 +57,7 @@ class FrontendUserCommentFormFactory extends AbstractFormFactory
         $page = $form->createPage('commentform');
 
         $commentField = $page->createElement('comment', 'Textarea');
-        $commentField->setLabel(LocalizationUtility::translate('form.comment.comment', 'blog'));
+        $commentField->setLabel(LocalizationUtility::translate('form.comment.comment', 'ws_blog'));
         $commentField->addValidator(GeneralUtility::makeInstance(NotEmptyValidator::class));
 
         $stringValidator = GeneralUtility::makeInstance(StringLengthValidator::class);
@@ -65,7 +65,7 @@ class FrontendUserCommentFormFactory extends AbstractFormFactory
         $commentField->addValidator($stringValidator);
 
         $explanationText = $page->createElement('explanation', 'StaticText');
-        $explanationText->setProperty('text', LocalizationUtility::translate('label.required.field', 'blog') . ' ' . LocalizationUtility::translate('label.required.field.explanation', 'blog'));
+        $explanationText->setProperty('text', LocalizationUtility::translate('label.required.field', 'ws_blog') . ' ' . LocalizationUtility::translate('label.required.field.explanation', 'ws_blog'));
 
         $context = GeneralUtility::makeInstance(Context::class);
         $userIsLoggedIn = $context->getPropertyFromAspect('frontend.user', 'isLoggedIn');

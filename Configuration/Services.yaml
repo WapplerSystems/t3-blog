@@ -36,3 +36,98 @@ services:
 
   WapplerSystems\Blog\Service\SetupService:
     public: true
+
+
+  # Alte Klassennamen als Container-Aliase: GeneralUtility::makeInstance() in
+  # Fremdcode liefert sonst eine Instanz ohne Injection, weil der class_alias
+  # nur den Autoloader bedient, nicht den Container.
+  T3G\AgencyPack\Blog\Domain\Repository\AuthorRepository:
+    alias: WapplerSystems\Blog\Domain\Repository\AuthorRepository
+    public: true
+  T3G\AgencyPack\Blog\Domain\Repository\CategoryRepository:
+    alias: WapplerSystems\Blog\Domain\Repository\CategoryRepository
+    public: true
+  T3G\AgencyPack\Blog\Domain\Repository\CommentRepository:
+    alias: WapplerSystems\Blog\Domain\Repository\CommentRepository
+    public: true
+  T3G\AgencyPack\Blog\Domain\Repository\FrontendUserRepository:
+    alias: WapplerSystems\Blog\Domain\Repository\FrontendUserRepository
+    public: true
+  T3G\AgencyPack\Blog\Domain\Repository\PostRepository:
+    alias: WapplerSystems\Blog\Domain\Repository\PostRepository
+    public: true
+  T3G\AgencyPack\Blog\Domain\Repository\TagRepository:
+    alias: WapplerSystems\Blog\Domain\Repository\TagRepository
+    public: true
+  T3G\AgencyPack\Blog\Domain\Factory\CommentFormFactory:
+    alias: WapplerSystems\Blog\Domain\Factory\CommentFormFactory
+    public: true
+  T3G\AgencyPack\Blog\Domain\Factory\FrontendUserCommentFormFactory:
+    alias: WapplerSystems\Blog\Domain\Factory\FrontendUserCommentFormFactory
+    public: true
+  T3G\AgencyPack\Blog\Domain\Finisher\CommentFormFinisher:
+    alias: WapplerSystems\Blog\Domain\Finisher\CommentFormFinisher
+    public: true
+  T3G\AgencyPack\Blog\Domain\Finisher\FrontendUserCommentFormFinisher:
+    alias: WapplerSystems\Blog\Domain\Finisher\FrontendUserCommentFormFinisher
+    public: true
+  T3G\AgencyPack\Blog\Service\CacheService:
+    alias: WapplerSystems\Blog\Service\CacheService
+    public: true
+  T3G\AgencyPack\Blog\Service\CommentService:
+    alias: WapplerSystems\Blog\Service\CommentService
+    public: true
+  T3G\AgencyPack\Blog\Service\MetaTagService:
+    alias: WapplerSystems\Blog\Service\MetaTagService
+    public: true
+  T3G\AgencyPack\Blog\Service\SetupService:
+    alias: WapplerSystems\Blog\Service\SetupService
+    public: true
+  T3G\AgencyPack\Blog\Service\Avatar\Gravatar\GravatarResourceResolver:
+    alias: WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarResourceResolver
+    public: true
+  T3G\AgencyPack\Blog\Service\Avatar\Gravatar\GravatarUriBuilder:
+    alias: WapplerSystems\Blog\Service\Avatar\Gravatar\GravatarUriBuilder
+    public: true
+  T3G\AgencyPack\Blog\DataProcessing\FeaturedImageProcessor:
+    alias: WapplerSystems\Blog\DataProcessing\FeaturedImageProcessor
+    public: true
+  T3G\AgencyPack\Blog\Notification\CommentAddedNotification:
+    alias: WapplerSystems\Blog\Notification\CommentAddedNotification
+    public: true
+  T3G\AgencyPack\Blog\Notification\NotificationManager:
+    alias: WapplerSystems\Blog\Notification\NotificationManager
+    public: true
+  T3G\AgencyPack\Blog\Controller\BackendController:
+    alias: WapplerSystems\Blog\Controller\BackendController
+    public: true
+  T3G\AgencyPack\Blog\Controller\CommentController:
+    alias: WapplerSystems\Blog\Controller\CommentController
+    public: true
+  T3G\AgencyPack\Blog\Controller\PostController:
+    alias: WapplerSystems\Blog\Controller\PostController
+    public: true
+  T3G\AgencyPack\Blog\Controller\WidgetController:
+    alias: WapplerSystems\Blog\Controller\WidgetController
+    public: true
+  T3G\AgencyPack\Blog\Utility\ArchiveUtility:
+    alias: WapplerSystems\Blog\Utility\ArchiveUtility
+    public: true
+  T3G\AgencyPack\Blog\Utility\SchemaUtility:
+    alias: WapplerSystems\Blog\Utility\SchemaUtility
+    public: true
+  T3G\AgencyPack\Blog\Utility\Socials\MastodonUtility:
+    alias: WapplerSystems\Blog\Utility\Socials\MastodonUtility
+    public: true
+  T3G\AgencyPack\Blog\Utility\Socials\TwitterXUtility:
+    alias: WapplerSystems\Blog\Utility\Socials\TwitterXUtility
+    public: true
+  T3G\AgencyPack\Blog\Backend\View\BlogPostHeaderContentRenderer:
+    alias: WapplerSystems\Blog\Backend\View\BlogPostHeaderContentRenderer
+    public: true
+  T3G\AgencyPack\Blog\AvatarProvider\GravatarProvider:
+    alias: WapplerSystems\Blog\AvatarProvider\GravatarProvider
+    public: true
+  T3G\AgencyPack\Blog\AvatarProvider\ImageProvider:
+    alias: WapplerSystems\Blog\AvatarProvider\ImageProvider
+    public: true

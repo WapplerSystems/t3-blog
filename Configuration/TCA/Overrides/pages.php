@@ -252,10 +252,14 @@ $newPagesColumns = [
 
 ];
 
-ExtensionManagementUtility::addTCAcolumns('pages', $newPagesColumns);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $newPagesColumns);
 
-ExtensionManagementUtility::addToAllTCAtypes('pages', 'time_to_read,intro',
-    (string)Constants::DOKTYPE_BLOG_POST, 'after:subtitle');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+    'pages',
+    'time_to_read,intro',
+    (string)\WapplerSystems\Blog\Constants::DOKTYPE_BLOG_POST,
+    'after:subtitle'
+);
 
 
 $GLOBALS['TCA']['pages']['columns']['featured_image']['config']['overrideChildTca']['columns']['crop']['config']['cropVariants']['preview'] = [

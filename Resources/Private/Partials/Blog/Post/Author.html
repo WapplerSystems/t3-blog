@@ -1,7 +1,7 @@
 <f:spaceless>
     <div class="postauthor postauthor--full" itemprop="author" itemscope itemtype="http://schema.org/Person" data-blog-author="{author.uid}">
         <div class="postauthor__body">
-            <div class="postauthor__intro"><f:translate key="author.aboutTheAuthor"/></div>
+            <div class="postauthor__intro"><f:translate extensionName="WsBlog" key="author.aboutTheAuthor"/></div>
             <div class="postauthor__name"><f:render section="ProfileLink" arguments="{_all}" contentAs="content">{author.name}</f:render></div>
             <f:if condition="{author.title} || {author.location}">
                 <div class="postauthor__subline">

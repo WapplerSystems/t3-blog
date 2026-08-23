@@ -32,6 +32,7 @@ use WapplerSystems\Blog\Service\MetaTagService;
 use WapplerSystems\Blog\Utility\ArchiveUtility;
 use WapplerSystems\Blog\Utility\Socials\MastodonUtility;
 use TYPO3\CMS\Core\Http\NormalizedParams;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -98,10 +99,10 @@ class PostController extends ActionController
 
             $title = '' !== ($this->settings['rss']['title'] ?? '')
                 ? $this->settings['rss']['title']
-                : LocalizationUtility::translate('feed.title' . $action, 'blog', $arguments);
+                : LocalizationUtility::translate('feed.title' . $action, 'ws_blog', $arguments);
             $description = '' !== ($this->settings['rss']['description'] ?? '')
                 ? $this->settings['rss']['description']
-                : LocalizationUtility::translate('feed.description' . $action, 'blog', $arguments);
+                : LocalizationUtility::translate('feed.description' . $action, 'ws_blog', $arguments);
 
             $feedData = [
                 'title' => $title,
@@ -244,9 +245,9 @@ class PostController extends ActionController
                 (string) $month,
                 $dateTime->format('F'),
                 (string) $year,
-            ], (string) LocalizationUtility::translate('meta.title.listPostsByDate', 'blog'));
+            ], (string) LocalizationUtility::translate('meta.title.listPostsByDate', 'ws_blog'));
             MetaTagService::set(MetaTagService::META_TITLE, (string) $title);
-            MetaTagService::set(MetaTagService::META_DESCRIPTION, (string) LocalizationUtility::translate('meta.description.listPostsByDate', 'blog'));
+            MetaTagService::set(MetaTagService::META_DESCRIPTION, (string) LocalizationUtility::translate('meta.description.listPostsByDate', 'ws_blog'));
         }
         return $this->htmlResponse();
     }

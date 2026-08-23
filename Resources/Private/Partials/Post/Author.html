@@ -9,7 +9,7 @@
             <img loading="lazy" class="postauthor__avatarimage blogavatar" height="{avatarsize}" width="{avatarsize}" src="{blogvh:uri.avatar(author: author, size: avatarsize)}" itemprop="image">
         </div>
         <div class="postauthor__body">
-            <div class="postauthor__intro"><f:translate key="author.aboutTheAuthor"/></div>
+            <div class="postauthor__intro"><f:translate extensionName="WsBlog" key="author.aboutTheAuthor"/></div>
             <div class="postauthor__name"><f:render section="ProfileLink" arguments="{_all}" contentAs="content">{author.name}</f:render></div>
             <f:if condition="{author.title} || {author.location}">
                 <div class="postauthor__subline">
@@ -25,7 +25,7 @@
                             <span class="postauthor__sociallinkicon postauthor__sociallinkicon--website">
                                 <span class="blogicon"><f:render partial="General/SocialIcons" section="Website" optional="true" /></span>
                             </span>
-                            <span class="postauthor__sociallinklabel"><f:translate key="author.social.website" /></span>
+                            <span class="postauthor__sociallinklabel"><f:translate extensionName="WsBlog" key="author.social.website" /></span>
                         </a>
                     </f:if>
                     <f:if condition="{author.twitter}">
@@ -33,7 +33,7 @@
                             <span class="postauthor__sociallinkicon postauthor__sociallinkicon--twitter">
                                 <span class="blogicon"><f:render partial="General/SocialIcons" section="Twitter" optional="true" /></span>
                             </span>
-                            <span class="postauthor__sociallinklabel"><f:translate key="author.social.twitter" /></span>
+                            <span class="postauthor__sociallinklabel"><f:translate extensionName="WsBlog" key="author.social.twitter" /></span>
                         </a>
                     </f:if>
                     <f:if condition="{author.instagram}">
@@ -41,7 +41,7 @@
                             <span class="postauthor__sociallinkicon postauthor__sociallinkicon--instagram">
                                 <span class="blogicon"><f:render partial="General/SocialIcons" section="Instagram" optional="true" /></span>
                             </span>
-                            <span class="postauthor__sociallinklabel"><f:translate key="author.social.instagram" /></span>
+                            <span class="postauthor__sociallinklabel"><f:translate extensionName="WsBlog" key="author.social.instagram" /></span>
                         </a>
                     </f:if>
                     <f:if condition="{author.linkedin}">
@@ -49,7 +49,7 @@
                             <span class="postauthor__sociallinkicon postauthor__sociallinkicon--linkedin">
                                 <span class="blogicon"><f:render partial="General/SocialIcons" section="LinkedIn" optional="true" /></span>
                             </span>
-                            <span class="postauthor__sociallinklabel"><f:translate key="author.social.linkedin" /></span>
+                            <span class="postauthor__sociallinklabel"><f:translate extensionName="WsBlog" key="author.social.linkedin" /></span>
                         </a>
                     </f:if>
                     <f:if condition="{author.xing}">
@@ -57,7 +57,7 @@
                             <span class="postauthor__sociallinkicon postauthor__sociallinkicon--xing">
                                 <span class="blogicon"><f:render partial="General/SocialIcons" section="Xing" optional="true" /></span>
                             </span>
-                            <span class="postauthor__sociallinklabel"><f:translate key="author.social.xing" /></span>
+                            <span class="postauthor__sociallinklabel"><f:translate extensionName="WsBlog" key="author.social.xing" /></span>
                         </a>
                     </f:if>
                     <f:if condition="{author.mastodon}">
@@ -65,7 +65,7 @@
                             <span class="postauthor__sociallinkicon postauthor__sociallinkicon--mastodon">
                                 <span class="blogicon"><f:render partial="General/SocialIcons" section="Mastodon" optional="true" /></span>
                             </span>
-                            <span class="postauthor__sociallinklabel"><f:translate key="author.social.mastodon" /></span>
+                            <span class="postauthor__sociallinklabel"><f:translate extensionName="WsBlog" key="author.social.mastodon" /></span>
                         </a>
                     </f:if>
                 </div>
@@ -75,7 +75,7 @@
             </f:if>
             <f:if condition="{author.detailsPage} || {settings.authorUid}">
                 <div class="postauthor__actions">
-                    <blogvh:link.author author="{author}"><f:translate key="author.more.posts" /></blogvh:link.author>
+                    <blogvh:link.author author="{author}"><f:translate extensionName="WsBlog" key="author.more.posts" /></blogvh:link.author>
                 </div>
             </f:if>
         </div>

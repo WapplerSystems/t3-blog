@@ -42,7 +42,7 @@ class BlogPostHeaderContentRenderer implements SingletonInterface
 
     public function render(ServerRequestInterface $request): string
     {
-        $blogConfiguration = $this->extensionConfiguration->get('blog');
+        $blogConfiguration = $this->extensionConfiguration->get('ws_blog');
         if ((bool)($blogConfiguration['disablePageLayoutHeader'] ?? true)) {
             return '';
         }

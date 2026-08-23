@@ -79,8 +79,8 @@ class CommentFormFinisher extends AbstractFinisher
         );
         $flashMessage = GeneralUtility::makeInstance(
             FlashMessage::class,
-            LocalizationUtility::translate(self::$messages[$state]['text'], 'blog'),
-            LocalizationUtility::translate(self::$messages[$state]['title'], 'blog'),
+            LocalizationUtility::translate(self::$messages[$state]['text'], 'ws_blog'),
+            LocalizationUtility::translate(self::$messages[$state]['title'], 'ws_blog'),
             self::$messages[$state]['severity'],
             true
         );

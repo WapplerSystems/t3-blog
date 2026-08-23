@@ -29,8 +29,8 @@
                 <span class="comments-link">
                     <blogvh:link.post post="{post}" section="comments">
                         <f:if condition="{commentCount} == 1">
-                            <f:then><f:translate key="message.comment" arguments="{0: commentCount}"/></f:then>
-                            <f:else><f:translate key="message.comments" arguments="{0: commentCount}"/></f:else>
+                            <f:then><f:translate extensionName="WsBlog" key="message.comment" arguments="{0: commentCount}"/></f:then>
+                            <f:else><f:translate extensionName="WsBlog" key="message.comments" arguments="{0: commentCount}"/></f:else>
                         </f:if>
                     </blogvh:link.post>
                 </span>
@@ -38,7 +38,7 @@
         </f:then>
         <f:else>
             <blogvh:link.post post="{post}" section="disqus_thread" data="{disqus-identifier: '{settings.comments.disqus.shortname}:post:{post.uid}'}">
-                <f:translate key="message.comments" arguments="{0: 0}"/>
+                <f:translate extensionName="WsBlog" key="message.comments" arguments="{0: 0}"/>
             </blogvh:link.post>
         </f:else>
     </f:if>
