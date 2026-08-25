@@ -47,6 +47,19 @@ $GLOBALS['TCA']['pages']['columns']['featured_image']['config']['overrideChildTc
             ],
         ],
     ],
+    // Fixes 16:9 fuer Karten-Layouts (listDesign=card): anders als "preview"
+    // (frei/16:9/22:7, Default 22:7) bietet dieser Variant nur EINE
+    // Aspect-Ratio, damit Redakteure fuer die Kartenansicht nichts falsch
+    // waehlen koennen.
+    'blog_card_16_9' => [
+        'title' => 'Karten-Vorschau 16:9',
+        'allowedAspectRatios' => [
+            'default' => [
+                'title' => '16:9',
+                'value' => 16 / 9
+            ],
+        ],
+    ],
 
 ];
 

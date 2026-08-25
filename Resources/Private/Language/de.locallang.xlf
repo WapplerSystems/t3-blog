@@ -768,6 +768,9 @@
       <trans-unit id="pagination.aria.goto.previous" xml:space="preserve" approved="yes">
                 <source>Go to previous page</source>
             <target state="final">Vorherige Seite</target></trans-unit>
+      <trans-unit id="list.card.readingtime" xml:space="preserve" approved="yes">
+                <source>%d min. read</source>
+            <target state="final">%d Min. Lesezeit</target></trans-unit>
 		</body>
 	</file>
 </xliff>

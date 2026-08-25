@@ -500,6 +500,9 @@
 			<trans-unit id="blog.articles_of_author">
 				<source>Articles of this author</source>
 			</trans-unit>
+			<trans-unit id="list.card.readingtime">
+				<source>%d min. read</source>
+			</trans-unit>
     </body>
     </file>
 </xliff>
