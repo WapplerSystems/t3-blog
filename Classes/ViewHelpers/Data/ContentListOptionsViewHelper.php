@@ -43,6 +43,7 @@ class ContentListOptionsViewHelper extends AbstractViewHelper
             ? $this->renderingContext->getAttribute(ServerRequestInterface::class)
             : null;
         $data = array_merge(
+            $this->getTcaColumnDefaults(),
             $this->getSystemFieldDefaults((int)($request?->getAttribute('language')?->getLanguageId() ?? 0)),
             $listTypeConfiguration,
             [
@@ -60,6 +61,27 @@ class ContentListOptionsViewHelper extends AbstractViewHelper
         $variableProvider->add($arguments['as'], $data);
 
         return '';
+    }
+
+    /**
+     * Seeds every tt_content column with its TCA default.
+     *
+     * Ohne das fehlen dem synthetischen Datensatz alle Nicht-System-Spalten, die
+     * ein Site-Package auf tt_content ergaenzt (bei T3Bootstrap z. B. die
+     * Spacing- und Frame-Felder). lib.contentElement kann den Frame dann nicht
+     * aufbauen und faellt auf die Default-Ausgabe zurueck - der Rahmen inklusive
+     * Abstandsklassen verschwindet still aus dem Frontend.
+     *
+     * @return array<string, mixed>
+     */
+    protected function getTcaColumnDefaults(): array
+    {
+        $defaults = [];
+        foreach (($GLOBALS['TCA']['tt_content']['columns'] ?? []) as $fieldName => $fieldConfig) {
+            $defaults[$fieldName] = $fieldConfig['config']['default'] ?? '';
+        }
+
+        return $defaults;
     }
 
     /**
