@@ -131,3 +131,23 @@ services:
   T3G\AgencyPack\Blog\AvatarProvider\ImageProvider:
     alias: WapplerSystems\Blog\AvatarProvider\ImageProvider
     public: true
+
+  # Klassennamen aus t3bootstrap_blog: das Paket ist in ws_blog aufgegangen,
+  # Fremdcode (linear_blog-Partials, linear-TypoScript) referenziert sie noch
+  # per String. Der class_alias reicht dafuer nicht, weil formvh:render und
+  # makeInstance den Namen als Service-Id am Container nachfragen.
+  T3Bootstrap\Blog\Controller\PostController:
+    alias: WapplerSystems\Blog\Controller\PostController
+    public: true
+  T3Bootstrap\Blog\DataProcessing\FeaturedImageProcessor:
+    alias: WapplerSystems\Blog\DataProcessing\FeaturedImageProcessor
+    public: true
+  T3Bootstrap\Blog\Domain\Factory\CommentFormFactory:
+    alias: WapplerSystems\Blog\Domain\Factory\FrontendUserCommentFormFactory
+    public: true
+  T3Bootstrap\Blog\Domain\Finisher\CommentFormFinisher:
+    alias: WapplerSystems\Blog\Domain\Finisher\FrontendUserCommentFormFinisher
+    public: true
+  T3Bootstrap\Blog\Domain\Repository\FrontendUserRepository:
+    alias: WapplerSystems\Blog\Domain\Repository\FrontendUserRepository
+    public: true
