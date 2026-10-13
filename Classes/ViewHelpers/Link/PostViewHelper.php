@@ -59,8 +59,11 @@ class PostViewHelper extends AbstractTagBasedViewHelper
             $this->tag->addAttribute('href', $uri);
             $this->tag->setContent($linkText);
             $result = $this->tag->render();
+        } elseif (isset($this->arguments['returnUri']) && $this->arguments['returnUri'] === true) {
+            $result = '';
         } else {
-            $result = $this->renderChildren();
+            // No URI (e.g. post page not available in the current language): render the plain link text
+            $result = (string)($this->renderChildren() ?? htmlspecialchars((string)$post->getTitle(), ENT_QUOTES | ENT_HTML5));
         }
 
         return $result;
