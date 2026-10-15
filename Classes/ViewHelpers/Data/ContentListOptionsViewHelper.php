@@ -43,7 +43,6 @@ class ContentListOptionsViewHelper extends AbstractViewHelper
             ? $this->renderingContext->getAttribute(ServerRequestInterface::class)
             : null;
         $data = array_merge(
-            $this->getTcaColumnDefaults(),
             $this->getSystemFieldDefaults((int)($request?->getAttribute('language')?->getLanguageId() ?? 0)),
             $listTypeConfiguration,
             [
@@ -54,6 +53,11 @@ class ContentListOptionsViewHelper extends AbstractViewHelper
                 'frame_class' => $listTypeConfiguration['frame_class'] ?? 'default'
             ]
         );
+        // Fill the remaining tt_content columns only after the record-specific
+        // fields: "+" never overrides a key already set and appends the TCA
+        // defaults at the end, so uid/CType/layout/frame_class keep their
+        // position at the front of the row.
+        $data += $this->getTcaColumnDefaults();
 
         $arguments['as'] = $arguments['as'] ?? 'contentObjectData';
         $variableProvider = $this->renderingContext->getVariableProvider();

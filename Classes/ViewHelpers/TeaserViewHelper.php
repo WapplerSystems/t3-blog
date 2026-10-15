@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the package wapplersystems/blog.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
 namespace WapplerSystems\Blog\ViewHelpers;
 
 use TYPO3\CMS\Core\Context\Context;
@@ -69,7 +76,11 @@ class TeaserViewHelper extends AbstractViewHelper
             ->executeQuery()
             ->fetchFirstColumn();
 
-        return trim(preg_replace('/\s+/', ' ', strip_tags(implode(' ', $rows))));
+        $text = strip_tags(implode(' ', $rows));
+
+        // preg_replace() returns null on a PCRE failure (e.g. backtrack limit
+        // on very long bodytext) - fall back to the un-normalised text then.
+        return trim(preg_replace('/\s+/', ' ', $text) ?? $text);
     }
 
     private function cropToWordBoundary(string $text, int $maxCharacters): string
