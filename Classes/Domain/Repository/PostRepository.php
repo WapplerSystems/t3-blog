@@ -12,6 +12,8 @@ namespace WapplerSystems\Blog\Domain\Repository;
 
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
@@ -531,7 +533,46 @@ class PostRepository extends Repository
             }
         }
 
-        return $pids;
+        // Beitraege liegen unter der pid der Default-Sprache. Im free-Modus (und
+        // in der BE-Vorschau) enthaelt die Rootline aber die uids der
+        // uebersetzten Seiten — die englische Liste findet dann nichts. Jede
+        // Uebersetzungs-uid auf ihren l10n_parent zurueckbilden.
+        return $this->mapTranslationPageUidsToDefault($pids);
+    }
+
+    /**
+     * @param array<int|string> $pids
+     * @return array<int>
+     */
+    protected function mapTranslationPageUidsToDefault(array $pids): array
+    {
+        $pids = array_values(array_filter(array_map('intval', $pids), static fn ($v) => $v > 0));
+        if ($pids === []) {
+            return $pids;
+        }
+        try {
+            $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
+            $qb->getRestrictions()->removeAll();
+            $rows = $qb->select('uid', 'l10n_parent')
+                ->from('pages')
+                ->where(
+                    $qb->expr()->in('uid', $qb->createNamedParameter($pids, Connection::PARAM_INT_ARRAY)),
+                    $qb->expr()->gt('sys_language_uid', 0),
+                    $qb->expr()->gt('l10n_parent', 0)
+                )
+                ->executeQuery()
+                ->fetchAllAssociative();
+            if ($rows === []) {
+                return $pids;
+            }
+            $map = [];
+            foreach ($rows as $row) {
+                $map[(int) $row['uid']] = (int) $row['l10n_parent'];
+            }
+            return array_values(array_unique(array_map(static fn ($uid) => $map[$uid] ?? $uid, $pids)));
+        } catch (\Throwable) {
+            return $pids;
+        }
     }
 
     private function getRequest(): ServerRequestInterface
