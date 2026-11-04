@@ -1,3 +1,24 @@
+# 14.3.0
+
+Erstes Release als `wapplersystems/blog` (Extension-Key `ws_blog`). Ersetzt `t3g/blog`
+und `t3bootstrap/t3bootstrap-blog`, Hinweise zum Umstieg in FORK.md.
+
+## FEATURE
+
+- Hervorgehobener Beitrag ueber der Beitragsliste (Kennzeichen in den Seiteneigenschaften,
+  Setting `plugin.tx_blog.settings.lists.posts.featured.enable`), nur auf der ersten Seite
+- Lesbare Blog-Listen und Platzhalterbild fuer Beitraege ohne Beitragsbild
+  (Site-Setting `t3bootstrap-blog.placeholderImage`, aus t3bootstrap-blog 14.2.0)
+
+## TASK
+
+- Keine Abhaengigkeiten mehr auf EXT:template: blog.scss kompiliert eigenstaendig,
+  Backend-Layout-Labels und -Icon liegen in der Extension (aus t3bootstrap-blog 14.2.0)
+
+## BUGFIX
+
+- Fehlende Definition fuer plugin.tx_blog.settings.storagePid
+
 # 14.0.1
 
 ## FEATURE
