@@ -114,7 +114,10 @@
             <div class="blog__card__thumb">
                 <f:if condition="{post.featuredImage}">
                     <f:then>
-                        <t3bc:picture useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_1',xl:'blog_preview_1',xxl:'blog_preview_1'}" class="blog__card__image" image="{post.featuredImage}" />
+                        <f:comment>Spalten wie .blog__card-grid (1 / 2 ab sm / 3 ab lg), damit die Bildvarianten nicht in voller Containerbreite erzeugt werden.</f:comment>
+                        <t3bc:imageScale xs="12" sm="6" md="6" lg="4">
+                            <t3bc:picture useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_1',xl:'blog_preview_1',xxl:'blog_preview_1'}" class="blog__card__image" image="{post.featuredImage}" />
+                        </t3bc:imageScale>
                     </f:then>
                     <f:else>
                         <f:render partial="General/Placeholder" arguments="{post: post, settings: settings, class: 'blog__card__image'}" />
