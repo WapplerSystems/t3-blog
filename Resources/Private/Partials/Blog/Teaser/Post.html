@@ -2,6 +2,7 @@
       xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
       xmlns:ws="http://typo3.org/ns/WapplerSystems/WsT3bootstrap/ViewHelpers"
       xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      xmlns:t3bblog="http://typo3.org/ns/WapplerSystems/Blog/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
 <article class="blog__teaser__post" id="blogpost-teaser-{post.uid}" data-blog-tag="{f:if(condition: post.tags, then: post.tags.0.uid, else: 0)}" data-blog-category="{f:if(condition: post.categories, then: post.categories.0.uid, else: 0)}">
@@ -9,17 +10,22 @@
     <blogvh:link.post post="{post}" class="" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
 
         <f:if condition="{post.featuredImage}">
-            <f:switch expression="{type}">
-                <f:case value="left">
-                    <t3bc:backgroundImage selector="#blogpost-teaser-{post.uid}" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_2',xl:'blog_preview_2',xxl:'blog_preview_2'}" image="{post.featuredImage}" />
-                </f:case>
-                <f:case value="right1">
-                    <t3bc:backgroundImage selector="#blogpost-teaser-{post.uid}" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_3',xl:'blog_preview_3',xxl:'blog_preview_3'}" image="{post.featuredImage}" />
-                </f:case>
-                <f:case value="right2">
-                    <t3bc:backgroundImage selector="#blogpost-teaser-{post.uid}" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_1',xl:'blog_preview_1',xxl:'blog_preview_1'}" image="{post.featuredImage}" />
-                </f:case>
-            </f:switch>
+            <f:then>
+                <f:switch expression="{type}">
+                    <f:case value="left">
+                        <t3bc:backgroundImage selector="#blogpost-teaser-{post.uid}" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_2',xl:'blog_preview_2',xxl:'blog_preview_2'}" image="{post.featuredImage}" />
+                    </f:case>
+                    <f:case value="right1">
+                        <t3bc:backgroundImage selector="#blogpost-teaser-{post.uid}" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_3',xl:'blog_preview_3',xxl:'blog_preview_3'}" image="{post.featuredImage}" />
+                    </f:case>
+                    <f:case value="right2">
+                        <t3bc:backgroundImage selector="#blogpost-teaser-{post.uid}" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_1',xl:'blog_preview_1',xxl:'blog_preview_1'}" image="{post.featuredImage}" />
+                    </f:case>
+                </f:switch>
+            </f:then>
+            <f:else if="{t3bblog:placeholderImage(path: settings.placeholderImage)}">
+                <t3bc:backgroundImage selector="#blogpost-teaser-{post.uid}" containerless="true" image="{t3bblog:placeholderImage(path: settings.placeholderImage)}" />
+            </f:else>
         </f:if>
 
         <div class="blog__teaser__post__text">

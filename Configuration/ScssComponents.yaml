@@ -6,8 +6,6 @@ components:
   blog:
     files:
       - 'EXT:ws_blog/Resources/Public/SCSS/blog.scss'
-    # blog.scss already @imports bootstrap/pagination. If blog is required
-    # before a standalone "pagination" call, the standalone call is skipped
-    # so pagination CSS isn't emitted twice on the page.
-    includes:
-      - pagination
+    # Pagination is a separate key (template or own registration) and is
+    # required next to "blog" in the templates, so blog.scss stays
+    # self-contained and compiles without EXT:template.

@@ -3,6 +3,7 @@
       xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
       xmlns:ws="http://typo3.org/ns/WapplerSystems/WsT3bootstrap/ViewHelpers"
       xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      xmlns:t3bblog="http://typo3.org/ns/WapplerSystems/Blog/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
 
@@ -14,25 +15,25 @@
 
                 <f:if condition="{posts.0}">
                     <t3bc:column class="p0">
-                        <f:render partial="Latest/Post" arguments="{post:posts.0,type:'top'}" />
+                        <f:render partial="Latest/Post" arguments="{post:posts.0,type:'top',settings:settings}" />
                     </t3bc:column>
                 </f:if>
 
                 <f:if condition="{posts.1}">
                     <t3bc:column display="flex" lg="4">
-                        <f:render partial="Latest/Post" arguments="{post:posts.1}" />
+                        <f:render partial="Latest/Post" arguments="{post:posts.1,settings:settings}" />
                     </t3bc:column>
                 </f:if>
 
                 <f:if condition="{posts.2}">
                     <t3bc:column display="flex" lg="4">
-                        <f:render partial="Latest/Post" arguments="{post:posts.2}" />
+                        <f:render partial="Latest/Post" arguments="{post:posts.2,settings:settings}" />
                     </t3bc:column>
                 </f:if>
 
                 <f:if condition="{posts.3}">
                     <t3bc:column display="flex" lg="4">
-                        <f:render partial="Latest/Post" arguments="{post:posts.3}" />
+                        <f:render partial="Latest/Post" arguments="{post:posts.3,settings:settings}" />
                     </t3bc:column>
                 </f:if>
 
@@ -50,7 +51,14 @@
                 <div class="blog__credentials__post d-flex" id="blogpost-credentials-{post.uid}">
                     <blogvh:link.post post="{post}" class="blog__credentials__effect" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
                         <div class="image">
-                            <t3bc:backgroundImage selector="#blogpost-credentials-{post.uid} .image" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_2',xl:'blog_preview_2',xxl:'blog_preview_2'}" image="{post.featuredImage}" />
+                            <f:if condition="{post.featuredImage}">
+                                <f:then>
+                                    <t3bc:backgroundImage selector="#blogpost-credentials-{post.uid} .image" containerless="true" useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_2',xl:'blog_preview_2',xxl:'blog_preview_2'}" image="{post.featuredImage}" />
+                                </f:then>
+                                <f:else if="{t3bblog:placeholderImage(path: settings.placeholderImage)}">
+                                    <t3bc:backgroundImage selector="#blogpost-credentials-{post.uid} .image" containerless="true" image="{t3bblog:placeholderImage(path: settings.placeholderImage)}" />
+                                </f:else>
+                            </f:if>
                         </div>
                         <div class="blog__credentials__effect__overlay-title">
                             <span>{post.title}</span>
@@ -71,21 +79,21 @@
 
                 <f:if condition="{posts.0}">
                     <t3bc:column lg="6" class="p0">
-                        <f:render partial="Teaser/Post" arguments="{post:posts.0,type:'left'}" />
+                        <f:render partial="Teaser/Post" arguments="{post:posts.0,type:'left',settings:settings}" />
                     </t3bc:column>
                 </f:if>
 
                 <f:if condition="{posts.1}">
                     <t3bc:column lg="3">
-                        <f:render partial="Teaser/Post" arguments="{post:posts.1,type:'right1'}" />
+                        <f:render partial="Teaser/Post" arguments="{post:posts.1,type:'right1',settings:settings}" />
                     </t3bc:column>
                 </f:if>
 
                 <f:if condition="{posts.2} && {posts.3}">
                     <t3bc:column lg="3">
 
-                        <f:render partial="Teaser/Post" arguments="{post:posts.2,type:'right2'}" />
-                        <f:render partial="Teaser/Post" arguments="{post:posts.3,type:'right2'}" />
+                        <f:render partial="Teaser/Post" arguments="{post:posts.2,type:'right2',settings:settings}" />
+                        <f:render partial="Teaser/Post" arguments="{post:posts.3,type:'right2',settings:settings}" />
 
                     </t3bc:column>
                 </f:if>

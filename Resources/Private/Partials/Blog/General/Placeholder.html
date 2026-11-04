@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:blogvh="http://typo3.org/ns/T3G/AgencyPack/Blog/ViewHelpers"
+      xmlns:t3bblog="http://typo3.org/ns/WapplerSystems/Blog/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:comment>
+    Platzhalter für Beiträge ohne Beitragsbild (Site-Setting t3bootstrap-blog.placeholderImage).
+    Argumente: post, settings, class, linked (Link zum Beitrag drumherum, wie beim echten Bild).
+    Rein dekorativ: der Link ist aria-hidden, deshalb alt="".
+</f:comment>
+<f:variable name="placeholderImage" value="{t3bblog:placeholderImage(path: settings.placeholderImage)}" />
+<f:if condition="{placeholderImage}">
+    <f:if condition="{linked}">
+        <f:then>
+            <blogvh:link.post post="{post}" class="" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
+                <t3bc:picture image="{placeholderImage}" class="{class} blog__placeholder" alt="" loading="lazy" />
+            </blogvh:link.post>
+        </f:then>
+        <f:else>
+            <t3bc:picture image="{placeholderImage}" class="{class} blog__placeholder" alt="" loading="lazy" />
+        </f:else>
+    </f:if>
+</f:if>
+
+</html>

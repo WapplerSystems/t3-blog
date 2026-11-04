@@ -15,3 +15,9 @@ settings:
       default: 'Standard'
       card: 'Karten-Design'
     category: t3bootstrap-blog.list
+  t3bootstrap-blog.placeholderImage:
+    type: string
+    default: 'EXT:ws_blog/Resources/Public/Images/placeholder.svg'
+    label: 'Platzhalterbild'
+    description: 'Erscheint in den Blog-Listen, wenn ein Beitrag kein Beitragsbild hat. Pfad (EXT:…, fileadmin/…) oder FAL-Kennung (1:/…), am besten im Format 3:2. Leer lassen, um keinen Platzhalter anzuzeigen.'
+    category: t3bootstrap-blog.list

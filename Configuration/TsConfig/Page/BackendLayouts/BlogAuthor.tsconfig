@@ -1,7 +1,7 @@
 mod.web_layout.BackendLayouts {
   BlogAuthor {
     title = LLL:EXT:ws_blog/Resources/Private/Language/tsconfig.xlf:be_layout.blog_author
-    icon = EXT:template/Resources/Public/Icons/2columns.svg
+    icon = EXT:ws_blog/Resources/Public/Icons/BackendLayout2Columns.svg
     config {
       backend_layout {
         colCount = 6
@@ -10,12 +10,12 @@ mod.web_layout.BackendLayouts {
           1 {
             columns {
               1 {
-                name = LLL:EXT:template/Resources/Private/Language/tsconfig.xlf:be_layout.main_content
+                name = LLL:EXT:ws_blog/Resources/Private/Language/tsconfig.xlf:be_layout.main_content
                 colPos = 0
                 colspan = 5
               }
               2 {
-                name = LLL:EXT:template/Resources/Private/Language/tsconfig.xlf:be_layout.menu_column
+                name = LLL:EXT:ws_blog/Resources/Private/Language/tsconfig.xlf:be_layout.menu_column
                 colPos = 1
               }
 

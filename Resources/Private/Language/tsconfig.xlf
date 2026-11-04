@@ -14,6 +14,15 @@
 			<trans-unit id="be_layout.blog_author">
 				<source>Blog-Autorenseite</source>
 			</trans-unit>
+			<trans-unit id="be_layout.hero">
+				<source>Hero</source>
+			</trans-unit>
+			<trans-unit id="be_layout.main_content">
+				<source>Main Content</source>
+			</trans-unit>
+			<trans-unit id="be_layout.menu_column">
+				<source>Menu Column</source>
+			</trans-unit>
 
 
 		</body>

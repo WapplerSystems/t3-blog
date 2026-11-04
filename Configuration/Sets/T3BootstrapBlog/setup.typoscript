@@ -140,6 +140,7 @@ plugin.tx_blog {
       tag = 74387
     }
     listDesign = {$t3bootstrap-blog.listDesign}
+    placeholderImage = {$t3bootstrap-blog.placeholderImage}
     sidebarWidgets >
     sidebarWidgets {
       20 = tt_content.blog_categorywidget.20

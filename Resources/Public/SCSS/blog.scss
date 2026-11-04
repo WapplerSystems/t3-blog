@@ -1,7 +1,29 @@
 
 
-@import "EXT:template/Resources/Public/SCSS/components/init";
-@import "EXT:template/Resources/Public/SCSS/bootstrap/pagination";
+// Self-contained: compiles with or without EXT:template. When the template is
+// active, its siteImports provide $grid-breakpoints and the defaults below are
+// skipped. Pagination is a separate component key (see Layouts/Blog/Default.html).
+$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px) !default;
+
+// Icon glyphs of the T3Bootstrap icon font. Same output as the template's
+// %t3b-icon / %t3b-icon-chevron-down placeholders, but only bound at runtime via
+// CSS custom properties: without EXT:template the variable is unset and the
+// icon stays empty instead of breaking the compile.
+%blog-icon {
+  font-family: t3bootstrap !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: var(--t3b-icon);
+}
+
+%blog-icon-chevron-down {
+  --t3b-icon: var(--t3b-icon-chevron-down);
+}
 
 .list-pipe {
 
@@ -86,7 +108,8 @@
   &__list {
 
     &__post {
-      background: #fff;
+      background: var(--bs-body-bg, #fff);
+      color: var(--bs-body-color, #212529);
       flex-grow: 1;
 
       h2 {
@@ -95,25 +118,37 @@
 
       &__meta {
         font-size: 0.7rem;
-        color: #919191;
+        // #919191 reached only 3.2:1 on white
+        color: var(--bs-secondary-color, #5e6a70);
       }
     }
   }
 
   &__latest {
     &__post {
+      // Panel tinted from the primary colour on top of the page background, so
+      // it follows the theme (also when switched at runtime) and the colour
+      // mode: light tint in light mode, dark tint in dark mode. Text comes from
+      // the body colour; the date is a mix of text and panel colour. Checked for
+      // primaries from black to yellow in both modes: text ≥ 10:1, date ≥ 5.8:1.
+      // The former fixed #bbdbe6 with a white date reached only 1.5:1.
+      --blog-latest-bg: color-mix(in srgb, var(--bs-primary, #2E6B4F) 20%, var(--bs-body-bg, #fff));
+      --blog-latest-color: var(--bs-body-color, #212529);
+      --blog-latest-meta-color: color-mix(in srgb, var(--blog-latest-color) 80%, var(--blog-latest-bg));
+      --blog-latest-link-color: var(--blog-latest-color);
 
-      background: #bbdbe6;
+      background: var(--blog-latest-bg);
+      color: var(--blog-latest-color);
       flex-grow: 1;
 
       &__meta {
-        color: #fff;
+        color: var(--blog-latest-meta-color);
         margin-top: 1rem;
         font-size: 0.8rem;
       }
 
       a {
-        color: #000;
+        color: var(--blog-latest-link-color);
         text-decoration: none;
       }
     }
@@ -123,7 +158,11 @@
     &__post {
       &__text {
         bottom: 0;
+        padding: 1rem;
         color: #fff;
+        // White text sits on the featured image: give it its own surface so it
+        // stays readable over the brightest part of any picture.
+        background-color: rgba(0, 0, 0, 0.7);
         a {
           color: #fff;
         }
@@ -146,7 +185,7 @@
     display: flex;
     &__post{
 
-      @include media-breakpoint-up(md) {
+      @media (min-width: #{map-get($grid-breakpoints, md)}) {
         height: 800px;
         width: 40%;
       }
@@ -166,7 +205,7 @@
   &__load-after {
     border: 0;
     width: 100%;
-    color: #8d8d8d;
+    color: var(--bs-secondary-color, #5e6a70);
     background: transparent;
     font-size: 2rem;
     line-height: 2rem;
@@ -174,10 +213,10 @@
     text-align: center;
     font-weight: 300;
     &:after {
-      @extend %t3b-icon-chevron-down;
+      @extend %blog-icon-chevron-down;
       display: block;
       transition: transform 0.5s ease-out;
-      @extend %t3b-icon;
+      @extend %blog-icon;
     }
     &:hover {
       text-decoration: none;
@@ -187,7 +226,7 @@
   &__load-before {
     border: 0;
     width: 100%;
-    color: #8d8d8d;
+    color: var(--bs-secondary-color, #5e6a70);
     background: transparent;
     font-size: 2rem;
     line-height: 2rem;
@@ -195,10 +234,10 @@
     text-align: center;
     font-weight: 300;
     &:before {
-      @extend %t3b-icon-chevron-down;
+      @extend %blog-icon-chevron-down;
       transform: rotate(180deg);
       display: block;
-      @extend %t3b-icon;
+      @extend %blog-icon;
     }
     &:hover {
       text-decoration: none;
@@ -213,7 +252,7 @@
 .blog__credentials, .blog__credentials a{
   display: flex;
   flex-wrap: wrap;
-  @include media-breakpoint-up(lg) {
+  @media (min-width: #{map-get($grid-breakpoints, lg)}) {
     flex-wrap: nowrap;
   }
 }
@@ -232,7 +271,7 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 
-    @include media-breakpoint-up(lg) {
+    @media (min-width: #{map-get($grid-breakpoints, lg)}) {
       margin-top: 0;
       margin-bottom: 0;
       height: 800px;
@@ -280,7 +319,7 @@
         left: -100%;
         top: calc(100% - 3rem);
 
-        @include media-breakpoint-up(lg) {
+        @media (min-width: #{map-get($grid-breakpoints, lg)}) {
           top: calc(100% - 10rem);
         }
       }
@@ -289,7 +328,7 @@
         right: -100%;
         top: 3rem;
 
-        @include media-breakpoint-up(lg) {
+        @media (min-width: #{map-get($grid-breakpoints, lg)}) {
           top: 10rem;
         }
       }
@@ -322,19 +361,35 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: #86b4c4;
+      // Dark enough for the white overlay title on any image (≥ 6:1);
+      // the former #86b4c4 at 70 % stayed below 2:1 over bright pictures.
+      background-color: #1f4652;
       opacity: 0;
       transition: 0.5s ease-in-out;
     }
 
     &:hover:before{
-      opacity: 0.7;
+      opacity: 0.85;
     }
   }
 }
 
 body.layout-Blog .main-content {
   background-color: #eaf8fb;
+}
+
+[data-bs-theme="dark"] body.layout-Blog .main-content {
+  background-color: var(--bs-body-bg);
+}
+
+// Placeholder for posts without a featured image (setting
+// t3bootstrap-blog.placeholderImage): fill the same 3:2 box as a preview image,
+// whatever the proportions of the configured file.
+.blog__placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
 
 
@@ -351,10 +406,10 @@ body.layout-Blog .main-content {
   gap: var(--blog-card-gap);
   margin-bottom: 40px;
 
-  @include media-breakpoint-down(lg) {
+  @media (max-width: #{map-get($grid-breakpoints, lg) - .02}) {
     --blog-card-columns: 2;
   }
-  @include media-breakpoint-down(sm) {
+  @media (max-width: #{map-get($grid-breakpoints, sm) - .02}) {
     --blog-card-columns: 1;
   }
 }

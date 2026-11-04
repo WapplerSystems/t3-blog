@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <!-- Neutral grey with transparency: the surface below shows through, so the
+       placeholder blends with any primary tint and with light and dark mode. -->
+  <rect width="1200" height="800" fill="#808080" fill-opacity="0.14"/>
+  <g fill="none" stroke="#808080" stroke-opacity="0.6" stroke-width="14" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="490" y="320" width="220" height="160" rx="18"/>
+    <path d="M500 465 l70 -70 l50 50 l30 -30 l50 50"/>
+  </g>
+  <circle cx="660" cy="362" r="16" fill="#808080" fill-opacity="0.6"/>
+</svg>

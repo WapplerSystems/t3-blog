@@ -12,9 +12,14 @@
                 <div class="row">
                     <t3bc:column md="8">
                         <f:if condition="{post.featuredImage}">
-                            <blogvh:link.post post="{post}" class="" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
-                                <t3bc:picture useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_2',xl:'blog_preview_2',xxl:'blog_preview_2'}" class="img-fluid" image="{post.featuredImage}" />
-                            </blogvh:link.post>
+                            <f:then>
+                                <blogvh:link.post post="{post}" class="" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
+                                    <t3bc:picture useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_2',xl:'blog_preview_2',xxl:'blog_preview_2'}" class="img-fluid" image="{post.featuredImage}" />
+                                </blogvh:link.post>
+                            </f:then>
+                            <f:else>
+                                <f:render partial="General/Placeholder" arguments="{post: post, settings: settings, class: 'img-fluid', linked: 1}" />
+                            </f:else>
                         </f:if>
                     </t3bc:column>
                     <t3bc:column md="4">
@@ -49,9 +54,14 @@
             <f:else>
 
                 <f:if condition="{post.featuredImage}">
-                    <blogvh:link.post post="{post}" class="" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
-                        <t3bc:picture useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_1',xl:'blog_preview_1',xxl:'blog_preview_1'}" class="img-fluid" image="{post.featuredImage}" />
-                    </blogvh:link.post>
+                    <f:then>
+                        <blogvh:link.post post="{post}" class="" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1">
+                            <t3bc:picture useBootstrapCropVariants="false" cropVariants="{xs:'blog_preview_1',sm:'blog_preview_1',md:'blog_preview_1',lg:'blog_preview_1',xl:'blog_preview_1',xxl:'blog_preview_1'}" class="img-fluid" image="{post.featuredImage}" />
+                        </blogvh:link.post>
+                    </f:then>
+                    <f:else>
+                        <f:render partial="General/Placeholder" arguments="{post: post, settings: settings, class: 'img-fluid', linked: 1}" />
+                    </f:else>
                 </f:if>
 
                 <div class="p-3">
